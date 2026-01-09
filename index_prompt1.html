@@ -1,0 +1,3743 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>👩‍🍳شو عاملي أكل؟👩‍🍳</title>
+    <style>
+         #enter-app-button:hover {
+    background-color: #047857;
+    transform: scale(1.05);
+}
+
+/* تنسيق عام لأزرار اللغة */
+.lang-btn {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: #059669;
+}
+
+        /* الصفحة RTL والخلفية */
+        body {
+            direction: rtl;
+            text-align: center;
+            font-family: sans-serif , Tahoma 'Segoe UI', Geneva, Verdana, ;
+            margin: 0;
+            padding: 0;
+            color: #e4e75e;
+            background: linear-gradient(135deg, #f5f0e1, #8b4513, #a52a2a);
+            min-height: 100vh;
+        }
+
+        /* الشريط العلوي Header – نص دوار */
+        header {
+            padding: 25px 20px;
+            text-align: center;
+            perspective: 1000px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ff7f50, #ff4500);
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            display: inline-block;
+            font-size: 1.2em;
+            font-weight: bold;
+            animation: rotateText ;
+            animation-duration: 18s; 
+            animation-timing-function: linear; 
+            animation-iteration-count: infinite; 
+        }
+
+        @keyframes rotateText {
+                       /* ------------------ 1. المرحلة الخضراء (0s - 6s) ------------------ */
+            0% { 
+                transform: rotateY(0deg); 
+                color: #10b981; /* أخضر */
+            }
+            /* الدوران يكتمل عند 16.6% (3 ثوانٍ) */
+            16.6% { 
+                transform: rotateY(360deg); 
+                color: #10b981; 
+            }
+            /* فترة التوقف حتى 33.3% (6 ثوانٍ) */
+            33.3% { 
+                transform: rotateY(360deg); 
+                color: #10b981; 
+            }
+
+            /* ------------------ 2. المرحلة الزرقاء (6s - 12s) ------------------ */
+            /* تغيير اللون والدوران للصفر في لحظة */
+            33.4% { 
+                transform: rotateY(0deg); 
+                color: #eceef2; /* أبيض */
+            }
+            /* الدوران يكتمل عند 50% (9 ثوانٍ) */
+            50% { 
+                transform: rotateY(360deg); 
+                color: #eceef2; 
+            }
+            /* فترة التوقف حتى 66.6% (12 ثانية) */
+            66.6% { 
+                transform: rotateY(360deg); 
+                color: #eceef2; 
+            }
+
+            /* ------------------ 3. المرحلة السوداء (12s - 18s) ------------------ */
+            /* تغيير اللون والدوران للصفر في لحظة */
+            66.7% { 
+                transform: rotateY(0deg); 
+                color: #000000; /* أسود */
+            }
+            /* الدوران يكتمل عند 83.3% (15 ثانية) */
+            83.3% { 
+                transform: rotateY(360deg); 
+                color: #000000; 
+            }
+            /* فترة التوقف حتى 100% (18 ثانية) */
+            100% { 
+                transform: rotateY(360deg); 
+                color: #10b981; 
+            }
+        }
+        
+        /* ======================================================= */
+        /* 🚀 تنسيق وضع اللغة الإنجليزية (LTR) - تم دمجه هنا */
+        /* ======================================================= */
+        .english-mode {
+         
+        }
+        
+        /* هذا التنسيق يفرض الاتجاه من اليسار لليمين */
+        html[dir="ltr"] body {
+            text-align: center !important;
+        }
+        
+        /* هذا التنسيق يضمن محاذاة العناصر الداخلية لليسار في وضعية الإنجليزية */
+        .english-mode main {
+            text-align: center !important;
+        }
+        .english-mode .meal-title{
+        text-align: center !important;
+        }
+        .english-mode .preparation-section,
+        .english-mode .ingredients-section {
+            text-align:left !important;
+            direction: ltr !important;
+        }
+        
+        /* 1. تحديد العرض الأقصى و الهامش الجانبي القابل للتعديل */
+        main {
+            max-width: 600px; 
+            margin: 0 auto 30px; 
+            padding: 20px; 
+            background-color: rgba(0,0,0,0.7);
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .buttons-container button {
+            background: linear-gradient(45deg, #03e5e9, #0996c5);
+            color: rgb(46, 3, 3);
+            padding: 10px 25px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .buttons-container button:hover {
+            transform: scale(1.05);
+        }
+
+        /* التسمية */
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            font-size: 1.05em;
+        }
+
+        /* القوائم المنسدلة select */
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #241313;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            direction: ltr; /* للحفاظ على تنسيق الأرقام والحروف اللاتينية */
+            text-align: left ; /* للحفاظ على تنسيق الأرقام والحروف اللاتينية */
+            background-color: #222;
+            color: #cfbd88;
+        }
+
+        select:focus {
+            border-color: #00ff99;
+            box-shadow: 0 0 5px #00ff99;
+            outline: none;
+        }
+
+        /* الأزرار نافرة */
+        button {
+            word-spacing: 12px;
+            margin-top: 20px;
+            padding: 15px 20px;
+            width: 100%;
+            border: none;
+            border-radius: 15px;
+            background: linear-gradient(to right, #a0ff99, #50c878);
+            color: #000;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+        }
+        
+       /* تنسيق أزرار  اللغة في صف واحد (Container) */
+.lang-switcher-row {
+    display: flex; /* وضع الأزرار جنباً إلى جنب */
+    justify-content: center; /* توسيط الأزرار */
+    gap: 8px; /* مسافة بين الأزرار */
+    margin-bottom: 15px;
+}
+
+/* تنسيق الأزرار الفردية */
+.lang-btn {
+    padding: 6px 10px;
+    border: 2px solid transparent; /* لجعل الحدود مرئية عند التنشيط */
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease; /* لتأثير الإضاءة السلس */
+    color: #4A4A4A; /* لون نص مطفأ */
+    background-color: #E0E0E0; /* خلفية مطفأة */
+}
+
+/* حالة الزر النشط (المُضاء) */
+.lang-btn.active {
+    background: linear-gradient(to right, #66ff99, #70d2c8); /* نفس تدرج اللون الذي طلبته */
+    color: #000000; /* لون نص ساطع */
+    border-color: #E91E63; /* تحديد بإطار وردي */
+    box-shadow: 0 0 10px rgba(102, 255, 153, 0.7); /* إضافة ظل خفيف للإضاءة */
+}
+        
+
+        /* ==================================== */
+        /* 🚀  تنسيقات القائمة المنسدلة (الجديدة) */
+        /* ==================================== */
+
+        /* تنسيقات الـ Dropdown */
+        .dropdown {
+            position: relative; 
+            display: inline-block;
+            width: 100%; 
+            margin-bottom: 15px;
+        }
+
+        /* تنسيقات زر القائمة (يستبدل تنسيق الزر القديم) */
+        .dropbtn {
+            background: linear-gradient(to right, #66ff99, #70d2c8);
+            color: #2c0bbc;
+            font-weight: bold;
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        /* محتوى القائمة المنسدلة (المخفي افتراضياً) */
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 100%;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 100; /* قيمة عالية لضمان الظهور فوق كل شيء */
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* تنسيق خيارات القائمة */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: right; 
+            font-size: 1em;
+        }
+
+        /* تأثير التمرير على الخيارات */
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #4ECDC4;
+        }
+
+        /* إظهار القائمة عندما تكون النشطة */
+        .dropdown-content.show {
+            display: block;
+        }
+
+        /* ... نهاية أكواد CSS الخاصة بك ... */
+        /* صندوق النتائج */
+       #result {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba(255,255,255,0.1);
+    font-size: 1.15em;
+    line-height: 1.5em;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+
+    /* 🔧 التعديلات المهمة */
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;   /* يمنع أي خروج أفقي */
+}
+    .meal-image {
+    width: 100%;
+    max-width: 280px;     /* ← المفتاح هنا */
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+
+        /* الساعة الرقمية */
+        .clock {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .clock span {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #0f1cb8;
+        }
+
+        /* التصميم المتجاوب للشاشات الأصغر من 650px */
+        @media (max-width: 650px) {
+            main {
+                margin: 20px;
+                padding: 20px;
+            }
+            header {
+                font-size: 1.8em;
+                padding: 20px 15px;
+            }
+            select, button {
+                font-size: 1.0em;
+                padding: 10px;
+            }
+            .clock span {
+                font-size: 1.3em;
+            }
+        }
+
+        /* رسالة الموافقة */
+        #confirmationMsg {
+            font-weight: bold;
+            font-size: 24px;
+            color: #e74c3c;
+            animation: moveLeftRight 3s infinite alternate, colorChange 3s infinite alternate;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        @keyframes moveLeftRight {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(20px); }
+        }
+
+        @keyframes colorChange {
+            0% { color: #e74c3c; }
+            50% { color: #f1c40f; }
+            100% { color: #2ecc71; }
+        }
+    /* ---------------------------------------------------- */
+        /* 1. الحل الجذري لمشكلة "الواجهة تاخذ اقصى اليمين" */
+        /* ---------------------------------------------------- */
+        body {
+            background-color: #f7f9fb;
+            font-family: 'Cairo', sans-serif;
+            color: #e4e75e;
+            direction: rtl; 
+            margin: 0;
+            padding: 0;
+        }
+
+   /* 🔥🔥🔥🔥🔥🔥 بالطبع! سأكتب لك الكود الجديد🔥🔥🔥🔥🔥🔥الكود الجديد */
+
+/* الحاوية الرئيسية لتوسيط كل المحتوى في المنتصف */
+.main-wrapper {
+    width: 90vw;
+    max-width: 1800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* ---------------------------------------------------- */
+/* 2. شيفرة CSS التي ارسلتها (مع تصحيح التبادل والمحاذاة) */
+/* ---------------------------------------------------- */
+.meal-layout {
+    display: grid;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+    margin: 5px 0;
+    width: 100%;
+    max-width: 100%;
+    background: none;
+    padding: 0;
+    color: #edd982;
+    text-align: center;
+
+}
+
+.meal-content {
+    width: 100%;
+}
+
+/* 4. النافذتان - ضمان التمدد الرأسي والمرونة */
+.preparation-section,
+.ingredients-section {
+    grid-column: auto;
+    margin-top: 0 !important;
+    align-self: start !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+
+/* تفاصيل نافذة طريقة التحضير (العمود الثاني - اليسار) */
+.preparation-section {
+    margin-top: 0 !important;
+    grid-column: 2;
+    justify-self: stretch;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: justify;
+    direction: rtl;
+    padding: 5px;
+    background: rgb(156, 117, 81);
+    border-right: 3px solid #4ECDC4;
+    border-left: 3px solid #FF6B6B;
+}
+
+/* تفاصيل نافذة المكونات (العمود الأول - اليمين) */
+.ingredients-section {
+    margin-top: 0 !important;
+    grid-column: 1;
+    justify-self: stretch;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: right;
+    padding: 5px;
+    background: rgb(156, 117, 81);
+    border-right: 3px solid #4ECDC4;
+    border-left: 3px solid #FF6B6B;
+}
+/* =========================================== */
+/* 2. تعديل صناديق العناوين (تطبيق التوسيط والتنسيق) */
+/* =========================================== */
+.ingredients-section strong,
+.preparation-section strong {
+    display: block;
+    font-size: 18px;
+    /* color: #f4c952;*/
+    border-bottom: none;
+    margin: 0;
+    align-self: center;
+}
+
+:lang(en) .ingredients-section,
+:lang(en) .preparation-section,
+:lang(ru) .ingredients-section,
+:lang(ru) .preparation-section {
+    text-align: left;
+    direction: ltr;
+}
+
+:lang(en) .ingredients-section > *,
+:lang(en) .preparation-section > *,
+:lang(ru) .ingredients-section > *,
+:lang(ru) .preparation-section > * {
+    text-align: left;
+    direction: ltr;
+}
+
+/* --- بداية التعديلات المطلوبة (لتجميع المكون والأيقونة) --- */
+
+/* 1. تفعيل المحاذاة الأفقية بين الأطراف */
+.flex-row-aligned {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+/* 2. تجميع الأيقونة واسم المكون معاً في الطرف الأيسر/الأيمن حسب اتجاه النص */
+.flex-start-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    /* 🎯 التعديل الجوهري: يدفع هذا العنصر إلى الطرف الأقصى في Flexbox */
+    margin-inline-end: 0;
+    text-align: start;
+    margin-inline-start: 0;
+}
+
+/* 3. تعديل المحدد .ingredient نفسه */
+    .ingredient {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    font-size: 18px;
+    color: #321081;
+    justify-content: flex-start;
+    border-bottom: 2px dashed #1edb0d;
+}
+
+    .ingredient:last-child {
+     border-bottom: none;
+}
+
+.ingredient-quantity {
+    color: #130135;
+    font-weight: 400;
+    font-size: 1.1rem;
+    white-space: initial;
+
+    /* 🎯 التعديل لضمان بقاء الكمية في الطرف النهائي في كلتا اللغتين */
+    margin-inline-start: auto;
+    margin-inline-end: 0;
+    text-align: end;
+}
+.scrolling-text {
+    background: #e0f2f1;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #00897b;
+    text-align: center;
+}
+
+.product-card {
+    background: #f0f4c3;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: right;
+    border: 3px solid #cddc39;
+}
+
+.step {
+    color: black;
+    padding: 2px 0;
+    margin: 0 !important;
+    font-size: 18px;
+    line-height: 1.4;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 2px dashed #1edb0d;
+    gap: 2px;
+}
+
+    .step:last-child {
+    border-bottom: none;
+}
+
+
+/* ترتيب العناصر في .ingredient حسب اللغة */
+   .ingredient {
+    flex-direction: row;
+}
+
+/* في العربية والفارسية: من اليمين لليسار */
+.ingredients-section[lang="ar"],
+.ingredients-section[lang="fa"] {
+   direction: rtl;
+    text-align: right;
+}
+/* في الإنجليزية والروسية: الإيموجي في النهاية، المقادير في البداية */
+.ingredients-section[lang="en"],
+.ingredients-section[lang="ru"] {
+     direction: ltr;
+    text-align: left;
+}
+/* في .preparation-section: من اليمين لليسار للعربية والفارسية، من اليسار لليمين للباقي */
+    .preparation-section[lang="ar"],
+    .preparation-section[lang="fa"] {
+    direction: rtl;
+    text-align: right;
+}
+
+     .preparation-section[lang="en"],
+    .preparation-section[lang="ru"] {
+    direction: ltr;
+    text-align: left;
+}
+
+       /* تصميم متجاوب للجوال (Grid-Template-Columns: 1fr) */
+     @media (max-width: 768px) {
+    .main-wrapper {
+        margin: 0;
+        padding: 10px;
+        border-radius: 0;
+    }
+
+    .meal-layout {
+        gap: 15px;
+    }
+   .meal-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 15px;
+    }
+    .meal-image {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: contain;
+    }
+
+    .meal-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .ingredients-section,
+    .preparation-section {
+        order: unset;
+        grid-column: 1;
+        border-right: 3px solid #4ECDC4;
+        border-bottom: 3px solid #4ECDC4;
+        border-left: none;
+        border-top: none;
+        padding: 5px;
+    }
+
+    .preparation-section {
+        border-right: 3px solid #FF6B6B;
+        border-top: 3px solid #FF6B6B;
+        border-bottom: none;
+    }
+
+    .meal-title {
+        font-size: 20px;
+        color: chartreuse;
+    }
+
+    main {
+        padding: 10px;
+        margin: 0 5px 20px 5px;
+    }
+}
+
+       .health-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: #ffcc00;
+    font-size: 2.5em;
+    font-weight: bold;
+    padding: 25px 50px;
+    border-radius: 20px;
+    animation: fadeInOut 3s ease-in-out;
+    z-index: 10000;
+    text-align: center;
+    border: 3px solid #ffcc00;
+    box-shadow: 0 0 30px rgba(255, 204, 0, 0.5);
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+
+        }
+    </style>
+</head>
+
+<body>
+   <div id="splash-screen-container" class="fixed inset-0 flex items-center justify-center z-50">
+</div>
+      
+    <div class="clock">
+        <span id="timeDisplay">19:29:12</span>
+    </div>
+
+    <header>
+        <h1>👩‍🍳 شو عاملي أكل؟👩‍🍳</h1>
+    </header> 
+    <main>
+        <div id="languageSwitcherContainer" class="lang-switcher-row">
+    <button class="lang-btn active" data-lang="ar">عربي</button>
+    <button class="lang-btn" data-lang="en">English</button>
+    <button class="lang-btn" data-lang="fa">فارسی</button>
+    <button class="lang-btn" data-lang="ru">Русский</button>
+</div>
+
+        <div class="filters">
+            <label for="healthStatus">الحالة الصحية:</label>
+            <select id="healthStatus">
+                <option value="normal">طبيعية</option>
+                <option value="diabetes">سكري</option>
+                <option value="pressure">ضغط</option>
+                <option value="heart" selected> امراض قلبية</option>
+            </select>
+
+            <label for="cost">الكلفة:</label>
+            <select id="cost">
+                <option value="High">عالية</option>
+                <option value="medium" >متوسطة</option>
+                <option value="low" selected>منخفضة</option>
+            </select>
+
+            <label for="mealTime">وقت الوجبة:</label>
+            <select id="mealTime">
+                <option value="breakfast">فطور</option>
+                <option value="lunch" selected>غداء</option>
+                <option value="dinner">عشاء</option>
+            </select>
+
+            <label for="weather">حالة الطقس:</label>
+            <select id="weather">
+                <option value="cold">بارد</option> 
+                <option value="moderate" selected>معتدل</option>
+                <option value="hot">حار</option>
+            </select>
+
+            <label for="mealType">نوع الوجبة:</label>
+            <select id="mealType">
+                <option value="quick meal" selected>وجبة سريعة</option>
+                <option value="regular meal">وجبة عادية</option>
+            </select>
+
+            <label for="numberOfpeople">عدد الافراد:</label>
+                <select id="numberOfpeople">
+                <option value="small" selected>1 - 2</option>
+                <option value="medium">3 - 4</option>
+                <option value="large">5 - 6</option>
+                <option value="xlarge">7 - 8</option>
+                <option value="xxlarge">9 - 11</option>
+                <option value="max">12+</option>
+            </select>
+        </div>
+
+        <div id="result">
+            <div class="no-preparation"> حددي الخيارات التي تناسبكِ  من القائمة  </div>
+        </div>
+
+        <button id="suggestBtn"> اضغطي  هنا  لاقترح   عليكِ  وجبة  </button>
+
+        <div class="buttons-container">
+            <!-- تمت إضافة تنسيق مبدئي لزر الخروج -->
+            <button id="alternativeBtn">ابحث عن وجبة بديلة</button>
+            <button id="exitBtn" style="background: linear-gradient(to right, #f01c04, #d71c07); color: rgb(2, 1, 15);">خروج</button>
+            <button id="confirmBtn">موافقة على الوجبة</button>
+            <div id="confirmationMsg" style="display: none;">
+        </div>
+        </div>
+    </main>
+    <script>
+        /*✅ تم اختيار الوصفة بنجاح!*/
+              // ====================================================================
+              // 1. كائن الترجمة المركزي (Central Translations Object)
+              // ====================================================================
+
+            const translations = {
+
+               ar: {
+                dir: 'rtl',
+                title: '👩‍🍳شو عاملي أكل؟',
+                suggestBtn: 'اضغطي هنا لاقترح عليك وجبة',
+                altBtn: 'ابحث عن وجبة بديلة',
+                confirmBtn: 'موافقة على الوجبة',
+                exitBtn: 'خروج',
+                healthLabel: 'الحالة الصحية',
+                costLabel: 'الكلفة',
+                timeLabel: 'وقت الوجبة',
+                weatherLabel: 'حالة الطقس',
+                typeLabel: 'نوع الوجبة',
+                peopleLabel: 'عدد الأفراد',
+                preparationLabel: 'طريقة التحضير',
+                ingredientsLabel: "المكونات",
+                health: ['طبيعية', 'سكري', 'ضغط', 'امراض قلبية'],
+                cost: ['عالية', 'متوسطة', 'منخفضة'],
+                time: ['فطور', 'غداء', 'عشاء'],
+                weather: ['بارد', 'معتدل', 'حار'],
+                type: ['وجبة سريعة', 'وجبة عادية'],
+                people: ['1 - 2', '3 - 4', '5 - 6', '7 - 8', '9 - 11', '12+'],
+                noPrepMsg: 'حددي الخيارات التي تناسبكِ من القائمة',
+                instructionsLabel: 'طريقة التحضير',
+
+                // 🔑 1. الوحدات الأساسية
+                units: {
+                    'g': 'غرام', 'kg': 'كغ', 'L': 'لتر', 'ml': 'مل',
+                    'cup': 'كوب', 'tbsp': 'ملعقة كبيرة', 'tsp': 'ملعقة صغيرة',
+                    'count': 'العدد', 'loaf': 'رغيف','clove': 'حص',
+                    'pinch': 'رشة', 'squeeze': 'عصرة', 'piece': 'حبة'
+                },
+
+                // 🔑 2. المقادير والروابط اللغوية
+                quantifiers: {
+                    FRACTION_HALF: 'نصف',
+                    FRACTION_QUARTER: 'ربع',
+                    FRACTION_THIRD: 'ثلث',
+                    FRACTION_TWO_THIRDS: 'ثلثين',
+                    FRACTION_THREE_QUARTERS: 'ثلاثة أرباع',
+                    CONNECTOR_AND: ' و ',
+                    TEXT_TO_TASTE: 'حسب الطلب',
+                    TEXT_APPROX: 'تقريباً',
+                    TEXT_UNIT_AND_HALF: 'ونصف',
+                    TEXT_UNIT_ONE: 'واحدة',
+                    TEXT_UNIT_ONE_MASC: 'واحد',
+                    TEXT_UNIT_AND_QUARTER: 'وربع',
+                    TEXT_UNIT_AND_TWO_THIRDS: 'وثلثين',
+                },  TEXT_UNIT_AND_THREE_QUARTERS: 'وثلاثة أرباع',
+
+                // 🔑 3. الصفات والمعدودات
+                descriptors: {
+                    MEDIUM: 'متوسطة',
+                    SMALL: 'صغيرة',
+                    LARGE: 'كبيرة',
+                    HEAD: 'رأس',
+                    CLOVE: 'حص',
+                    BUNCH: 'حزمة',
+                },
+            
+             // 🔑 4. العبارات النشطة
+                activation: {
+                    madam: "سيدتي المحترمة،",
+                    giftTitle: "هدية",
+                    preWarning: "أوشكت مرحلة الاستفادة المجانية على الانتهاء! بقي لديكِ اختياران فقط.",
+                    graceMsg: "سيدتي الكريمة. حرصاً منا على تسهيل الأمور عليكِ، أضفنا محاولتين إضافيتين لمنحكِ الوقت الكافي للحصول على مفتاح التفعيل. نحن بانتظاركِ.",
+                    upgradeMsg: "سيدتي العزيزة، لقد استنفدتِ كافة المحاولات. يرجى إدخال مفتاح التفعيل للاستمتاع بالمميزات الكاملة.",
+                    backBtn: "العودة إلى التطبيق",
+                    success: "تم التفعيل بنجاح!"
+               },
+            },
+
+
+            // ====================================================================================
+            // --- 2. اللغة الإنجليزية (en) ---
+            // ====================================================================================
+            en: {
+                dir: 'ltr',
+                title: '?What is for Dinner👩‍🍳',
+                suggestBtn: 'Click here to suggest a meal',
+                altBtn: 'Find an alternative meal',
+                confirmBtn: 'Confirm meal selection',
+                exitBtn: 'Exit',
+                healthLabel: 'Health Status',
+                costLabel: 'Cost',
+                timeLabel: 'Meal Time',
+                weatherLabel: 'Weather Condition',
+                typeLabel: 'Meal Type',
+                peopleLabel: 'Number of People',
+                preparationLabel: 'Preparation Method',
+                ingredientsLabel: "Ingredients",
+                health: ['Normal', 'Diabetes', 'Blood Pressure', 'Heart Conditions'],
+                cost: ['High', 'Medium', 'Low'],
+                time: ['Breakfast', 'Lunch', 'Dinner'],
+                weather: ['Cold', 'Moderate', 'Hot'],
+                type: ['Quick Meal', 'Regular Meal'],
+                people: ['1 - 2', '3 - 4', '5 - 6', '7 - 8', '9 - 11', '12+'],
+                noPrepMsg: 'Select the options that suit you from the menu',
+                instructionsLabel: 'Preparation Method',
+
+                // 🔑 1. الوحدات الأساسية
+                units: {
+                    'g': 'g', 'kg': 'kg', 'L': 'L', 'ml': 'ml',
+                    'cup': 'cup', 'tbsp': 'tbsp', 'tsp': 'tsp',
+                    'count': 'count', 'loaf': 'loaf', 'clove': 'clove',
+                    'pinch': 'pinch', 'squeeze': 'squeeze', 'piece': 'piece'
+                },
+
+                // 🔑 2. المقادير والروابط اللغوية
+                quantifiers: {
+                    FRACTION_HALF: 'half',
+                    FRACTION_QUARTER: 'quarter',
+                    FRACTION_THIRD: 'third',
+                    FRACTION_TWO_THIRDS: 'two-thirds',
+                    FRACTION_THREE_QUARTERS: 'three-quarters',
+                    CONNECTOR_AND: ' and ',
+                    TEXT_TO_TASTE: 'to taste',
+                    TEXT_APPROX: 'approx',
+                    TEXT_UNIT_AND_HALF: ' and a half',
+                    TEXT_UNIT_ONE: 'one',
+                    TEXT_UNIT_ONE_MASC: 'one',
+                    TEXT_UNIT_AND_QUARTER: ' and a quarter',
+                    TEXT_UNIT_AND_TWO_THIRDS: ' and two-thirds',
+                    TEXT_UNIT_AND_THREE_QUARTERS: ' and three-quarters',
+                },
+
+                // 🔑 3. الصفات والمعدودات
+                descriptors: {
+                    MEDIUM: 'medium',
+                    SMALL: 'small',
+                    LARGE: 'large',
+                    HEAD: 'head',
+                    CLOVE: 'clove',
+                    BUNCH: 'bunch',
+                },
+
+                // 🔑 4. العبارات الكاملة
+            phrases: {
+
+                // ═══════════════════════════════════════════════════════════
+                // ملعقة صغيرة (teaspoon)
+                // ═══════════════════════════════════════════════════════════
+                "ربع ملعقة صغيرة": "¼ teaspoon",
+                "نصف ملعقة صغيرة": "½ teaspoon",
+                "ثلاثة أرباع ملعقة صغيرة": "¾ teaspoon",
+                "ملعقة صغيرة": "1 teaspoon",
+                "ملعقة صغيرة ونصف": "1½ teaspoons",
+                "ملعقة صغيرة وربع": "1¼ teaspoons",
+                "ملعقتان صغيرتان": "2 teaspoons",
+                "ملعقتان صغيرتان ونصف": "2½ teaspoons",
+                "3 ملاعق صغيرة": "3 teaspoons",
+                "4 ملاعق صغيرة": "4 teaspoons",
+                "5 ملاعق صغيرة": "5 teaspoons",
+                "6 ملاعق صغيرة": "6 teaspoons",
+
+                // ═══════════════════════════════════════════════════════════
+                // ملعقة كبيرة (tablespoon)
+                // ═══════════════════════════════════════════════════════════
+                "ربع ملعقة كبيرة": "¼ tablespoon",
+                "نصف ملعقة كبيرة": "½ tablespoon",
+                "ثلاثة أرباع ملعقة كبيرة": "¾ tablespoon",
+                "ملعقة كبيرة": "1 tablespoon",
+                "ملعقة كبيرة ونصف": "1½ tablespoons",
+                "ملعقة كبيرة وربع": "1¼ tablespoons",
+                "ملعقتان كبيرتان": "2 tablespoons",
+                "ملعقتان كبيرتان ونصف": "2½ tablespoons",
+                "3 ملاعق كبيرة": "3 tablespoons",
+                "4 ملاعق كبيرة": "4 tablespoons",
+                "5 ملاعق كبيرة": "5 tablespoons",
+                "6 ملاعق كبيرة": "6 tablespoons",
+
+                // ═══════════════════════════════════════════════════════════
+                // كوب (cup)
+                // ═══════════════════════════════════════════════════════════
+                "ربع كوب": "¼ cup",
+                "ثلث كوب": "⅓ cup",
+                "نصف كوب": "½ cup",
+                "ثلثا كوب": "⅔ cup",
+                "ثلاثة أرباع كوب": "¾ cup",
+                "كوب": "1 cup",
+                "كوب ونصف": "1½ cups",
+                "كوب وربع": "1¼ cups",
+                "كوبان": "2 cups",
+                "كوبان ونصف": "2½ cups",
+                "3 أكواب": "3 cups",
+                "4 أكواب": "4 cups",
+                "5 أكواب": "5 cups",
+
+                // ═══════════════════════════════════════════════════════════
+                // حبة/قطعة (piece)
+                // ═══════════════════════════════════════════════════════════
+                "ربع حبة": "¼ piece",
+                "نصف حبة": "½ piece",
+                "ثلاثة أرباع حبة": "¾ piece",
+                "حبة": "1 piece",
+                "حبة ونصف": "1½ pieces",
+                "حبتان": "2 pieces",
+                "3 حبات": "3 pieces",
+                "4 حبات": "4 pieces",
+                "5 حبات": "5 pieces",
+                "6 حبات": "6 pieces",
+                "7 حبات": "7 pieces",
+                "8 حبات": "8 pieces",
+                "9 حبات": "9 pieces",
+                "10 حبات": "10 pieces",
+
+                // ═══════════════════════════════════════════════════════════
+                // فص (clove) - للثوم
+                // ═══════════════════════════════════════════════════════════
+                "نصف فص": "½ clove",
+                "فص": "1 clove",
+                "فصان": "2 cloves",
+                "3 فصوص": "3 cloves",
+                "4 فصوص": "4 cloves",
+                "5 فصوص": "5 cloves",
+                "6 فصوص": "6 cloves",
+
+                // ═══════════════════════════════════════════════════════════
+                // رأس (head) - للثوم/البصل
+                // ═══════════════════════════════════════════════════════════
+                "ربع رأس": "¼ head",
+                "نصف رأس": "½ head",
+                "رأس": "1 head",
+                "رأسان": "2 heads",
+                "3 رؤوس": "3 heads",
+
+                // ═══════════════════════════════════════════════════════════
+                // حزمة/ربطة (bunch)
+                // ═══════════════════════════════════════════════════════════
+                "نصف حزمة": "½ bunch",
+                "حزمة": "1 bunch",
+                "حزمتان": "2 bunches",
+                "نصف ربطة": "½ bunch",
+                "ربطة": "1 bunch",
+
+                // ═══════════════════════════════════════════════════════════
+                // قرصة (pinch)
+                // ═══════════════════════════════════════════════════════════
+                "قرصة": "1 pinch",
+                "قرصتان": "2 pinches",
+                "3 قرصات": "3 pinches",
+
+                // ═══════════════════════════════════════════════════════════
+                // الأوزان والحجوم
+                // ═══════════════════════════════════════════════════════════
+                "غرام": "g",
+                "جرام": "g",
+                "غراماً": "g",
+                "جراماً": "g",
+                "مل": "ml",
+                "مللتر": "ml",
+                "ربع لتر": "¼ liter",
+                "نصف لتر": "½ liter",
+                "لتر": "1 liter",
+                "لتر ونصف": "1½ liters",
+                "لتران": "2 liters",
+                "ربع كيلو": "250g",
+                "نصف كيلو": "500g",
+                "كيلو": "1 kg",
+                "كيلو ونصف": "1.5 kg",
+
+                // ═══════════════════════════════════════════════════════════
+                // عبارات خاصة
+                // ═══════════════════════════════════════════════════════════
+                "حسب الرغبة": "to taste",
+                "حسب الطلب": "to taste",
+                "للتزيين": "for garnish",
+                "حسب الحاجة": "as needed",
+            },
+        },
+
+
+            // ====================================================================================
+            // --- 3. اللغة الروسية (ru) ---
+            // ====================================================================================
+            ru: {
+                dir: 'ltr',
+                title: '?Что на обед 👩‍🍳',
+                suggestBtn: 'Нажмите здесь, чтобы предложить вам блюдо',
+                altBtn: 'Найти альтернативное блюдо',
+                confirmBtn: 'Подтвердить выбор',
+                exitBtn: 'Выход',
+                healthLabel: 'Состояние здоровья',
+                costLabel: 'Стоимость',
+                timeLabel: 'Время приёма пищи',
+                weatherLabel: 'Погода',
+                typeLabel: 'Тип блюда',
+                peopleLabel: 'Количество персон',
+                preparationLabel: 'Способ приготовления',
+                ingredientsLabel: "Ингредиенты",
+                health: ['Нормальное', 'Диабет', 'Давление', 'Сердечные заболевания'],
+                cost: ['Высокая', 'Средняя', 'Низкая'],
+                time: ['Завтрак', 'Обед', 'Ужин'],
+                weather: ['Холодная', 'Умеренная', 'Жаркая'],
+                type: ['Быстрое блюдо', 'Обычное блюдо'],
+                people: ['1-2', '3-4', '5-6', '7-8', '9-11', '12+'],
+                noPrepMsg: 'Выберите подходящие опции из списка',
+                instructionsLabel: 'Способ приготовления',
+
+                // 🔑 1. الوحدات الأساسية
+                units: {
+                    'g': 'г', 'kg': 'кг', 'L': 'л', 'ml': 'мл',
+                    'cup': 'чашка', 'tbsp': 'ст. ложка', 'tsp': 'ч. ложка',
+                    'count': 'количество', 'loaf': 'ломтик', 'clove' :'зубчик',
+                    'pinch': 'щепотка', 'squeeze': 'выдавливание', 'piece': 'штука'
+                },
+
+                // 🔑 2. المقادير والروابط اللغوية
+                quantifiers: {
+                    FRACTION_HALF: 'половина',
+                    FRACTION_QUARTER: 'четверть',
+                    FRACTION_THIRD: 'треть',
+                    FRACTION_TWO_THIRDS: 'две трети',
+                    FRACTION_THREE_QUARTERS: 'три четверти',
+                    CONNECTOR_AND: ' и ',
+                    TEXT_TO_TASTE: 'по вкусу',
+                    TEXT_APPROX: 'примерно',
+                    TEXT_UNIT_AND_HALF: ' и половина',
+                    TEXT_UNIT_ONE: 'одна',
+                    TEXT_UNIT_ONE_MASC: 'один',
+                    TEXT_UNIT_AND_QUARTER: ' и четверть',
+                    TEXT_UNIT_AND_THREE_QUARTERS: ' и три четверти',
+                    TEXT_UNIT_AND_TWO_THIRDS: ' и две трети',
+                },
+
+                // 🔑 3. الصفات والمعدودات
+                descriptors: {
+                    MEDIUM: 'средняя',
+                    SMALL: 'маленькая',
+                    LARGE: 'большая',
+                    HEAD: 'головка',
+                    CLOVE: 'зубчик',
+                    BUNCH: 'пучок',
+                },
+
+                phrases: {
+
+                // ═══════════════════════════════════════════════════════════
+                // ملعقة صغيرة (чайная ложка) - مؤنث
+                // ═══════════════════════════════════════════════════════════
+                "ربع ملعقة صغيرة": "четверть чайной ложки",
+                "نصف ملعقة صغيرة": "половина чайной ложки",
+                "ثلاثة أرباع ملعقة صغيرة": "три четверти чайной ложки",
+                "ملعقة صغيرة": "одна чайная ложка",
+                "ملعقة صغيرة ونصف": "полторы чайные ложки",
+                "ملعقة صغيرة وربع": "одна с четвертью чайная ложка",
+                "ملعقتان صغيرتان": "две чайные ложки",
+                "ملعقتان صغيرتان ونصف": "две с половиной чайные ложки",
+                "3 ملاعق صغيرة": "три чайные ложки",
+                "4 ملاعق صغيرة": "четыре чайные ложки",
+                "5 ملاعق صغيرة": "пять чайных ложек",
+                "6 ملاعق صغيرة": "шесть чайных ложек",
+
+                // ═══════════════════════════════════════════════════════════
+                // ملعقة كبيرة (столовая ложка) - مؤنث
+                // ═══════════════════════════════════════════════════════════
+                "ربع ملعقة كبيرة": "четверть столовой ложки",
+                "نصف ملعقة كبيرة": "половина столовой ложки",
+                "ثلاثة أرباع ملعقة كبيرة": "три четверти столовой ложки",
+                "ملعقة كبيرة": "одна столовая ложка",
+                "ملعقة كبيرة ونصف": "полторы столовые ложки",
+                "ملعقة كبيرة وربع": "одна с четвертью столовая ложка",
+                "ملعقتان كبيرتان": "две столовые ложки",
+                "ملعقتان كبيرتان ونصف": "две с половиной столовые ложки",
+                "3 ملاعق كبيرة": "три столовые ложки",
+                "4 ملاعق كبيرة": "четыре столовые ложки",
+                "5 ملاعق كبيرة": "пять столовых ложек",
+                "6 ملاعق كبيرة": "шесть столовых ложек",
+
+                // ═══════════════════════════════════════════════════════════
+                // كوب (стакан) - مذكر
+                // ═══════════════════════════════════════════════════════════
+                "ربع كوب": "четверть стакана",
+                "ثلث كوب": "треть стакана",
+                "نصف كوب": "половина стакана",
+                "ثلثا كوب": "две трети стакана",
+                "ثلاثة أرباع كوب": "три четверти стакана",
+                "كوب": "один стакан",
+                "كوب ونصف": "полтора стакана",
+                "كوب وربع": "один с четвертью стакан",
+                "كوبان": "два стакана",
+                "كوبان ونصف": "два с половиной стакана",
+                "3 أكواب": "три стакана",
+                "4 أكواب": "четыре стакана",
+                "5 أكواب": "пять стаканов",
+
+                // ═══════════════════════════════════════════════════════════
+                // حبة/قطعة (штука) - مؤنث
+                // ═══════════════════════════════════════════════════════════
+                "ربع حبة": "четверть штуки",
+                "نصف حبة": "половина штуки",
+                "ثلاثة أرباع حبة": "три четверти штуки",
+                "حبة": "одна штука",
+                "حبة ونصف": "полторы штуки",
+                "حبتان": "две штуки",
+                "3 حبات": "три штуки",
+                "4 حبات": "четыре штуки",
+                "5 حبات": "пять штук",
+                "6 حبات": "шесть штук",
+                "7 حبات": "семь штук",
+                "8 حبات": "восемь штук",
+                "9 حبات": "девять штук",
+                "10 حبات": "десять штук",
+
+                // ═══════════════════════════════════════════════════════════
+                // فص (зубчик) - مذكر (للثوم)
+                // ═══════════════════════════════════════════════════════════
+                "نصف فص": "половина зубчика",
+                "فص": "один зубчик",
+                "فصان": "два зубчика",
+                "3 فصوص": "три зубчика",
+                "4 فصوص": "четыре зубчика",
+                "5 فصوص": "пять зубчиков",
+                "6 فصوص": "шесть зубчиков",
+
+                // ═══════════════════════════════════════════════════════════
+                // رأس (головка) - مؤنث (للثوم/البصل)
+                // ═══════════════════════════════════════════════════════════
+                "ربع رأس": "четверть головки",
+                "نصف رأس": "половина головки",
+                "رأس": "одна головка",
+                "رأسان": "две головки",
+                "3 رؤوس": "три головки",
+
+                // ═══════════════════════════════════════════════════════════
+                // حزمة/ربطة (пучок) - مذكر
+                // ═══════════════════════════════════════════════════════════
+                "نصف حزمة": "половина пучка",
+                "حزمة": "один пучок",
+                "حزمتان": "два пучка",
+                "نصف ربطة": "половина пучка",
+                "ربطة": "один пучок",
+
+                // ═══════════════════════════════════════════════════════════
+                // قرصة (щепотка) - مؤنث
+                // ═══════════════════════════════════════════════════════════
+                "قرصة": "одна щепотка",
+                "قرصتان": "две щепотки",
+                "3 قرصات": "три щепотки",
+
+                // ═══════════════════════════════════════════════════════════
+                // غرام (грамм) - مذكر
+                // ═══════════════════════════════════════════════════════════
+                "غرام": "г",
+                "جرام": "г",
+                "غراماً": "г",
+                "جراماً": "г",
+
+                // ═══════════════════════════════════════════════════════════
+                // مل (мл) - بدون تصريف
+                // ═══════════════════════════════════════════════════════════
+                "مل": "мл",
+                "مللتر": "мл",
+
+                // ═══════════════════════════════════════════════════════════
+                // لتر (литр) - مذكر
+                // ═══════════════════════════════════════════════════════════
+                "ربع لتر": "четверть литра",
+                "نصف لتر": "половина литра",
+                "لتر": "один литр",
+                "لتر ونصف": "полтора литра",
+                "لتران": "два литра",
+
+                // ═══════════════════════════════════════════════════════════
+                // كغ (кг) - بدون تصريف عادةً
+                // ═══════════════════════════════════════════════════════════
+                "ربع كيلو": "четверть кг",
+                "نصف كيلو": "половина кг",
+                "كيلو": "один кг",
+                "كيلو ونصف": "полтора кг",
+
+                // ═══════════════════════════════════════════════════════════
+                // عبارات خاصة
+                // ═══════════════════════════════════════════════════════════
+                "حسب الرغبة": "по вкусу",
+                "حسب الطلب": "по вкусу",
+                "للتزيين": "для украшения",
+                "حسب الحاجة": "по необходимости",
+            },
+        },
+
+
+            // ====================================================================================
+            // --- 4. اللغة الفارسية (fa) ---
+            // ====================================================================================
+            fa: {
+                dir: 'rtl',
+                title: 'غذا چی داریم؟ 👩‍🍳',
+                suggestBtn: 'برای پیشنهاد غذا اینجا کلیک کنید',
+                altBtn: 'یافتن غذای جایگزین',
+                confirmBtn: 'تأیید انتخاب غذا',
+                exitBtn: 'خروج',
+                healthLabel: 'وضعیت سلامتی',
+                costLabel: 'هزینه',
+                timeLabel: 'زمان وعده غذایی',
+                weatherLabel: 'وضعیت آب و هوا',
+                typeLabel: 'نوع غذا',
+                peopleLabel: 'تعداد افراد',
+                preparationLabel: 'روش آماده‌سازی',
+                ingredientsLabel: "مواد لازم",
+                health: ['عادی', 'دیابت', 'فشار خون', 'مشکلات قلبی'],
+                cost: ['بالا', 'متوسط', 'کم'],
+                time: ['صبحانه', 'ناهار', 'شام'],
+                weather: ['سرد', 'ملایم', 'گرم'],
+                type: ['غذای فوری', 'غذای معمولی'],
+                people: ['1 - 2', '3 - 4', '5 - 6', '7 - 8', '9 - 11', '12+'],
+                noPrepMsg: 'گزینه‌هایی را که برای شما مناسب است از منو انتخاب کنید',
+                instructionsLabel: 'روش آماده‌سازی',
+
+                // 🔑 1. الوحدات الأساسية
+                units: {
+                    'g': 'گرم', 'kg': 'کیلوگرم', 'L': 'لیتر', 'ml': 'میلی‌لیتر', 'clove':'میخک',
+                    'cup': 'پیمانه', 'tbsp': 'قاشق غذاخوری', 'tsp': 'قاشق چای‌خوری',
+                    'count': 'تعداد', 'loaf': 'قرص',  'slice': 'برش', 'dash': 'کمی',
+                    'pinch': 'پینچ', 'squeeze': 'عصاره', 'piece': 'عدد', 'to_taste': 'به میزان لازم'
+                },
+
+                // 🔑 2. المقادير والروابط اللغوية
+                quantifiers: {
+                    FRACTION_HALF: 'نصف',
+                    FRACTION_QUARTER: 'یک چهارم',
+                    FRACTION_THIRD: 'یک سوم',
+                    FRACTION_TWO_THIRDS: 'دو سوم',
+                    FRACTION_THREE_QUARTERS: 'سه چهارم',
+                    CONNECTOR_AND: ' و ',
+                    TEXT_TO_TASTE: 'به میزان لازم',
+                    TEXT_APPROX: 'تقریباً',
+                    TEXT_UNIT_AND_HALF: ' و نیم',
+                    TEXT_UNIT_ONE: 'یک عدد',
+                    TEXT_UNIT_ONE_MASC: 'یک',
+                    TEXT_UNIT_AND_QUARTER: ' و یک چهارم',
+                },
+
+                // 🔑 3. الصفات والمعدودات
+                descriptors: {
+                    MEDIUM: 'متوسط',
+                    SMALL: 'کوچک',
+                    LARGE: 'بزرگ',
+                    HEAD: 'سَر',
+                    CLOVE: 'حبه',
+                    BUNCH: 'دسته',
+                },
+
+                // 🔑 4. العبارات الكاملة
+            phrases: {
+
+                // ═══════════════════════════════════════════════════════════
+                // ملعقة صغيرة (قاشق چایخوری)
+                // ═══════════════════════════════════════════════════════════
+                "ربع ملعقة صغيرة": "یک چهارم قاشق چایخوری",
+                "نصف ملعقة صغيرة": "نیم قاشق چایخوری",
+                "ثلاثة أرباع ملعقة صغيرة": "سه چهارم قاشق چایخوری",
+                "ملعقة صغيرة": "یک قاشق چایخوری",
+                "ملعقة صغيرة ونصف": "یک و نیم قاشق چایخوری",
+                "ملعقة صغيرة وربع": "یک و یک چهارم قاشق چایخوری",
+                "ملعقتان صغيرتان": "دو قاشق چایخوری",
+                "ملعقتان صغيرتان ونصف": "دو و نیم قاشق چایخوری",
+                "3 ملاعق صغيرة": "سه قاشق چایخوری",
+                "4 ملاعق صغيرة": "چهار قاشق چایخوری",
+                "5 ملاعق صغيرة": "پنج قاشق چایخوری",
+                "6 ملاعق صغيرة": "شش قاشق چایخوری",
+
+                // ═══════════════════════════════════════════════════════════
+                // ملعقة كبيرة (قاشق غذاخوری)
+                // ═══════════════════════════════════════════════════════════
+                "ربع ملعقة كبيرة": "یک چهارم قاشق غذاخوری",
+                "نصف ملعقة كبيرة": "نیم قاشق غذاخوری",
+                "ثلاثة أرباع ملعقة كبيرة": "سه چهارم قاشق غذاخوری",
+                "ملعقة كبيرة": "یک قاشق غذاخوری",
+                "ملعقة كبيرة ونصف": "یک و نیم قاشق غذاخوری",
+                "ملعقة كبيرة وربع": "یک و یک چهارم قاشق غذاخوری",
+                "ملعقتان كبيرتان": "دو قاشق غذاخوری",
+                "ملعقتان كبيرتان ونصف": "دو و نیم قاشق غذاخوری",
+                "3 ملاعق كبيرة": "سه قاشق غذاخوری",
+                "4 ملاعق كبيرة": "چهار قاشق غذاخوری",
+                "5 ملاعق كبيرة": "پنج قاشق غذاخوری",
+                "6 ملاعق كبيرة": "شش قاشق غذاخوری",
+
+                // ═══════════════════════════════════════════════════════════
+                // كوب (لیوان)
+                // ═══════════════════════════════════════════════════════════
+                "ربع كوب": "یک چهارم لیوان",
+                "ثلث كوب": "یک سوم لیوان",
+                "نصف كوب": "نیم لیوان",
+                "ثلثا كوب": "دو سوم لیوان",
+                "ثلاثة أرباع كوب": "سه چهارم لیوان",
+                "كوب": "یک لیوان",
+                "كوب ونصف": "یک و نیم لیوان",
+                "كوب وربع": "یک و یک چهارم لیوان",
+                "كوبان": "دو لیوان",
+                "كوبان ونصف": "دو و نیم لیوان",
+                "3 أكواب": "سه لیوان",
+                "4 أكواب": "چهار لیوان",
+                "5 أكواب": "پنج لیوان",
+
+                // ═══════════════════════════════════════════════════════════
+                // حبة/قطعة (عدد)
+                // ═══════════════════════════════════════════════════════════
+                "ربع حبة": "یک چهارم عدد",
+                "نصف حبة": "نیم عدد",
+                "ثلاثة أرباع حبة": "سه چهارم عدد",
+                "حبة": "یک عدد",
+                "حبة ونصف": "یک و نیم عدد",
+                "حبتان": "دو عدد",
+                "3 حبات": "سه عدد",
+                "4 حبات": "چهار عدد",
+                "5 حبات": "پنج عدد",
+                "6 حبات": "شش عدد",
+                "7 حبات": "هفت عدد",
+                "8 حبات": "هشت عدد",
+                "9 حبات": "نه عدد",
+                "10 حبات": "ده عدد",
+
+                // ═══════════════════════════════════════════════════════════
+                // فص (حبه) - للثوم
+                // ═══════════════════════════════════════════════════════════
+                "نصف فص": "نیم حبه",
+                "فص": "یک حبه",
+                "فصان": "دو حبه",
+                "3 فصوص": "سه حبه",
+                "4 فصوص": "چهار حبه",
+                "5 فصوص": "پنج حبه",
+                "6 فصوص": "شش حبه",
+
+                // ═══════════════════════════════════════════════════════════
+                // رأس (سر/بوته)
+                // ═══════════════════════════════════════════════════════════
+                "ربع رأس": "یک چهارم بوته",
+                "نصف رأس": "نیم بوته",
+                "رأس": "یک بوته",
+                "رأسان": "دو بوته",
+                "3 رؤوس": "سه بوته",
+
+                // ═══════════════════════════════════════════════════════════
+                // حزمة/ربطة (دسته)
+                // ═══════════════════════════════════════════════════════════
+                "نصف حزمة": "نیم دسته",
+                "حزمة": "یک دسته",
+                "حزمتان": "دو دسته",
+                "نصف ربطة": "نیم دسته",
+                "ربطة": "یک دسته",
+
+                // ═══════════════════════════════════════════════════════════
+                // قرصة (نوک انگشت)
+                // ═══════════════════════════════════════════════════════════
+                "قرصة": "یک نوک انگشت",
+                "قرصتان": "دو نوک انگشت",
+                "3 قرصات": "سه نوک انگشت",
+
+                // ═══════════════════════════════════════════════════════════
+                // الأوزان والحجوم
+                // ═══════════════════════════════════════════════════════════
+                "غرام": "گرم",
+                "جرام": "گرم",
+                "غراماً": "گرم",
+                "جراماً": "گرم",
+                "مل": "میلی‌لیتر",
+                "مللتر": "میلی‌لیتر",
+                "ربع لتر": "یک چهارم لیتر",
+                "نصف لتر": "نیم لیتر",
+                "لتر": "یک لیتر",
+                "لتر ونصف": "یک و نیم لیتر",
+                "لتران": "دو لیتر",
+                "ربع كيلو": "۲۵۰ گرم",
+                "نصف كيلو": "۵۰۰ گرم",
+                "كيلو": "یک کیلو",
+                "كيلو ونصف": "یک و نیم کیلو",
+
+                // ═══════════════════════════════════════════════════════════
+                // عبارات خاصة
+                // ═══════════════════════════════════════════════════════════
+                "حسب الرغبة": "به میزان دلخواه",
+                "حسب الطلب": "به میزان دلخواه",
+                "للتزيين": "برای تزیین",
+                "حسب الحاجة": "به اندازه نیاز",
+            },
+        },
+
+        };
+        // ====================================================================
+        // 2. دوال مساعدة للغة والواجهة (UI Helpers)
+        // ====================================================================
+
+        /**
+         * دالة تحديث مظهر الزر النشط (الإضاءة).
+         * @param {string} activeLangCode كود اللغة النشط.
+         */
+        function highlightActiveLanguageButton(activeLangCode) {
+            const langButtons = document.querySelectorAll('.lang-btn');
+
+            langButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.getAttribute('data-lang') === activeLangCode) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        /**
+         * دالة تطبيق الترجمة الموحدة على عناصر الواجهة.
+         * @param {string} langCode كود اللغة المراد تطبيقه.
+         */
+        function applyUITranslation(langCode) {
+            const t = translations[langCode];
+            if (!t) return;
+
+            // 1. تحديث الاتجاه الأساسي والـ Class
+            document.documentElement.setAttribute('lang', langCode);
+            document.documentElement.setAttribute('dir', t.dir);
+            document.body.className = t.dir === 'rtl' ? 'rtl-mode' : 'ltr-mode';
+            document.title = t.title;
+
+            const headerTitle = document.querySelector('header h1');
+            if (headerTitle) { headerTitle.textContent = t.title; }
+
+            // 2. تحديث نصوص الأزرار والمناطق الثابتة
+            const elementsToUpdate = {
+                '#suggestBtn': t.suggestBtn,
+                '#alternativeBtn': t.altBtn,
+                '#confirmBtn': t.confirmBtn,
+                '#exitBtn': t.exitBtn,
+                '#confirmationMsg': t.confirmMsg,
+                '#noPrepMsg': t.noPrepMsg
+            };
+
+            for (const selector in elementsToUpdate) {
+                const element = document.querySelector(selector);
+                if (element) {
+                    element.textContent = elementsToUpdate[selector];
+                }
+            }
+
+            // 3. تحديث تسميات حقول الإدخال (Labels)
+            const labelMap = {
+                'healthStatus': t.healthLabel,
+                'cost': t.costLabel,
+                'mealTime': t.timeLabel,
+                'weather': t.weatherLabel,
+                'mealType': t.typeLabel,
+                'numberOfpeople': t.peopleLabel
+            };
+
+            for (const id in labelMap) {
+                const label = document.querySelector(`label[for="${id}"]`);
+                if (label) { label.textContent = labelMap[id]; }
+            }
+
+            // 4. تحديث خيارات القوائم المنسدلة (Options Texts)
+            const selectOptions = [
+                { id: 'healthStatus', data: t.health },
+                { id: 'cost', data: t.cost },
+                { id: 'mealTime', data: t.time },
+                { id: 'weather', data: t.weather },
+                { id: 'mealType', data: t.type },
+                { id: 'numberOfpeople', data: t.people }
+            ];
+
+            selectOptions.forEach(item => {
+                const selectElement = document.getElementById(item.id);
+                if (selectElement) {
+                    item.data.forEach((text, index) => {
+                        if (selectElement.options[index]) {
+                            selectElement.options[index].textContent = text;
+                        }
+                    });
+                }
+            });
+
+            // 5. تحديث لغة الساعة (إن وجدت)
+            if (typeof updateClock === 'function') {
+                 updateClock();
+            }
+        }
+    </script>
+   <script src="meals_dbase_1-50.js"></script>
+   <script src="meals_dbase_51-100.js"></script>
+   <script src="meals_dbase_101-150.js"></script>
+   <script>
+   /**
+ * تتحمل مسؤولية تبديل اللغة الفعلية في التطبيق وتطبيق التنسيقات.
+ * @param {string} langCode كود اللغة الذي تم اختياره ('ar', 'en', 'ru', 'fa').
+ */
+function handleLanguageToggle(langCode) { 
+    console.log(`--- بدء تتبع دالة handleLanguageToggle للغة: ${langCode} ---`);
+    
+    // 1. الحفظ في الذاكرة
+    localStorage.setItem('preferredLang', langCode);
+    console.log(`1. تم حفظ اللغة المفضلة: ${langCode}`);
+
+    // 2. تحديد وتطبيق اتجاه الكتابة (LTR/RTL)
+    const isRTL = (langCode === 'ar' || langCode === 'fa'); 
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+    document.documentElement.lang = langCode;
+    console.log(`2. تم تعيين اتجاه الكتابة إلى: ${document.documentElement.dir}`); // يعرض 'rtl' أو 'ltr'
+
+    // 3. تطبيق الترجمة وتحديث الواجهة
+    applyUITranslation(langCode); 
+    console.log(`3. تم استدعاء applyUITranslation لتحديث الواجهة الثابتة.`);
+    
+    // 4. تفعيل الزر المُضاء
+    highlightActiveLanguageButton(langCode);
+
+    console.log('4. تم تظليل زر اللغة النشط.');
+
+    // 5. إخفاء رسالة التأكيد
+    const confirmationMsg = document.getElementById('confirmationMsg');
+    if (confirmationMsg) { 
+        confirmationMsg.style.display = 'none';
+        console.log('5. تم إخفاء رسالة التأكيد.');
+    }
+
+    // 6. إعادة عرض الوجبة الحالية باللغة الجديدة
+    if (window.currentSuggestedMeal) {
+        console.log('6. الوجبة الحالية موجودة. سيتم استدعاء displayMeal...');
+        displayMeal(window.currentSuggestedMeal);
+        console.log('   تم استدعاء displayMeal بنجاح.');
+    } else {
+        console.log('6. لا توجد وجبة حالية. تحديث رسالة "لا نتائج"...');
+        displayNoResults(false, true);
+    }
+
+    // 7. تحديث كود اللغة على وسم HTML
+    document.documentElement.lang = langCode;
+    console.log(`7. تم تعيين document.documentElement.lang إلى: ${document.documentElement.lang}`);
+
+    console.log(`--- انتهاء تتبع دالة handleLanguageToggle ---`);
+}
+
+/**
+ * دالة عرض رسالة "لا نتائج" (مُبقاة من الكود القديم).
+ * @param {boolean} isAlternative هل الرسالة خاصة بالبدائل.
+ * @param {boolean} isReset هل الرسالة هي رسالة البداية.
+ */
+function displayNoResults(isAlternative = false, isReset = false) {
+    const resultDiv = document.getElementById('result');
+    const currentLangCode = document.documentElement.lang; 
+
+    const messages = {
+        'ar': isReset ? '☝حددي  الخيارات التي تناسبكِ من القائمة👆 ' : (isAlternative ? 'عفواً، لا توجد وجبة بديلة تطابق المعايير المحددة.' : 'عفواً، لا توجد وجبات تطابق المعايير المحددة حالياً.'),
+        'en': isReset ? "☝ Select the appropriate options from the list 👆" : (isAlternative ? 'Sorry, no alternative meal matches the specified criteria.' : 'Sorry, no meals currently match the specified criteria.'),
+        'ru': isReset ? "☝ Выберите подходящие варианты из списка 👆" : (isAlternative ? 'К сожалению, альтернативное блюдо не соответствует указанным критериям.' : 'К сожалению, в настоящее время нет блюд, соответствующих указанным критериям.'),
+        'fa': isReset ? " ☝ گزینههای مناسب را از لیست انتخاب کنید👆" : (isAlternative ? 'متأسفانه، غذای جایگزینی با معیارهای مشخص شده مطابقت ندارد.' : 'متأسفانه، در حال حاضر هیچ غذایی با معیارهای مشخص شده مطابقت ندارد.')
+    };
+
+    const message = messages[currentLangCode] || messages['ar'];
+
+    resultDiv.innerHTML = `<div class="${isReset ? 'noPrepMsg' : 'no-results'}">${message}</div>`;
+}
+
+// ====================================================================
+// 3. دوال منطق الوجبات (Meal Logic Helpers)
+// ====================================================================
+
+const suggestBtn = document.getElementById('suggestBtn');
+const alternativeBtn = document.getElementById('alternativeBtn');
+const confirmBtn = document.getElementById('confirmBtn');
+const exitBtn = document.getElementById('exitBtn');
+const noPrepMsg = document.getElementById('noPrepMsg');
+
+let lastSuggestedMeal = null; 
+
+/**
+ * يحدد عامل الضرب (المضاعف) بناءً على العدد المختار من قائمة المعايير.
+ * @param {string} numberOfpeople القيمة المختارة من القائمة.
+ * @returns {number} المضاعف الرقمي.
+ */
+function getQuantityMultiplier(numberOfpeople) {
+    switch (numberOfpeople) {
+        case 'small': return 0.5; // 1 - 2 شخص
+        case 'medium': return 1; // 3 - 4 أشخاص (الأساس)
+        case 'large': return 1.5; // 5 - 6 أشخاص
+        case 'xlarge': return 2; // 7 - 8 أشخاص
+        case 'xxlarge': return 2.5; // 9 - 11 أشخاص
+        case 'max': return 3; // 12+ أشخاص
+        default: return 1; 
+    }
+}
+
+/**
+ * تحول المقدار الرقمي إلى تعبير نصي عملي (1.5 -> كوب ونصف).
+ * @param {number} quantity القيمة الرقمية المحسوبة.
+ * @param {string} unitAr الوحدة العربية للمكون.
+ * @returns {string} المقدار الجديد والوحدة النصية.
+ */
+/**
+ * تتحقق مما إذا كانت الوحدة مؤنثة.
+ * @param {string} unitAr الوحدة العربية.
+ * @returns {boolean}
+ */
+function isUnitFeminine(unitAr) {
+    // قائمة شائعة للوحدات المؤنثة
+    const knownFeminine = ['قطعة', 'ملعقة', 'حبة', 'حزمة','مرة', 'وحدة']; 
+    
+    if (unitAr.endsWith('ة') || knownFeminine.includes(unitAr)) {
+        return true;
+    }
+    return false;
+}
+
+/**
+ * تحول المقدار الرقمي إلى تعبير نصي عملي (1.5 -> كوب ونصف).
+ * (مُحدَّثة لدعم التأنيث والتذكير للنعت 'واحد')
+ * * @param {number} quantity القيمة الرقمية المحسوبة.
+ * @param {string} unitAr الوحدة العربية للمكون.
+ * @returns {string} المقدار الجديد والوحدة النصية.
+ */
+function convertToPracticalText(quantity, unitAr) {
+    console.log(`\n--- بدء المعالجة لكمية: ${quantity} ${unitAr} ---`);
+    
+    // 🛑 1. التحضير والقواعد الثابتة
+    
+    // دالة مساعدة للحصول على المفرد
+    function getSingularForm(unit) {
+        // 🚨 خطوة التنظيف الجديدة: إزالة "العدد" وأي رموز وأقواس
+        let cleanedUnit = unit.replace(/العدد|\(|\)/g, '').trim();
+
+        // الآن نطبق قواعد المفرد على الوحدة النظيفة
+        if (cleanedUnit === 'حبات') return 'حبة';
+        if (cleanedUnit === 'أكواب') return 'كوب';
+        if (cleanedUnit === 'ملاعق كبيرة') return 'ملعقة كبيرة';
+        if (cleanedUnit === 'ملاعق صغيرة') return 'ملعقة صغيرة';
+        if (cleanedUnit.includes('أرغفة')) return cleanedUnit.replace('أرغفة', 'رغيف');
+        
+        // في حالة (رغيف)
+        if (cleanedUnit.includes('رغيف') && cleanedUnit.length > 5) return 'رغيف';
+        
+        return cleanedUnit; // إذا لم يكن هناك تصريف، نرجع الوحدة النظيفة
+    }
+
+    const unitSingular = getSingularForm(unitAr); // الحصول على المفرد النظيف
+    
+    if (unitAr.includes('رشة') || unitAr === 'رشة') {
+        return 'رشة حسب الطلب';
+    }
+
+    const adjectiveOne = isUnitFeminine(unitSingular) ? 'واحدة' : 'واحد';
+    
+    // دالة تصريف الوحدة (للجمع: 3 فأكثر)
+    function getUnitForm(unit, count) { 
+    // نطبق الجمع فقط إذا كان العدد بين 3 و 10
+    if (count >= 3 && count <= 10) { 
+         if (unit === 'حبة') return 'حبات';
+         if (unit === 'كوب') return 'أكواب';
+         if (unit === 'ملعقة كبيرة') return 'ملاعق كبيرة'; 
+         if (unit === 'ملعقة صغيرة') return 'ملاعق صغيرة';
+         
+         // تعديل حص: البحث عن الكلمة سواء كانت داخل أقواس أو لا
+         if (unit.includes('حص')) return unit.replace('حص', 'حصوص'); 
+         
+         // تعديل رغيف
+         if (unit.includes('رغيف')) return unit.replace('رغيف', 'أرغفة'); 
+    }
+    
+    // إذا كان العدد 11 فأكثر، أو أقل من 3، يعود للمفرد تلقائياً
+    return unit; 
+}
+
+    const fractionsMap = [
+        { value: 0.25, text: 'ربع' }, { value: 0.5, text: 'نصف' }, 
+        { value: 0.75, text: 'ثلاثة أرباع' }, { value: 0.33, text: 'ثلث' }, 
+        { value: 0.66, text: 'ثلثين' }
+    ];
+
+    // 🛑 2. حالة كمية صغيرة جداً (رشة)
+    if (unitSingular === 'ملعقة صغيرة' && quantity < 0.25) {
+        return 'رشة حسب الطلب';
+    }
+    
+    const integerPart = Math.floor(quantity);
+    const fractionalPart = quantity - integerPart;
+
+    let bestMatch = null;
+    if (fractionalPart > 0.05) { 
+        let minDiff = Infinity;
+        fractionsMap.forEach(frac => {
+            const diff = Math.abs(fractionalPart - frac.value);
+            if (diff < minDiff) {
+                minDiff = diff;
+                bestMatch = frac;
+            }
+        });
+    }
+
+    console.log(`الجزء الصحيح: ${integerPart}, الكسر المقرب: ${bestMatch ? bestMatch.text : 'لا يوجد'}, الوحدة المفردة المُستخدمة: ${unitSingular}`);
+    
+    let resultText = '';
+    
+   // 2. تحديد الوحدة المناسبة بناءً على الكمية
+// التعديل: نستخدم الجمع فقط إذا كان العدد بين 3 و 10، غير ذلك نستخدم المفرد
+const unitForPluralCount = (integerPart >= 3 && integerPart <= 10) 
+    ? getUnitForm(unitSingular, 3) 
+    : unitSingular;
+
+// 3. بناء النص: التعامل مع الجزء الصحيح
+if (integerPart >= 1) {
+    
+    if (integerPart === 1) { 
+        // حالة 1 أو 1.x: (مثلاً: كوب أو 1.5 كوب)
+        resultText += `${integerPart} ${unitSingular}`;
+    } 
+    else if (integerPart === 2) {
+         // حالة 2 أو 2.x: المثنى أو 2 + المفرد
+         if (unitSingular === 'حبة') {
+             resultText += `حبتان`;
+         } else {
+             resultText += `${integerPart} ${unitSingular}`;
+         }
+    }
+    else {
+        // حالة 3 فما فوق: 
+        // إذا كان بين 3-10 سيأخذ الجمع من unitForPluralCount
+        // إذا كان أكبر من 10 سيأخذ المفرد من unitForPluralCount
+        resultText += `${integerPart} ${unitForPluralCount}`; 
+    }
+}
+
+    console.log(`النص بعد معالجة الجزء الصحيح (${integerPart}): "${resultText}"`);
+    
+    // 4. بناء النص: التعامل مع الجزء الكسري
+    if (bestMatch) {
+        
+        if (integerPart === 1) {
+             // 🛑 حالة 1.x: الاختصار (حبة ونصف)
+             resultText = `${unitSingular} و${bestMatch.text}`;
+        }
+        else if (integerPart === 2) {
+             // حالة 2.x: حبتان ونصف / كوبان وربع
+             let dualText = (unitSingular === 'حبة') ? 'حبتان' : `${integerPart} ${unitSingular}`;
+             resultText = `${dualText} و${bestMatch.text}`;
+        }
+        else if (integerPart >= 3) {
+            // حالة 3.x: الرقم + الجمع + و + الكسر
+            resultText += ' و';
+            resultText += `${bestMatch.text.replace('و', '')}`;
+        } 
+        else if (integerPart === 0) {
+            // حالة 0.x: الكسر + المفرد (نصف ملعقة)
+            resultText += `${bestMatch.text.replace('و', '')} ${unitSingular}`;
+        }
+        console.log(`النص بعد معالجة الكسر: "${resultText}"`);
+    } 
+
+    // 5. حالات الحصر (الأعداد الكاملة)
+    if (resultText === '' && integerPart >= 1) {
+        if (integerPart === 1) {
+            resultText = `${unitSingular} ${adjectiveOne}`; // "حبة واحدة"
+        }
+        else if (integerPart === 2) {
+             resultText = (unitSingular === 'حبة') ? 'حبتان' : `${integerPart} ${unitSingular}`; 
+        }
+        else {
+            resultText = `${integerPart} ${unitForPluralCount}`;
+        }
+        console.log(`النص بعد معالجة الأعداد الكاملة: "${resultText}"`);
+    }
+    
+    if (resultText === '' && integerPart === 0 && !bestMatch) {
+        console.log('الكمية صفر.');
+        return '';
+    }
+
+    // 6. الإخراج النهائي
+    const finalOutput = resultText.trim().replace(/\s+/g, ' ');
+    console.log(`الإخراج النهائي: "${finalOutput}"`);
+    console.log(`----------------------------------`);
+    return finalOutput;
+}
+// ═══════════════════════════════════════════════════════════════════════════════════════
+// 🥚 قاموس مكونات البيض (غير قابلة للتقسيم)
+// ═══════════════════════════════════════════════════════════════════════════════════════
+
+const INDIVISIBLE_INGREDIENTS = [
+    "بيض", "بيضة", "بيضات", "بيضتان", "بيضتين"
+];
+
+/**
+ * يتحقق إذا كان المكون من البيض.
+ * @param {string} ingredientName اسم المكون بالعربية.
+ * @returns {boolean} true إذا كان بيض.
+ */
+function isEggIngredient(ingredientName) {
+    if (!ingredientName) return false;
+
+    return INDIVISIBLE_INGREDIENTS.some(egg => ingredientName.includes(egg));
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════════════
+// 📐 دالة الاحتساب المُعدَّلة
+// ═══════════════════════════════════════════════════════════════════════════════════════
+
+/**
+ * تقوم بحساب الكميات الجديدة للمكونات بناءً على مضاعف معين،
+ * وتجري تحويلات ذكية للوحدات (مثل تحويل مل إلى كوب أو لتر) لتسهيل القراءة.
+ * * الميزة الأساسية: تم إزالة شرط التجاوز (multiplier === 1) لضمان أن حقل quantity
+ * يحتوي دائماً على الكمية والوحدة مدمجتين، حتى في الكميات الأساسية.
+ */
+function calculateNewQuantities(meal, multiplier) {
+    const TOAST_BREAD_WEIGHT_GRAMS = 35; // وزن رغيف الخبز المحمص التقريبي
+
+    // 🔑 تم إزالة الشرط if (multiplier === 1) { return meal; }
+    // الآن، سيمر المضاعف 1 عبر عملية المعالجة لضمان دمج الكمية والوحدة.
+
+    const calculatedIngredients = meal.ingredients.map(ingredient => {
+        // استخلاص البيانات الأساسية
+        let baseQuantity = ingredient.quantity;
+        let baseUnit = ingredient.unit_ar;
+        const ingredientName = ingredient.item_ar || "";
+
+        // 1. تطبيق المضاعف
+        // إذا كان المضاعف = 1، فستبقى newQuantity كما هي.
+        let newQuantity = baseQuantity * multiplier;
+
+        // 🥚 تدوير البيض للعدد الصحيح الأقرب (لا يقل عن 1)
+        if (isEggIngredient(ingredientName)) {
+            newQuantity = Math.max(1, Math.round(newQuantity));
+        }
+
+        // 🍞 التحقق من "خبز محمص" وتحويله من وزن إلى عدد
+        if (ingredientName && ingredientName.includes('خبز محمص')) {
+            let totalGrams = newQuantity;
+
+            if (baseUnit === 'كغ' || baseUnit === 'كيلوغرام') {
+                totalGrams *= 1000;
+            }
+
+            newQuantity = totalGrams / TOAST_BREAD_WEIGHT_GRAMS;
+            baseUnit = 'العدد';
+            baseUnit = `${baseUnit} (رغيف)`;
+        }
+
+        // 2. التحويل من "مل" إلى وحدات عملية أكبر (كوب، ملعقة كبيرة، لتر)
+        if (baseUnit === 'مل' || baseUnit === 'مليلتر') {
+            baseUnit = 'مل'; // توحيد الاسم لوحدة مل
+
+            if (newQuantity >= 1000) {
+                newQuantity /= 1000;
+                baseUnit = 'لتر';
+            }
+            else if (newQuantity >= 240) {
+                newQuantity /= 240;
+                baseUnit = 'كوب';
+            }
+            else if (newQuantity >= 15) {
+                newQuantity /= 15;
+                baseUnit = 'ملعقة كبيرة';
+            }
+            else if (newQuantity >= 5) {
+                newQuantity /= 5;
+                baseUnit = 'ملعقة صغيرة';
+            }
+        }
+
+        // 3. التحويل من "كوب" إلى "لتر" إذا كانت الكمية كبيرة
+        if (baseUnit === 'كوب' && newQuantity > 4) {
+            newQuantity /= 4.166;
+            baseUnit = 'لتر';
+        }
+
+        // 4. تطبيق التحويل النصي (الكسور والتقريب)
+        // 🥚 لا نطبق الكسور على البيض
+        const finalOutputText = isEggIngredient(ingredientName)
+            ? null
+            : convertToPracticalText(newQuantity, baseUnit);
+
+        if (finalOutputText) {
+             return {
+                 ...ingredient,
+                 unit_ar: baseUnit,
+                 quantity: finalOutputText // مثال: "حبة ونصف" (النص كامل)
+             };
+        } else {
+             // 🔑 هذا المسار يتم تنفيذه الآن حتى عندما يكون المضاعف 1
+             const finalQuantity = Math.round(newQuantity * 100) / 100;
+
+             // 🎯 ضمان دمج الكمية والوحدة في حقل quantity
+             const finalDisplay = `${finalQuantity} ${baseUnit}`;
+
+             return {
+                 ...ingredient,
+                 quantity: finalDisplay, // مثال: "1.0 جرام" أو "250 جرام"
+                 unit_ar: baseUnit
+             };
+        }
+    });
+
+    return {
+        ...meal,
+        ingredients: calculatedIngredients
+    };
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════════════
+// 🔢 نظام الترجمة الحسابي للمقادير - الإصدار المُصحَّح V2
+// ═══════════════════════════════════════════════════════════════════════════════════════
+
+const QuantityTranslator = {
+
+    // ═══════════════════════════════════════════════════════════════════════════════════
+    // 📊 قاموس الكسور ← قيمتها العددية
+    // ═══════════════════════════════════════════════════════════════════════════════════
+    fractions: {
+        "ربع": 0.25,
+        "ثلث": 0.33,
+        "نصف": 0.5,
+        "ثلثا": 0.66,
+        "ثلثي": 0.66,
+        "ثلاثة أرباع": 0.75,
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════════════
+    // 📊 الأعداد المكتوبة ← قيمتها
+    // ═══════════════════════════════════════════════════════════════════════════════════
+    arabicNumbers: {
+        "واحد": 1, "واحدة": 1,
+        "اثنان": 2, "اثنتان": 2, "اثنين": 2, "اثنتين": 2,
+        "ثلاث": 3, "ثلاثة": 3,
+        "أربع": 4, "أربعة": 4,
+        "خمس": 5, "خمسة": 5,
+        "ست": 6, "ستة": 6,
+        "سبع": 7, "سبعة": 7,
+        "ثماني": 8, "ثمان": 8, "ثمانية": 8,
+        "تسع": 9, "تسعة": 9,
+        "عشر": 10, "عشرة": 10,
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════════════
+    // 📊 المثنى ← قيمته (2) + الوحدة الأساسية
+    // ═══════════════════════════════════════════════════════════════════════════════════
+    dualForms: {
+        "ملعقتان صغيرتان": { value: 2, unit: "ملعقة صغيرة" },
+        "ملعقتين صغيرتين": { value: 2, unit: "ملعقة صغيرة" },
+        "ملعقتان كبيرتان": { value: 2, unit: "ملعقة كبيرة" },
+        "ملعقتين كبيرتين": { value: 2, unit: "ملعقة كبيرة" },
+        "ملعقتان": { value: 2, unit: "ملعقة صغيرة" },
+        "ملعقتين": { value: 2, unit: "ملعقة صغيرة" },
+        "كوبان": { value: 2, unit: "كوب" },
+        "كوبين": { value: 2, unit: "كوب" },
+        "حبتان": { value: 2, unit: "حبة" },
+        "حبتين": { value: 2, unit: "حبة" },
+        "فصان": { value: 2, unit: "فص" },
+        "فصين": { value: 2, unit: "فص" },
+        "رأسان": { value: 2, unit: "رأس" },
+        "رأسين": { value: 2, unit: "رأس" },
+        "حزمتان": { value: 2, unit: "حزمة" },
+        "حزمتين": { value: 2, unit: "حزمة" },
+        "قرصتان": { value: 2, unit: "قرصة" },
+        "قرصتين": { value: 2, unit: "قرصة" },
+        "شريحتان": { value: 2, unit: "شريحة" },
+        "شريحتين": { value: 2, unit: "شريحة" },
+        "رغيفان": { value: 2, unit: "رغيف" },
+        "رغيفين": { value: 2, unit: "رغيف" },
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════════════
+    // 🥄 الوحدات وتصريفاتها بكل لغة - مُحدَّثة
+    // ═══════════════════════════════════════════════════════════════════════════════════
+    units: {
+        "ملعقة صغيرة": {
+            ar_variants: ["ملعقة صغيرة", "ملاعق صغيرة"],
+            en: { singular: "teaspoon", plural: "teaspoons" },
+            ru: { fractional: "чайной ложки", one: "чайная ложка", few: "чайные ложки", many: "чайных ложек" },
+            fa: { base: "قاشق چای‌خوری" }
+        },
+        "ملعقة كبيرة": {
+            ar_variants: ["ملعقة كبيرة", "ملاعق كبيرة"],
+            en: { singular: "tablespoon", plural: "tablespoons" },
+            ru: { fractional: "столовой ложки", one: "столовая ложка", few: "столовые ложки", many: "столовых ложек" },
+            fa: { base: "قاشق غذاخوری" }
+        },
+        "كوب": {
+            ar_variants: ["كوب", "أكواب"],
+            en: { singular: "cup", plural: "cups" },
+            ru: { fractional: "стакана", one: "стакан", few: "стакана", many: "стаканов" },
+            fa: { base: "پیمانه" }
+        },
+        "ورقة": {
+            ar_variants: ["ورقة", "ورقات", "أوراق", "ورق"],
+            en: { singular: "leaf", plural: "leaves" },
+            ru: { fractional: "листа", one: "лист", few: "листа", many: "листьев" },
+            fa: { base: "برگ" }
+        },
+        "حبة": {
+            ar_variants: ["حبة", "حبات", "حبة صغيرة", "حبة كبيرة", "حبة متوسطة"],
+            en: { singular: "piece", plural: "pieces" },
+            ru: { fractional: "штуки", one: "штука", few: "штуки", many: "штук" },
+            fa: { base: "عدد" }
+        },
+        "فص": {
+            ar_variants: ["حص","حصوص","فص", "فصوص"],  // ✅ إضافة "حص"
+            en: { singular: "clove", plural: "cloves" },
+            ru: { fractional: "зубчика", one: "зубчик", few: "зубчика", many: "зубчиков" },
+            fa: { base: "حبه" }
+        },
+        "رأس": {
+            ar_variants: ["رأس", "رؤوس"],
+            en: { singular: "head", plural: "heads" },
+            ru: { fractional: "головки", one: "головка", few: "головки", many: "головок" },
+            fa: { base: "عدد" }
+        },
+        "حزمة": {
+            ar_variants: ["حزمة", "حزم", "باقة", "ربطة"],
+            en: { singular: "bunch", plural: "bunches" },
+            ru: { fractional: "пучка", one: "пучок", few: "пучка", many: "пучков" },
+            fa: { base: "دسته" }
+        },
+        "قرصة": {
+            ar_variants: ["قرصة", "قرصات"],
+            en: { singular: "pinch", plural: "pinches" },
+            ru: { fractional: "щепотки", one: "щепотка", few: "щепотки", many: "щепоток" },
+            fa: { base: "نوک قاشق" }
+        },
+        "رشة": {  // ✅ إضافة وحدة جديدة
+            ar_variants: ["رشة", "رشات"],
+            en: { singular: "dash", plural: "dashes" },
+            ru: { fractional: "щепотки", one: "щепотка", few: "щепотки", many: "щепоток" },
+            fa: { base: "کمی" }
+        },
+        "شريحة": {
+            ar_variants: ["شريحة", "شرائح"],
+            en: { singular: "slice", plural: "slices" },
+            ru: { fractional: "ломтика", one: "ломтик", few: "ломтика", many: "ломтиков" },
+            fa: { base: "برش" }
+        },
+        "قطعة": {
+            ar_variants: ["قطعة", "قطع"],
+            en: { singular: "piece", plural: "pieces" },
+            ru: { fractional: "кусочка", one: "кусочек", few: "кусочка", many: "кусочков" },
+            fa: { base: "تکه" }
+        },
+        "رغيف": {  // ✅ إضافة وحدة جديدة
+            ar_variants: ["رغيف", "أرغفة", "خبزة"],
+            en: { singular: "loaf", plural: "loaves" },
+            ru: { fractional: "лепёшки", one: "лепёшка", few: "лепёшки", many: "лепёшек" },
+            fa: { base: "نان" }
+        },
+        "غرام": {
+            ar_variants: ["غرام", "غراماً", "جرام", "جراماً", "غ", "جم"],
+            en: { singular: "gram", plural: "grams" },
+            ru: { fractional: "грамма", one: "грамм", few: "грамма", many: "граммов" },
+            fa: { base: "گرم" }
+        },
+        "كيلوغرام": {
+            ar_variants: ["كيلوغرام", "كيلو", "كغ", "كجم"],
+            en: { singular: "kilogram", plural: "kilograms" },
+            ru: { fractional: "килограмма", one: "килограмм", few: "килограмма", many: "килограммов" },
+            fa: { base: "کیلوگرم" }
+        },
+        "لتر": {
+            ar_variants: ["لتر", "ليتر", "لترات"],
+            en: { singular: "liter", plural: "liters" },
+            ru: { fractional: "литра", one: "литр", few: "литра", many: "литров" },
+            fa: { base: "لیتر" }
+        },
+  "مل": {
+    ar_variants: ["مللتر", "ملليلتر", "ملل"],  // ✅ حذفت "مل" لأنها تتضارب مع "ملعقة"
+    en: { singular: "ml", plural: "ml" },
+    ru: { fractional: "мл", one: "мл", few: "мл", many: "мл" },
+    fa: { base: "میلی‌لیتر" }
+},
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════════════
+    // 🔢 رموز الكسور للعرض
+    // ═══════════════════════════════════════════════════════════════════════════════════
+    fractionSymbols: {
+        0.25: "¼", 0.33: "⅓", 0.5: "½", 0.66: "⅔", 0.75: "¾",
+        1.25: "1¼", 1.33: "1⅓", 1.5: "1½", 1.66: "1⅔", 1.75: "1¾",
+        2.25: "2¼", 2.33: "2⅓", 2.5: "2½", 2.66: "2⅔", 2.75: "2¾",
+        3.25: "3¼", 3.33: "3⅓", 3.5: "3½", 3.66: "3⅔", 3.75: "3¾",
+        4.5: "4½", 4.25: "4¼", 4.75: "4¾",
+        5.5: "5½", 6.5: "6½", 7.5: "7½", 8.5: "8½", 9.5: "9½",
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════════════
+    // ⚙️ دوال التصريف حسب اللغة
+    // ═══════════════════════════════════════════════════════════════════════════════════
+
+    getEnglishForm(quantity, unitData) {
+        return (quantity === 1) ? unitData.singular : unitData.plural;
+    },
+
+    getRussianForm(quantity, unitData) {
+        if (quantity < 1) return unitData.fractional;
+
+        const intPart = Math.floor(quantity);
+        const hasFraction = (quantity !== intPart);
+
+        // إذا كان هناك كسر، نستخدم صيغة الجر (المضاف إليه)
+        if (hasFraction) return unitData.fractional;
+
+        const lastDigit = intPart % 10;
+        const lastTwoDigits = intPart % 100;
+
+        if (lastTwoDigits >= 11 && lastTwoDigits <= 14) return unitData.many;
+        if (lastDigit === 1) return unitData.one;
+        if (lastDigit >= 2 && lastDigit <= 4) return unitData.few;
+        return unitData.many;
+    },
+
+    getPersianForm(quantity, unitData) {
+        return unitData.base;
+    },
+
+    formatNumber(num, lang) {
+        const roundedNum = Math.round(num * 100) / 100;
+        if (this.fractionSymbols[roundedNum]) {
+            return this.fractionSymbols[roundedNum];
+        }
+        if (Number.isInteger(num)) {
+            return String(num);
+        }
+        // للأعداد العشرية بدون رمز كسر
+        return (lang === 'ru') ? String(roundedNum).replace('.', ',') : String(roundedNum);
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════════════════
+    // 🎯 الدالة الرئيسية: ترجمة مقدار كامل
+    // ═══════════════════════════════════════════════════════════════════════════════════
+    translate(quantity, unitKey, lang) {
+        const unitData = this.units[unitKey];
+        if (!unitData || !unitData[lang]) return null;
+
+        const formattedNum = this.formatNumber(quantity, lang);
+        let unitForm;
+
+        switch (lang) {
+            case 'en': unitForm = this.getEnglishForm(quantity, unitData.en); break;
+            case 'ru': unitForm = this.getRussianForm(quantity, unitData.ru); break;
+            case 'fa': unitForm = this.getPersianForm(quantity, unitData.fa); break;
+            default: return null;
+        }
+
+        return `${formattedNum} ${unitForm}`;
+    },
+};
+
+// ═══════════════════════════════════════════════════════════════════════════════════════
+// 📖 محلل النص العربي - الإصدار المُصحَّح V3 (إصلاح مشكلة الوحدات الجزئية)
+// ═══════════════════════════════════════════════════════════════════════════════════════
+
+const ArabicQuantityParser = {
+
+    parse(text) {
+        let quantity = 0;
+        let unit = null;
+        let remaining = String(text || '').trim();
+        let foundNumber = false;
+        let foundUnit = false;
+
+        console.log(`[Parser] Input: "${remaining}"`);
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // 1. البحث عن رقم في البداية
+        // ─────────────────────────────────────────────────────────────────────────────
+        const numMatch = remaining.match(/^(\d+(?:[.,]\d+)?)\s*/);
+        if (numMatch) {
+            quantity = parseFloat(numMatch[1].replace(',', '.'));
+            remaining = remaining.slice(numMatch[0].length).trim();
+            foundNumber = true;
+            console.log(`[Parser] Found number: ${quantity}, remaining: "${remaining}"`);
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // 2. البحث عن كسر في البداية (نصف، ربع، ثلاثة أرباع)
+        // ─────────────────────────────────────────────────────────────────────────────
+        const sortedFractions = Object.keys(QuantityTranslator.fractions).sort((a, b) => b.length - a.length);
+        for (const fracWord of sortedFractions) {
+            if (remaining.startsWith(fracWord)) {
+                quantity += QuantityTranslator.fractions[fracWord];
+                remaining = remaining.slice(fracWord.length).trim();
+                foundNumber = true;
+                console.log(`[Parser] Found leading fraction: ${fracWord}, quantity now: ${quantity}`);
+                break;
+            }
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // 3. البحث عن المثنى (ملعقتان صغيرتان، كوبان، إلخ)
+        // ─────────────────────────────────────────────────────────────────────────────
+        const sortedDuals = Object.keys(QuantityTranslator.dualForms).sort((a, b) => b.length - a.length);
+        for (const dualWord of sortedDuals) {
+            if (remaining.includes(dualWord)) {
+                const dualData = QuantityTranslator.dualForms[dualWord];
+                if (!foundNumber) quantity = dualData.value;
+                else quantity += dualData.value;
+                unit = dualData.unit;
+                remaining = remaining.replace(dualWord, '').trim();
+                foundNumber = true;
+                foundUnit = true;
+                console.log(`[Parser] Found dual: ${dualWord}, unit: ${unit}, quantity: ${quantity}`);
+                break;
+            }
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // 4. ✅ تحديد الوحدة (مع حماية من المطابقة الجزئية)
+        // ─────────────────────────────────────────────────────────────────────────────
+        if (!foundUnit) {
+            // جمع كل الوحدات مع variants
+            const allVariants = [];
+            for (const unitKey in QuantityTranslator.units) {
+                const unitData = QuantityTranslator.units[unitKey];
+                for (const variant of unitData.ar_variants) {
+                    allVariants.push({ variant, unitKey });
+                }
+            }
+            // ✅ ترتيب من الأطول للأقصر (مهم جداً!)
+            allVariants.sort((a, b) => b.variant.length - a.variant.length);
+
+            for (const { variant, unitKey } of allVariants) {
+                // ✅ استخدام regex للتأكد من أن الوحدة كلمة كاملة وليست جزء من كلمة
+                const regex = new RegExp(`(^|\\s)(${variant})($|\\s|و)`, 'u');
+                const match = remaining.match(regex);
+
+                if (match) {
+                    unit = unitKey;
+                    // إزالة الوحدة فقط (مع الحفاظ على المسافات)
+                    remaining = remaining.replace(match[2], ' ').trim();
+                    foundUnit = true;
+                    console.log(`[Parser] Found unit: ${unitKey} (from variant: "${variant}")`);
+                    break;
+                }
+            }
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // 5. إذا وجدنا وحدة ولم نجد رقم، الكمية الافتراضية = 1
+        // ─────────────────────────────────────────────────────────────────────────────
+        if (foundUnit && !foundNumber) {
+            quantity = 1;
+            foundNumber = true;
+            console.log(`[Parser] No number found, defaulting to 1`);
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // 6. البحث عن "ونصف" أو "وربع" في النص المتبقي
+        // ─────────────────────────────────────────────────────────────────────────────
+        const suffixFractions = {
+            "وثلاثة أرباع": 0.75,
+            "ونصف": 0.5,
+            "وربع": 0.25,
+            "وثلث": 0.33,
+        };
+        for (const [suffix, value] of Object.entries(suffixFractions)) {
+            if (remaining.includes(suffix)) {
+                quantity += value;
+                remaining = remaining.replace(suffix, '').trim();
+                console.log(`[Parser] Found suffix fraction: ${suffix}, quantity now: ${quantity}`);
+                break;
+            }
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // 7. ✅ إزالة الصفات المتبقية من remaining (للتنظيف فقط)
+        // ─────────────────────────────────────────────────────────────────────────────
+        const descriptors = ["صغيرة", "كبيرة", "متوسطة", "واحدة", "واحد", "طازجة", "مفرومة", "مقطعة"];
+        for (const desc of descriptors) {
+            remaining = remaining.replace(new RegExp(desc, 'g'), '').trim();
+        }
+
+        console.log(`[Parser] Final: quantity=${quantity}, unit=${unit}, remaining="${remaining}"`);
+
+        return { quantity, unit, unparsed: remaining.trim() };
+    },
+
+    translateText(arabicText, lang) {
+        const parsed = this.parse(arabicText);
+
+        if (!parsed.unit) {
+            console.log(`[SmartTranslator] ⚠️ لم يتم التعرف على الوحدة في: "${arabicText}"`);
+            return null;
+        }
+
+        const finalQuantity = parsed.quantity || 1;
+        const translated = QuantityTranslator.translate(finalQuantity, parsed.unit, lang);
+
+        if (!translated) {
+            console.log(`[SmartTranslator] ⚠️ فشل في ترجمة: "${arabicText}"`);
+            return null;
+        }
+
+        console.log(`[SmartTranslator] ✅ "${arabicText}" → "${translated}"`);
+        return translated;
+    }
+};
+
+// ═══════════════════════════════════════════════════════════════════════════════════════
+// 🍽️ دالة الترجمة الرئيسية المنظفة والكاملة
+// ═══════════════════════════════════════════════════════════════════════════════════════
+/**
+ * تُترجم وجبة الطعام بالكامل (الاسم، التحضير، المكونات، المقادير) إلى اللغة الهدف.
+ * تعتمد على نظام الترجمة الذكي للكميات والوحدات كأولوية، ثم على القواميس اليدوية (النظام القديم) كخطة احتياطية.
+ */
+function translateMeal(meal, currentLangCode) {
+
+    // 1. منطق اللغة العربية: نُرجع البيانات الأصلية
+    if (currentLangCode === 'ar') {
+        let preparation = meal.preparation_ar;
+        const preparationSteps = Array.isArray(preparation) ? preparation : (preparation ? [preparation] : []);
+        return {
+            ...meal,
+            name: meal.name_ar || meal.name,
+            preparation: preparationSteps,
+        };
+    }
+
+    // التحقق من توفر بيانات الترجمة
+    if (typeof translations === 'undefined' || !translations[currentLangCode]) {
+        // العودة إلى العربية في حال عدم توفر الترجمة
+        return { ...meal, name: meal.name_ar, preparation: meal.preparation_ar };
+    }
+
+    // 2. منطق اللغات الأخرى (الأجنبية)
+    const langSuffix = '_' + currentLangCode;
+    const translatedMeal = { ...meal };
+
+    // ترجمة الاسم وطريقة التحضير
+    const translatedNameField = 'name' + langSuffix;
+    translatedMeal.name = translatedMeal[translatedNameField] || translatedMeal.name_ar;
+
+    const translatedPreparationField = 'preparation' + langSuffix;
+    let preparationData = meal[translatedPreparationField] || meal.preparation_ar;
+    translatedMeal.preparation = Array.isArray(preparationData) ? preparationData : (preparationData ? [preparationData] : []);
+
+    // 3. ترجمة المكونات والوحدات والمقادير
+    if (meal.ingredients && meal.ingredients.length > 0) {
+
+        translatedMeal.ingredients = meal.ingredients.map((originalIng) => {
+
+            // ترجمة اسم المكون
+            const itemField = 'item' + langSuffix;
+            const translatedItem = originalIng[itemField] || originalIng.item_ar;
+
+            const originalQuantityValue = originalIng.quantity;
+            let translatedQuantity = (originalQuantityValue != null) ? String(originalQuantityValue) : "";
+
+            if (translatedQuantity) {
+
+                // 🆕 المحاولة الأولى: النظام الحسابي الذكي
+                const smartTranslation = ArabicQuantityParser.translateText(translatedQuantity, currentLangCode);
+
+                if (smartTranslation) {
+                    // ✅ نجح النظام الذكي
+                    translatedQuantity = smartTranslation;
+                }
+                else {
+                    // 🔄 الخطة البديلة: النظام القديم (القواميس اليدوية)
+
+                    const targetLangData = translations[currentLangCode];
+                    const arabicLangData = translations.ar;
+
+                    const targetQuantifiers = targetLangData.quantifiers || {};
+                    const arabicQuantifiers = arabicLangData.quantifiers || {};
+                    const targetUnitsMap = targetLangData.units || {};
+                    const arabicUnitsMap = arabicLangData.units || {};
+                    const targetDescriptors = targetLangData.descriptors || {};
+                    const arabicDescriptors = arabicLangData.descriptors || {};
+
+                    let textToTranslate = String(originalQuantityValue || '').trim();
+                    const replacementMap = {};
+
+                    // دمج المقادير، الصفات، والوحدات (بناء خريطة الاستبدال)
+                    for (const key in arabicQuantifiers) {
+                        const arabicValue = arabicQuantifiers[key];
+                        const targetValue = targetQuantifiers[key];
+                        if (arabicValue && targetValue) replacementMap[arabicValue] = targetValue;
+                    }
+                    for (const key in arabicDescriptors) {
+                        const arabicValue = arabicDescriptors[key];
+                        const targetValue = targetDescriptors[key];
+                        if (arabicValue && targetValue) replacementMap[arabicValue] = targetValue;
+                    }
+                    for (const key in arabicUnitsMap) {
+                        const arabicValue = arabicUnitsMap[key];
+                        const targetValue = targetUnitsMap[key];
+                        if (arabicValue && targetValue) replacementMap[arabicValue] = targetValue;
+                    }
+
+                    // الإضافات اليدوية والوصلات
+                    if (targetQuantifiers['نصف']) replacementMap['نصف'] = targetQuantifiers['نصف'];
+                    if (targetQuantifiers['ربع']) replacementMap['ربع'] = targetQuantifiers['ربع'];
+                    if (targetQuantifiers['ثلث']) replacementMap['ثلث'] = targetQuantifiers['ثلث'];
+                    if (targetQuantifiers['ثلثين']) replacementMap['ثلثين'] = targetQuantifiers['ثلثين'];
+                    if (targetQuantifiers['ثلاثة أرباع']) replacementMap['ثلاثة أرباع'] = targetQuantifiers['ثلاثة أرباع'];
+                    if (targetDescriptors['متوسطة']) replacementMap['متوسطة'] = targetDescriptors['متوسطة'];
+                    if (targetDescriptors['صغيرة']) replacementMap['صغيرة'] = targetDescriptors['صغيرة'];
+                    if (targetDescriptors['كبيرة']) replacementMap['كبيرة'] = targetDescriptors['كبيرة'];
+                    if (targetDescriptors['واحدة']) replacementMap['واحدة'] = targetDescriptors['واحدة'];
+
+                    replacementMap['و'] = targetLangData.linkers?.AND || 'and'; // وصلة "و"
+
+                    // الترجمات الخاصة بالعبارات الثابتة لكل لغة
+                    if (currentLangCode === 'ru') {
+                        replacementMap['حسب الطلب'] = 'по вкусу';
+                        replacementMap['من كل نوع'] = 'из каждого вида';
+                        replacementMap['للتزيين'] = 'для украшения';
+                        replacementMap['حسب الرغبة'] = 'по желанию';
+                    } else if (currentLangCode === 'fa') {
+                        replacementMap['حسب الطلب'] = 'به میزان دلخواه';
+                        replacementMap['من كل نوع'] = 'از هر نوع';
+                        replacementMap['للتزيين'] = 'برای تزیین';
+                        replacementMap['حسب الرغبة'] = 'به دلخواه';
+                    } else { // EN أو غيرها
+                        replacementMap['حسب الطلب'] = targetLangData.descriptors?.TO_TASTE || 'to taste';
+                        replacementMap['من كل نوع'] = targetLangData.descriptors?.VARIETY || 'of each';
+                        replacementMap['للتزيين'] = 'for garnish';
+                        replacementMap['حسب الرغبة'] = 'as desired';
+                    }
+
+                    // تنفيذ الاستبدال باستخدام RegEx
+                    const sortedArabicWords = Object.keys(replacementMap).sort((a, b) => b.length - a.length);
+
+                    try {
+                        let paddedText = ' ' + textToTranslate + ' ';
+
+                        for (const arabicWord of sortedArabicWords) {
+                            const targetWord = replacementMap[arabicWord];
+                            const arabicWordEscaped = arabicWord.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                            // البحث عن الكلمة محاطة بمسافات لضمان عدم استبدال جزء من كلمة أكبر
+                            const regex = new RegExp(`\\s${arabicWordEscaped}\\s`, 'g');
+                            paddedText = paddedText.replace(regex, ` ${targetWord} `);
+                        }
+
+                        translatedQuantity = paddedText.replace(/\s+/g, ' ').trim(); // تنظيف المسافات الزائدة
+
+                    } catch (error) {
+                        console.error(`[Critical Error] Failed on translating quantity (Legacy). Error: ${error.message}`);
+                        translatedQuantity = String(originalQuantityValue || '').trim();
+                    }
+                }
+            }
+
+            // إرجاع الكائن مع الاسم والكمية المترجمة
+            return {
+                ...originalIng,
+                item: translatedItem,
+                quantity: translatedQuantity,
+            };
+        });
+    }
+
+    return translatedMeal;
+}
+
+
+function showKeyErrorModal() {
+    const errorMsg = `
+        <div style="text-align: right; color: #c0392b; font-weight: bold;">
+            عذراً سيدتي، مفتاح التفعيل الذي أدخلتِه غير صحيح. 
+            <br> يرجى التأكد من الرمز والمحاولة مرة أخرى.
+        </div>`;
+
+    // استدعاء الدالة الأساسية (نمرر true ليبقى حقل الإدخال ظاهراً)
+    updateModalContent("❌", "خطأ في التفعيل", errorMsg, true);
+
+    // إظهار زر واحد لإعادة المحاولة
+    const closeBtn = document.querySelector('.btn-close') || document.getElementById('closeModalBtn');
+    if (closeBtn) {
+        closeBtn.style.display = 'block';
+        closeBtn.innerText = "إعادة المحاولة";
+    }
+}
+
+// =================================================================
+// 1. الدوال النهائية لمنطق العداد والترقية
+// =================================================================
+
+// =================================================================
+// 1. الدالة الأساسية لإظهار النوافذ (يجب أن تكون في الأعلى)
+// =================================================================
+function updateModalContent(icon, title, message, showKey) {
+    const modal = document.getElementById('customModal');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMessage = document.getElementById('modalMessage');
+    const proSection = document.getElementById('proKeySection');
+
+    if (!modal) {
+        console.error("❌ خطأ: عنصر customModal غير موجود في HTML");
+        return;
+    }
+
+    // 1. تحديث النصوص (استخدام innerHTML لضمان تنسيق الرسائل الطويلة)
+    if (modalIcon) modalIcon.innerText = icon;
+    if (modalTitle) modalTitle.innerText = title;
+    if (modalMessage) modalMessage.innerHTML = message; 
+
+    // 2. التحكم في قسم مفتاح التفعيل
+    if (proSection) {
+        proSection.style.display = showKey ? 'block' : 'none';
+    }
+
+    // 3. 🛡️ تصفير الأزرار (إخفاء الجميع قبل إظهار المطلوب)
+    const allButtons = modal.querySelectorAll('.modal-buttons button');
+    allButtons.forEach(btn => {
+        btn.style.display = 'none'; 
+    });
+
+    // 4. إظهار المودال
+    modal.style.display = 'flex';
+    console.log(`%c 📢 تم إظهار النافذة بنجاح: ${title}`, "color: white; background: green;");
+}
+
+// =================================================================
+// 2. دوال استدعاء التنبيهات
+// =================================================================
+ 
+const activationMessages = {
+    ar: "لقد أوشكت مرحلة الاستخدام المجاني على الانتهاء! بقي لديكِ اختياران فقط.",
+    en: "The free trial period is about to end! You only have two choices left.",
+    ru: "Бесплатный пробный период подходит к концу! У вас осталось всего два варианта.",
+    fa: "دوره آزمایشی رایگان رو به پایان است! فقط دو انتخاب دیگر دارید."
+};
+    
+
+function showPreLimitWarning() {
+    // جلب كود اللغة الحالي من المتصفح (ar, en, ru, fa)
+    const lang = document.documentElement.lang || 'ar';
+    
+    // اختيار الرسالة المناسبة بناءً على اللغة
+    const msg = activationMessages[lang] || activationMessages['ar'];
+
+    // نصوص ثابتة للعناوين والأزرار حسب اللغة
+    let title = "سيدتي المحترمة،";
+    let btnText = "العودة إلى التطبيق";
+    const isRTL = (lang === 'ar' || lang === 'fa');
+
+    if (lang === 'en') {
+        title = "!Dear Madam";
+        btnText = "Back to App";
+    } else if (lang === 'ru') {
+        title = "!Уважаемая госпожа";
+        btnText = "Вернуться к приложению";
+    } else if (lang === 'fa') {
+        title = "بانوی گرامی،";
+        btnText = "بازگشت به برنامه";
+    }
+
+    // بناء المحتوى مع ضبط الاتجاه والمحاذاة
+    const messageHtml = `
+        <div class="activation-modal-font" style="direction: ${isRTL ? 'rtl' : 'ltr'}; text-align: ${isRTL ? 'right' : 'left'};">
+            ${msg}
+        </div>`;
+
+    // إظهار النافذة
+    updateModalContent(" ", title, messageHtml, false);
+
+    // ضبط زر الإغلاق
+    const closeBtn = document.querySelector('.btn-close');
+    if (closeBtn) {
+        closeBtn.innerText = btnText;
+        closeBtn.style.display = 'block';
+    }
+}
+
+const giftMessages = {
+    ar:  "سيدتي المحترمة. حرصا منا على تسهيل الامور عليكِ سوف نقوم باضافة محاولتين مجانيتين لكي نعطيكِ الوقت الكافي للحصول على مفتاح تفعيل النسخة المدفوعة لتطبيق  <b>شو عاملي أكل؟</b>  نحن بانتظارك.",
+    en: ` To make things easier for you, we have added two extra free attempts. This gives you time to obtain the activation key for the <b>"What’s Cooking?"</b> app. We look forward to having you with us.`,
+    ru: `«Уважаемая госпожа. Чтобы облегчить вам задачу, мы добавим две бесплатные попытки, чтобы у вас было достаточно времени для получения ключа активации платной версии приложения <b>"Что мы приготовим?"</b>.`,
+    fa:" خانم محترم. برای آسان‌تر کردن کارها برای شما، دو مرحله‌ی رایگان اضافه خواهیم کرد تا زمان کافی برای دریافت کلید فعال‌سازی نسخه‌ی پولی برنامه‌ی <b>چی می‌پزی؟ </b> داشته باشید. منتظر شما هستیم.",
+};
+
+function showGracePeriodModal() {
+    // جلب كود اللغة الحالي
+    const lang = document.documentElement.lang || 'ar';
+    
+    // اختيار الرسالة والعنوان والزر بناءً على اللغة
+    const msg = giftMessages[lang] || giftMessages['ar'];
+    const isRTL = (lang === 'ar' || lang === 'fa');
+
+    let title = "هدية لكِ";
+    let btnText = "شكراً، العودة للتطبيق";
+
+    if (lang === 'en') {
+        title = "Dear Madam";
+        btnText = "Thanks, Back to App";
+    } else if (lang === 'ru') {
+        title = "Подарок";
+        btnText = "Спасибо, вернуться";
+    } else if (lang === 'fa') {
+        title = "هدیه برای شما";
+        btnText = "ممنون، بازگشت";
+    }
+
+    const messageHtml = `
+        <div class="activation-modal-font" style="direction: ${isRTL ? 'rtl' : 'ltr'}; text-align: ${isRTL ? 'right' : 'left'};">
+            ${msg}
+        </div>`;
+
+    // إظهار النافذة مع أيقونة الهدية 🎁
+    updateModalContent(" ", title, messageHtml, false);
+ 
+    // تفعيل زر الإغلاق بنص مخصص
+    const closeBtn = document.querySelector('.btn-close');
+    if (closeBtn) {
+        closeBtn.innerText = btnText;
+        closeBtn.style.display = 'block';
+    }
+}
+
+const upgradeMessages = {
+    ar: "لقد استنفدتِ جميع المحاولات المجانية. يرجى إدخال مفتاح التفعيل للاستمرار في الاستفادة من كافة ميزات التطبيق.",
+    en: "You have exhausted all free attempts. Please enter the activation key to continue enjoying the full features of the app.",
+    ru: "Вы исчерпали все бесплатные попытки. Пожалуйста, введите ключ активации, чтобы продолжить пользоваться всеми функциями приложения.",
+    fa: "تمامی فرصت‌های رایگان شما به پایان رسیده است. لطفاً برای ادامه استفاده از تمامی امکانات برنامه، کلید فعال‌سازی را وارد کنید."
+};
+function displayUpgradePrompt() {
+    // جلب كود اللغة الحالي
+    const lang = document.documentElement.lang || 'ar';
+    
+    // اختيار الرسالة والعنوان بناءً على اللغة
+    const msg = upgradeMessages[lang] || upgradeMessages['ar'];
+    const isRTL = (lang === 'ar' || lang === 'fa');
+
+    let title = "سيدتي !";
+    if (lang === 'en') title = "Dear Madam,";
+    else if (lang === 'ru') title = "Уважаемая госпожа!";
+    else if (lang === 'fa') title = "بانوی گرامی،";
+
+    const messageHtml = `
+        <div class="activation-modal-font" style="direction: ${isRTL ? 'rtl' : 'ltr'}; text-align: ${isRTL ? 'right' : 'left'};">
+            ${msg}
+        </div>`;
+
+    // استدعاء المودال مع أيقونة القفل 🔒 
+    // ملاحظة: نرسل true في المعامل الرابع لإظهار حقل إدخال الكود
+    updateModalContent(" ", title, messageHtml, true);
+
+    // في هذه الرسالة، لا نريد زر إغلاق (لأن التطبيق مقفل)
+    const closeBtn = document.querySelector('.btn-close');
+    if (closeBtn) {
+        closeBtn.style.display = 'none';
+    }
+}
+// =================================================================
+// 3. دالة الفحص الذكي (المحرك الرئيسي)
+// =================================================================
+
+function checkLimitAndIncrement() {
+    const isPro = localStorage.getItem(PRO_VERSION_KEY) === 'true';
+    if (isPro) return true;
+
+    let count = parseInt(localStorage.getItem(FREE_USES_KEY) || '0', 10);
+    const graceUsed = localStorage.getItem(GRACE_PERIOD_KEY) === 'true';
+
+    console.log(`%c 🛡️ فحص صارم - العداد: ${count}`, "color: blue; font-weight: bold;");
+
+    // 1. القفل النهائي (عند 12) - هنا فقط نستخدم return false لمنع الخدمة
+    if (count >= 12) {
+        displayUpgradePrompt(); // ستستخدم الرسالة التقليدية التي أعددناها
+        return false;
+    }
+
+    // 2. منحة المحاولة 10 (تظهر مرة واحدة فقط)
+    if (count === 10 && !graceUsed) {
+        showGracePeriodModal(); // ستستخدم الرسالة التقليدية
+        localStorage.setItem(GRACE_PERIOD_KEY, 'true'); // ✅ تفعيل القفل فوراً لمنع التكرار
+        // ⚠️ حذفنا return false من هنا لنسمح للعداد بالزيادة للمحاولة 11
+    }
+
+    // 3. تنبيه المحاولة 8
+    if (count === 8) {
+        showPreLimitWarning(); // ستستخدم الرسالة التقليدية
+    }
+
+    // 4. زيادة العداد (هذا الجزء كان يُهمل عند الرقم 10 سابقاً)
+    count++;
+    localStorage.setItem(FREE_USES_KEY, count.toString());
+    updateSuggestButtonState();
+    return true;
+}
+
+/**
+ * قسم تفعيل النسخة المدفوعة - متوافق مع نظام الحماية الخاص بكِ
+ */
+
+// 1. استخدام نفس الثوابت الخاصة بكِ لضمان الربط الصحيح
+const PRO_VERSION_KEY_APP = 'mealApp_isProVersion'; // يجب أن يطابق PRO_VERSION_KEY في دالة suggestMeal
+
+
+// مصفوفة البصمات (Hashes) للمفاتيح الإضافية لضمان الأمان
+
+
+// 2. دالة التشفير
+function generateHash(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+    }
+    return String(Math.abs(hash));
+}
+// 3. أداة الإدارة المستدامة (تُستدعى من الكونسول دائماً)
+window.createNewSecureKey = function(plainKey) {
+    const hash = generateHash(plainKey);
+    console.log("%c-----------------------------------------", "color: #27ae60");
+    console.log("%c🔑 مولد المفاتيح الآمن", "font-weight: bold; font-size: 14px;");
+    console.log("المفتاح النصي: " + plainKey);
+    console.log("البصمة المطلوب وضعها في المصفوفة: " + hash);
+    console.log("%c-----------------------------------------", "color: #27ae60");
+};
+
+// 4. نافذة النجاح والعودة التلقائية لوضع الوجبات
+function showSuccessWithCountdown() {
+    let timeLeft = 5;
+    const successTitle = "تم التفعيل بنجاح!";
+    
+    const getSuccessMsg = (seconds) => `
+        <div class="activation-modal-font"> 
+            <span class="text-success-custom">شكراً لثقتكِ بنا سيدتي.</span>
+            <br>
+            تم تفعيل النسخة الكاملة بنجاح.
+            <br><br>
+            سيتم عرض الوجبة خلال <b style="color: #e67e22;">${seconds}</b> ثوانٍ...
+        </div>`;
+
+    updateModalContent("✅", "تم التفعيل", getSuccessMsg(timeLeft), false);
+    document.querySelectorAll('.modal-buttons button').forEach(btn => btn.style.display = 'none');
+
+    const timer = setInterval(() => {
+        timeLeft--;
+        const msgElement = document.getElementById('modalMessage');
+        if (msgElement) {
+            msgElement.innerHTML = getSuccessMsg(timeLeft);
+        }
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            
+            // إغلاق النافذة
+            const modal = document.getElementById('customModal');
+            if (modal) modal.style.display = 'none';
+
+            // إعادة ضبط واجهة الأزرار لضمان ظهور زر الاقتراح أو البدائل
+            const suggestBtn = document.getElementById('suggestBtn');
+            if (suggestBtn) suggestBtn.style.display = 'block';
+
+            // تشغيل محرك الاقتراحات الخاص بكِ فوراً
+            if (typeof suggestMeal === "function") {
+                console.log("🚀 تشغيل الاقتراح الأول بعد التفعيل...");
+                suggestMeal(); 
+            } else {
+                // حل احتياطي: إعادة تحميل الصفحة لتحديث الحالة
+                location.reload();
+            }
+        }
+    }, 1000);
+}
+
+// 5. نافذة الخطأ
+function showKeyErrorModal() {
+    const errorMsg = `
+        <div style="text-align: right; color: #c0392b; font-weight: bold;">
+            عذراً سيدتي، مفتاح التفعيل غير صحيح. 
+            <br> يرجى المحاولة مرة أخرى أو التواصل مع الدعم.
+        </div>`;
+
+    updateModalContent("❌", "خطأ في التفعيل", errorMsg, true);
+
+    const closeBtn = document.querySelector('.btn-close') || document.getElementById('closeModalBtn');
+    if (closeBtn) {
+        closeBtn.style.display = 'block';
+        closeBtn.innerText = "إعادة المحاولة";
+    }
+}
+
+// 5. نافذة النجاح مع إعادة الضبط التلقائي
+function showSuccessWithCountdown() {
+    let timeLeft = 5;
+    const successTitle = "تم التفعيل بنجاح!";
+    
+    const getSuccessMsg = (seconds) => `
+        <div style="text-align: center; line-height: 1.8;">
+            شكراً لثقتكِ بنا سيدتي. تم تفعيل النسخة الكاملة بنجاح.
+            <br>
+            <span style="font-size: 1.2em; color: #27ae60;">استمتعي الآن بكافة المميزات.</span>
+            <br><br>
+            سيتم فتح الاقتراحات خلال <b>${seconds}</b> ثوانٍ...
+        </div>`;
+
+    // إخفاء قسم إدخال المفتاح فوراً لمنع التشتت
+    const proKeySection = document.getElementById('proKeySection');
+    if (proKeySection) proKeySection.style.display = 'none';
+
+    // تحديث المحتوى وإخفاء الأزرار
+    updateModalContent("✅", successTitle, getSuccessMsg(timeLeft), false);
+
+    // إخفاء جميع الأزرار داخل المودال ليركز المستخدم على الرسالة
+    document.querySelectorAll('.modal-content button').forEach(btn => btn.style.display = 'none');
+
+    const timer = setInterval(() => {
+        timeLeft--;
+        const msgElement = document.getElementById('modalMessage');
+        if (msgElement) {
+            msgElement.innerHTML = getSuccessMsg(timeLeft);
+        }
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            closeModal();
+
+            const mainBtn = document.getElementById('suggestBtn');
+            if (mainBtn) mainBtn.style.display = 'block';
+
+            if (typeof suggestMeal === "function") {
+                suggestMeal();
+            } else {
+                location.reload(); 
+            }
+        }
+    }, 2000);
+}
+
+// 6. دالة إغلاق المودال (للتأكد من اختفاء الخلفية الرمادية)
+function closeModal() {
+    const modal = document.getElementById('customModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+/**
+ * تحديث حالة زر الاقتراح بناءً على العداد
+ */
+function updateSuggestButtonState() {
+    const suggestBtn = document.getElementById('suggestBtn');
+    if (!suggestBtn) return;
+    
+    const lang = document.documentElement.lang || 'ar'; // رصد اللغة عند "باب الطاحون"
+    const isPro = localStorage.getItem(PRO_VERSION_KEY) === 'true';
+    let count = parseInt(localStorage.getItem(FREE_USES_KEY) || '0', 10);
+    
+    // قاموس سريع للحالات (أو استخدمي قاموسك العام)
+    const btnTexts = {
+        ar: { pro: 'اضغطي هنا لاقترح عليكِ وجبة', locked: 'انتهت محاولاتكِ المجانية! (اضغطي للتفعيل)', normal: 'اضغطي هنا لاقترح عليكِ وجبة', remain: 'محاولة متبقية' },
+        en: { pro: 'Click here to suggest a meal', locked: 'Free attempts exhausted! (Click to activate)', normal: 'Click here to suggest a meal', remain: 'attempts left' },
+        ru: { pro: 'Нажмите, чтобы предложить блюдо', locked: 'Бесплатные попытки исчерпаны!', normal: 'Нажмите здесь', remain: 'попыток осталось' },
+        fa: { pro: 'برای پیشنهاد غذا اینجا را کلیک کنید', locked: 'فرصت‌های رایگان تمام شد!', normal: 'اینجا را کلیک کنید', remain: 'فرصت باقی‌مانده' }
+    };
+
+    const t = btnTexts[lang] || btnTexts['ar'];
+
+    if (isPro) {
+        suggestBtn.disabled = false;
+        suggestBtn.textContent = t.pro;
+        suggestBtn.style.backgroundColor = ""; // العودة للون الطبيعي
+    } else if (count >= 12) {
+        suggestBtn.disabled = false; 
+        suggestBtn.textContent = t.locked;
+        suggestBtn.style.backgroundColor = "#ff4d4d"; 
+    } else {
+        suggestBtn.disabled = false;
+        // هنا ندمج النص المترجم مع الرقم المحسوب
+        suggestBtn.textContent = `${t.normal} (${12 - count} ${t.remain})`;
+        suggestBtn.style.backgroundColor = ""; 
+    }
+}
+
+// =================================================================
+// 0. التهيئة، الثوابت، والمتغيرات الرئيسية
+//    (يجب أن تكون هذه المتغيرات في النطاق العام لجميع الدوال)
+// =================================================================
+
+// 1. استدعاء الملفات (يجب أن يكون قد تم في الأعلى)
+   // 2. الدمج في المتغير الذي يبحث عنه المحرك (meals هو الاسم المرجح)
+   const meals = [
+   ...(typeof meals1 !== 'undefined' ? meals1 : []),
+   ...(typeof meals2 !== 'undefined' ? meals2 : []),
+   ...(typeof meals3 !== 'undefined' ? meals3 : [])
+   ];
+
+   // 3. التحقق من النجاح في Console
+   if (meals.length > 0) {
+   console.log("✅ قاعدة البيانات جاهزة ومحملة. العدد: " + meals.length);
+   } else {
+   console.error("❌ فشل تحميل قاعدة البيانات. تأكد من تعريف meals1, meals2, meals3");
+   }
+// متغيرات حالة التطبيق العالمية (Global State Variables) - إذا كانت غير موجودة لديك
+
+window.currentSuggestedMeal = null;
+window.suggestedMealsHistory = [];
+window.lastFilteredMeals = [];
+window.originalMealData = null;
+window.currentMultiplier = 1;
+
+// --- الثوابت الأساسية ---
+const MAX_FREE_USES = 12;
+const FREE_USES_KEY = 'mealApp_freeUsesCount';
+const PRO_VERSION_KEY = 'mealApp_isProVersion';
+const GRACE_PERIOD_KEY = 'mealApp_graceUsed';
+
+
+// ==========================================
+// وحدة الأمان والتفعيل (Security & Activation Module)
+// ==========================================
+
+// 1. الثوابت الأمنية
+const SECRET_SALT = "Shoamli_Secure_2026_#";
+const VALID_KEYS_HASHES = ["49c60063d93b6891b8bfc1ddb673234551c3e6a481c9e23580235e4dc225d03f"];
+
+/**
+ * دالة تشفير النصوص باستخدام SHA-256 مع إضافة الملح السري
+ */
+async function generateSecureHash(text) {
+    console.log("🔐 تشفير النص...");
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text.trim() + SECRET_SALT);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+/**
+ * الدالة المسؤولة عن فحص محاولة التفعيل عند الضغط على الزر
+ */
+function handleActivationAttempt() {
+    console.log("🏁 محاولة تفعيل ( handleActivationAttempt )");
+    const isPro = localStorage.getItem(PRO_VERSION_KEY) === 'true';
+
+    if (isPro) {
+        alert("التطبيق مفعل بالفعل.");
+        return;
+    }
+
+    // إظهار نافذة إدخال الكود (تأكدي أن هذه الدالة موجودة لديكِ لإظهار المودال)
+    showActivationPrompt();
+}
+
+/**
+ * الدالة النهائية للتحقق من الكود المدخل ومقارنته بالهاش
+ */
+async function handleKeyActivation() {
+    console.log("🚀 جاري التحقق من المفتاح...");
+    const inputField = document.getElementById('proKeyInput');
+
+    if (!inputField) {
+        console.error("❌ لم يتم العثور على عنصر الإدخال 'proKeyInput'");
+        return;
+    }
+
+    const userInput = inputField.value.trim();
+    if (!userInput) {
+        alert("لطفاً، أدخلي المفتاح.");
+        return;
+    }
+
+    const userHash = await generateSecureHash(userInput);
+    console.log("الهاش الناتج:", userHash);
+
+    if (VALID_KEYS_HASHES.includes(userHash)) {
+        console.log("✅ تطابق! تفعيل النسخة PRO");
+        localStorage.setItem(PRO_VERSION_KEY, 'true');
+
+        // هنا نستدعي نافذة النجاح الأصلية الخاصة بكِ
+        if (typeof showSuccessWithCountdown === "function") {
+            showSuccessWithCountdown();
+        } else {
+            // حل احتياطي في حال كانت الدالة باسم مختلف
+            alert("✅ تم التفعيل بنجاح! سيتم تحديث التطبيق.");
+            location.reload();
+        }
+    }
+
+// ==========================================
+
+    // منطق فترة السماح
+    const newCount = MAX_FREE_USES - 2;
+    localStorage.setItem(FREE_USES_KEY, newCount.toString());
+    localStorage.setItem(GRACE_PERIOD_KEY, 'true');
+
+    const graceMessage = "سيدتي المحترمة. حرصا منا على تسهيل الامور عليكي سوف نقوم باضافة محاولتين مجانيتين لكي نعطيكي الوقت الكافي للحصول على مفتاح التفعيل للنسخة المدفوعة لتطبيق : شو عاملي اكل؟ نحن بانتظارك.";
+    showGracePeriodModal(graceMessage);
+}
+
+/**
+ * عرض نافذة إدخال المفتاح
+ */
+async function showActivationPrompt() {
+    const userKey = prompt("الرجاء إدخال مفتاح التفعيل الخاص بك:");
+    if (userKey) {
+        await activateApp(userKey.trim());
+    }
+}
+
+/**
+ * دالة التفعيل والتحقق (المنطق الجديد)
+ */
+async function activateApp(enteredKey) {
+    // تشفير ما أدخله المستخدم لمقارنته بالهاشات المحمية
+    const userHash = await generateSecureHash(enteredKey);
+
+    if (VALID_KEYS_HASHES.includes(userHash)) {
+        // نجاح التفعيل
+        localStorage.setItem(PRO_VERSION_KEY, 'true');
+        // تخزين الهاش كدليل تفعيل (بدلاً من المفتاح الصافي)
+        localStorage.setItem('mealApp_activationProof', userHash);
+
+        updateSuggestButtonState();
+        alert("تم التفعيل بنجاح! شكراً لك.");
+    } else {
+        alert("المفتاح غير صحيح. يرجى التأكد من المفتاح والمحاولة مجدداً.");
+    }
+}
+
+// =================================================================
+// 2. دالة returnToFilterView (العودة التلقائية)
+// =================================================================
+
+/**
+ * دالة لتنفيذ العودة التلقائية إلى الواجهة الأساسية (واجهة الفلترة)
+ */
+function returnToFilterView() {
+    // جلب العناصر الخمسة
+    const suggestBtn = document.getElementById('suggestBtn');
+    const alternativeBtn = document.getElementById('alternativeBtn');
+    const exitBtn = document.getElementById('exitBtn');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const noPrepMsg = document.getElementById('noPrepMsg'); // التأكد من عدم وجود مسافة هنا
+
+    // تحديث الظهور (إظهار عناصر البداية)
+    if (suggestBtn) suggestBtn.style.display = 'block';
+    if (noPrepMsg)  noPrepMsg.style.display = 'block';
+
+    // إخفاء عناصر النتيجة
+    if (alternativeBtn) alternativeBtn.style.display = 'none';
+    if (exitBtn)        exitBtn.style.display = 'none';
+    if (confirmBtn)     confirmBtn.style.display = 'none';
+    
+    // ولا تنسي استدعاء تحديث اللغة لضمان بقاء النصوص صحيحة عند العودة
+    updateSuggestButtonState();
+}
+
+
+/**
+ * @function suggestMeal
+ * الدالة الرئيسية لاقتراح الوجبة مع نظام الحماية المتكامل
+ */
+function suggestMeal() {
+    // 1. جلب البيانات الأساسية للعداد والنسخة
+    const isPro = localStorage.getItem(PRO_VERSION_KEY) === 'true';
+    let count = parseInt(localStorage.getItem(FREE_USES_KEY) || '0', 10);
+
+    // 2. الحارس النهائي: إذا استنفدت المحاولات، اقطع الطريق وافتح نافذة التفعيل
+    if (!isPro && count >= MAX_FREE_USES) {
+        console.log("🛑 تم الوصول للحد الأقصى. إظهار نافذة التفعيل.");
+        displayUpgradePrompt("لقد استنفدتِ كافة المحاولات المجانية والمنحة الإضافية. يرجى إدخال مفتاح التفعيل للمتابعة والاستفادة الكاملة من تطبيق شو عاملي اكل؟");
+        return; // توقف تام هنا
+    }
+
+    // 3. التحقق من العداد وزيادته (للمحاولات من 1 إلى 11)
+    if (!checkLimitAndIncrement()) {
+        return; // يتوقف إذا كانت هناك رسالة تنبيه أو منحة تحتاج ضغط زر
+    }
+    
+    // 4. إخفاء رسالة التأكيد السابقة وتجهيز البيئة
+    const confirmationMsg = document.getElementById('confirmationMsg');
+    if (confirmationMsg) {
+        confirmationMsg.style.display = 'none';
+    }
+    window.suggestedMealsHistory = []; 
+
+    // 5. جلب قيم الفلترة من واجهة المستخدم
+    const healthStatus = document.getElementById('healthStatus').value;
+    const cost = document.getElementById('cost').value;
+    const mealTime = document.getElementById('mealTime').value;
+    const weather = document.getElementById('weather').value;
+    const mealType = document.getElementById('mealType').value;
+    const numberOfpeople = document.getElementById('numberOfpeople').value;
+
+    // التحقق من وجود بيانات الوجبات
+    if (typeof meals === 'undefined' || meals.length === 0) {
+        console.error("خطأ: لم يتم تحميل قاعدة بيانات الوجبات.");
+        return;
+    }
+
+    // 6. منطق تصفية الوجبات (Filtering Logic)
+    const normalizedUserMealType = mealType.trim().toLowerCase();
+    const successfulMeals = meals.filter(meal => {
+        if (!meal || !meal.health || !meal.cost || !meal.mealTime || !meal.weather || !meal.mealType) {
+            return false;
+        }
+
+        const healthCheck = meal.health.includes(healthStatus);
+        const costCheck = meal.cost.includes(cost);
+        const mealTimeCheck = meal.mealTime.includes(mealTime);
+        const weatherCheck = meal.weather.includes(weather);
+
+        const mealTypeData = Array.isArray(meal.mealType) ? meal.mealType : [meal.mealType];
+        const mealTypeCheck = mealTypeData
+            .map(type => String(type).trim().toLowerCase())
+            .includes(normalizedUserMealType);
+
+        return healthCheck && costCheck && mealTimeCheck && weatherCheck && mealTypeCheck;
+    });
+
+    window.lastFilteredMeals = successfulMeals;
+
+    // 7. التعامل مع حالة عدم وجود نتائج
+    if (successfulMeals.length === 0) {
+        displayNoResults(false, true); 
+        window.currentSuggestedMeal = null;
+        window.suggestedMealsHistory = [];
+        updateSuggestButtonState(); 
+        return;
+    }
+
+    // 8. اختيار وجبة عشوائية ومعالجة الكميات
+    const randomIndex = Math.floor(Math.random() * successfulMeals.length);
+    let suggestedMeal = JSON.parse(JSON.stringify(successfulMeals[randomIndex])); // نسخة عميقة
+    
+    window.originalMealData = suggestedMeal;
+    const multiplier = getQuantityMultiplier(numberOfpeople);
+    
+    // حساب الكميات بناءً على عدد الأفراد
+    suggestedMeal = calculateNewQuantities(suggestedMeal, multiplier);
+    
+    window.currentSuggestedMeal = suggestedMeal;
+    window.currentMultiplier = multiplier;
+    window.suggestedMealsHistory.push(suggestedMeal.name_ar);
+
+    // 9. عرض الوجبة النهائية في الواجهة
+    displayMeal(suggestedMeal);
+    
+    // 10. الانتقال للواجهة الثانوية (أزرار التحكم بعد الاقتراح)
+    document.getElementById('suggestBtn').style.display = 'none'; 
+    document.getElementById('alternativeBtn').style.display = 'block';
+    document.getElementById('exitBtn').style.display = 'block';
+    document.getElementById('confirmBtn').style.display = 'block'; 
+    //document.getElementById(' noPrepMsg').style.display = 'none'; 
+    // تحديث حالة الزر (لضمان تحديث العداد في الخلفية)
+    updateSuggestButtonState(); 
+}
+
+
+// =================================================================
+// 4. ربط الأحداث (Event Listeners)
+// =================================================================
+
+const criticalFilters = [
+    'healthStatus', 
+    'cost', 
+    'mealTime', 
+    'weather', 
+    'mealType'
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    document.getElementById('suggestBtn').addEventListener('click', suggestMeal);
+    
+    criticalFilters.forEach(filterId => {
+        const filterElement = document.getElementById(filterId);
+        if (filterElement) {
+            filterElement.addEventListener('change', () => {
+                // الشرط: ننفذ العودة التلقائية فقط إذا كانت الوجبة معروضة (أي زر الاقتراح مخفي)
+                if (document.getElementById('suggestBtn').style.display === 'none') {
+                    returnToFilterView();
+                }
+            });
+        }
+    });
+    
+    // تهيئة حالة الواجهة عند التحميل (ضمان حالة البداية الصحيحة)
+    returnToFilterView(); 
+    document.getElementById('suggestBtn').style.display = 'block'; 
+    updateSuggestButtonState(); // تحديث النص و حالة التفعيل عند التحميل
+});
+
+/**
+ * @function renderMealIngredients
+ * يرسم قائمة المكونات في الواجهة بناءً على البيانات المترجمة والكميات المحتسبة.
+ */
+function renderMealIngredients(ingredients) {
+    const container = document.querySelector('.ingredients-list');
+    if (!container) return;
+
+    // مسح المحتوى القديم مباشرة
+    container.innerHTML = '';
+
+    ingredients.forEach((ingredient) => {
+        // تحديد القيم المطلوبة
+        const quantityText = ingredient.quantity || 'غير متوفرة';
+        const targetLang = ingredient.targetLang || 'ar';
+
+        // 1. تحديد الاسم المترجم
+        const translatedFieldName = `item_${targetLang}`;
+        // الأولوية للغة المطلوبة، ثم العربية، ثم الإنجليزية كاحتياطي
+        const ingredientName = ingredient[translatedFieldName] || ingredient.item_ar || ingredient.item_en || 'اسم غير متوفر';
+
+        // 2. جلب الاسم العربي للبحث عن الإيموجي
+        // نستخدم الاسم المختصر (إذا توفر) أو الاسم العربي الكامل للمطابقة مع emojiMap
+        const nameForEmojiLookup = ingredient.name_ar_short || ingredient.item_ar;
+
+        // 3. جلب الإيموجي باستخدام الدالة المساعدة
+        const ingredientEmoji = getIngredientEmoji(nameForEmojiLookup);
+
+        // إنشاء العنصر ودمج البيانات
+        const ingredientDiv = document.createElement('div');
+        ingredientDiv.className = 'ingredient';
+
+        // دمج الكمية والإيموجي والاسم
+        ingredientDiv.innerHTML = `
+           <strong>${ingredientEmoji} ${ingredientName}</strong>
+           <span class="ingredient-quantity">${quantityText}</span>
+        `;
+
+        container.appendChild(ingredientDiv);
+    });
+}
+/**
+ * يضيف مستمعاً للتغيير في قائمة "عدد الأفراد" لتفعيل التحديث التفاعلي.
+ */
+function setupQuantityListener() {
+    const peopleSelect = document.getElementById('numberOfpeople');
+    if (peopleSelect) {
+        peopleSelect.addEventListener('change', updateIngredientsDisplay);
+        console.log('✅ تم تفعيل مستمع التغيير لعدد الأفراد.');
+    }
+}
+
+/**
+ * @function updateIngredientsDisplay
+ * يُحدث كميات المكونات في الواجهة بناءً على المضاعف (عدد الأفراد).
+ * يقوم بالاحتساب ثم الترجمة للغة الواجهة، ويحافظ على الكميات المترجمة.
+ */
+function updateIngredientsDisplay() {
+    // ⚠️ يمكن إزالة هذا السطر بعد التأكد من عمل الوظيفة بشكل كامل في بيئة الإنتاج.
+    console.log('--- بدء تنفيذ تحديث الكميات التفاعلي (منظف) ---');
+
+    // التحقق الأساسي
+    if (typeof window.originalMealData === 'undefined' || !window.originalMealData) {
+        console.warn('⚠️ فشل التحديث: لا يوجد مرجع ثابت للوجبة.');
+        return;
+    }
+
+    // 1. تحديد المضاعف وكود اللغة
+    const numberOfpeopleElement = document.getElementById('numberOfpeople');
+    const numberOfpeople = numberOfpeopleElement ? numberOfpeopleElement.value : 'medium';
+    const multiplier = getQuantityMultiplier(numberOfpeople);
+    const currentLangCode = document.documentElement.lang;
+
+    // 2. الاحتساب (ينتج كميات منسقة باللغة العربية)
+    const updatedMeal = calculateNewQuantities(window.originalMealData, multiplier);
+
+    // 3. الترجمة (ينتج كميات مترجمة للغة المطلوبة)
+    const translatedMeal = translateMeal(updatedMeal, currentLangCode);
+
+    // 4. الدمج والتجهيز للعرض
+    if (translatedMeal && translatedMeal.ingredients) {
+        window.currentSuggestedMeal = updatedMeal;
+
+        translatedMeal.ingredients = translatedMeal.ingredients.map((translatedIng) => {
+             // الحفاظ على الكمية المترجمة التي تم توليدها داخل translateMeal
+             const finalTranslatedQuantity = translatedIng.quantity;
+
+             return {
+                 ...translatedIng,
+                 quantity: finalTranslatedQuantity, // استخدام الكمية المترجمة
+                 targetLang: currentLangCode        // حفظ كود اللغة للعرض
+             };
+        });
+    } else {
+        console.error("❌ فشل التحديث: بيانات الوجبة المترجمة غير صالحة.");
+        return;
+    }
+
+    // 5. تمرير البيانات إلى العرض
+    renderMealIngredients(translatedMeal.ingredients);
+
+    // ⚠️ يمكن إزالة هذا السطر بعد التأكد من عمل الوظيفة بشكل كامل.
+    console.log('--- انتهى تحديث الكميات بنجاح (منظف) ---');
+}
+       setupQuantityListener()
+
+       /**
+ * يتم استدعاء هذه الدالة بعد تحميل محتوى الصفحة بالكامل.
+ */
+function initializeMealSuggestionListeners() {
+    const numberOfPeopleInput = document.getElementById('numberOfpeople');
+
+    if (numberOfPeopleInput) {
+        // نربط حدث 'change' بـ updateIngredientsDisplay
+        // هذا يعني أن الدالة ستعمل فوراً بعد أن يغير المستخدم القيمة ويخرج من الحقل.
+        numberOfPeopleInput.addEventListener('change', updateIngredientsDisplay);
+        console.log('✅ تم تفعيل مستمع التغيير لعدد الأفراد بنجاح.');
+    } else {
+        console.error('❌ فشل الربط: لم يتم العثور على عنصر #numberOfpeople.');
+    }
+}
+
+// 🔑 الخطوة الأخيرة: التأكد من تشغيل دالة الربط
+// يجب استدعاء initializeMealSuggestionListeners() عند تحميل الصفحة:
+// window.onload = initializeMealSuggestionListeners;
+// أو الأفضل:
+document.addEventListener('DOMContentLoaded', initializeMealSuggestionListeners);
+
+/**
+ * @function suggestAlternative
+ * تختار وجبة بديلة من قائمة الوجبات المفلترة سابقاً، مع تطبيق الاحتساب ومنع التكرار.
+ * إذا تم استهلاك جميع البدائل، يتم إعادة تصفير سجل التاريخ لإعادة الدورة.
+ */
+function suggestAlternative() {
+
+    // إخفاء رسالة التأكيد
+    const confirmationMsg = document.getElementById('confirmationMsg');
+    if (confirmationMsg) {
+        confirmationMsg.style.display = 'none';
+    }
+
+    let filteredMeals = window.lastFilteredMeals || [];
+    let history = window.suggestedMealsHistory || [];
+
+    // التحقق الأساسي من وجود وجبات مفلترة
+    if (filteredMeals.length === 0) {
+        displayNoResults(false, true);
+        return;
+    }
+
+    // 1. تصفية القائمة: إزالة الوجبات التي تم عرضها بالفعل
+    let availableAlternatives = filteredMeals.filter(meal =>
+        !history.includes(meal.name_ar)
+    );
+
+    // 2. فحص حالة الدورة: إذا كانت القائمة فارغة، قم بإعادة تصفير السجل
+    if (availableAlternatives.length === 0) {
+        window.suggestedMealsHistory = [];
+        history = []; // تحديث المتغير المحلي
+
+        // إعادة التصفية بعد التصفير
+        availableAlternatives = filteredMeals.filter(meal =>
+            !history.includes(meal.name_ar)
+        );
+    }
+
+    // 3. إزالة الوجبة المعروضة حالياً (للتأكد من عدم ظهورها فوراً مرة أخرى)
+    const currentlySuggested = window.currentSuggestedMeal;
+
+    if (currentlySuggested && currentlySuggested.name_ar) {
+        availableAlternatives = availableAlternatives.filter(meal => meal.name_ar !== currentlySuggested.name_ar);
+    }
+
+    // التحقق النهائي من وجود بديل
+    if (availableAlternatives.length === 0) {
+        displayNoResults(true, false); // رسالة "لا يوجد بديل"
+        return;
+    }
+
+    // 4. اختيار وجبة عشوائية من القائمة الجديدة
+    const randomIndex = Math.floor(Math.random() * availableAlternatives.length);
+    let suggestedMeal = availableAlternatives[randomIndex];
+
+    // 5. حفظ الوجبة الأصلية (المرجع الثابت) للوجبة الجديدة
+    window.originalMealData = suggestedMeal;
+
+    // 6. حساب المضاعف وتطبيق الاحتساب
+    const numberOfpeople = document.getElementById('numberOfpeople').value;
+    const multiplier = getQuantityMultiplier(numberOfpeople);
+    suggestedMeal = calculateNewQuantities(suggestedMeal, multiplier);
+
+    // 7. تحديث السجل والوجبة الحالية
+    window.currentSuggestedMeal = suggestedMeal;
+    window.currentMultiplier = multiplier;
+
+    // إضافة الوجبة الجديدة إلى سجل التاريخ (تتم الإضافة هنا مرة واحدة فقط)
+    window.suggestedMealsHistory.push(suggestedMeal.name_ar);
+
+    // 8. عرض الوجبة
+    displayMeal(suggestedMeal);
+}
+/**
+ * دالة لعرض الوصفة على الواجهة (مع الترجمة).
+ * @param {object} mealData كائن الوجبة المُحتسب والمُقترح.
+ */
+function displayMeal(mealData) { 
+    const resultDiv = document.getElementById('result');
+    if (!mealData) {
+        // نفترض أن دالة displayNoResults معرفة خارجياً
+        if (typeof displayNoResults === 'function') {
+            displayNoResults(false, false); 
+        }
+        return; 
+    } 
+    
+    // 1. ترجمة الوجبة إلى اللغة الحالية للواجهة
+    const currentLangCode = document.documentElement.lang;
+    const t = typeof translations !== 'undefined' ? translations[currentLangCode] : {}; // التأكد من تعريف t
+    const translatedMeal = translateMeal(mealData, currentLangCode);
+    
+    // 2. فحص سلامة نتيجة الترجمة
+    if (!translatedMeal) {
+        console.error("Translated meal data is invalid.");
+        return;
+    }
+
+    // 3. تحديد المكونات وطريقة التحضير باللغة الصحيحة
+    const ingredientsToDisplay = translatedMeal.ingredients || []; 
+    const preparationStepsList = translatedMeal.preparation || []; 
+    
+    // 4. بناء الـ HTML
+    if (resultDiv) {
+        console.log(mealData.image);
+        resultDiv.innerHTML = `
+            <div class="meal-layout">
+               <div class="meal-header"> 
+                <h3 class="meal-title">
+                    🥗<span>${translatedMeal.name}</span>🥗
+                    </h3>
+                 <img src="${mealData.image}" alt="${translatedMeal.name}" class="meal-image">
+            </div> 
+                 <div class="ingredient flex-row-aligned">
+            </div>
+           <div class="flex-start-group">
+            <div class="flex-end-group">
+       </div> 
+                <div class="meal-content">
+                    <div class="ingredients-section" lang="${currentLangCode}">
+                        <strong>📋 ${t.ingredientsLabel || 'المكونات'}</strong> 
+                        <div class="ingredients-list">
+                            ${ingredientsToDisplay.map(ingredient => {
+                                
+                                const newQuantity = ingredient.quantity || '';
+                                const displayUnit = ingredient.unit || ''; 
+                                
+                                // 🟢 التعديل الجذري: نستخدم ingredient.item_ar كخيار بديل إذا كان ingredient.item فارغاً 
+                                // (وهو ما يحدث عند الترجمة للعربية في حالتك)
+                                const displayItem = ingredient.item || ingredient.item_ar || 'مكون غير معروف';
+                                
+                                let quantityAndUnitHtml = '';
+                                
+                                // منطق منع تكرار الوحدة (الذي تم إضافته سابقاً)
+                                if (currentLangCode === 'ar' && newQuantity.toString().includes(' ')) {
+                                    quantityAndUnitHtml = `<span class="ingredient-quantity">${newQuantity}</span>`;
+                                } else {
+                                    quantityAndUnitHtml = `<span class="ingredient-quantity">${newQuantity} ${displayUnit}</span>`;
+                                }
+
+                                return `
+                                <div class="ingredient">
+                                    ${ingredient.emoji || (typeof getIngredientEmoji !== 'undefined' ? getIngredientEmoji(ingredient.item_ar) : '🍽️')} 
+                                    <strong>${displayItem}</strong>
+                                    ${quantityAndUnitHtml}
+                                </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                    <div class="preparation-section">
+                        <strong>👩‍🍳 ${t.instructionsLabel || 'طريقة التحضير'}</strong>
+                        <div class="preparation-steps">
+                            ${preparationStepsList.map((step, index) => `
+                                <div class="step">
+                                    ${step.replace(/^\d+\.\s*/, '')} </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    
+        // 5. تحديث حالة الأزرار
+        const suggestBtn = document.getElementById('suggestBtn');
+        const alternativeBtn = document.getElementById('alternativeBtn');
+        const exitBtn = document.getElementById('exitBtn');
+        const confirmBtn = document.getElementById('confirmBtn');
+        const noPrepMsg = document.getElementById('noPrepMsg');
+        
+        if (suggestBtn) suggestBtn.style.display = 'none';
+        if (alternativeBtn) alternativeBtn.style.display = 'block';
+        if (exitBtn) exitBtn.style.display = 'block';
+        if (confirmBtn) confirmBtn.style.display = 'block';
+
+        resultDiv.classList.add('result-success');
+    }
+}
+
+// ... (بقية الدوال المساعدة مثل getIngredientEmoji)
+
+// ====================================================================
+// 5. دوال الإضافات (Auxiliary Functions)
+// ====================================================================
+
+/** دالة مساعدة للإيموجي */
+function getIngredientEmoji(ingredientName) {
+    const emojiMap = {
+        'عدس': '🫘', 'جزر': '🥕', 'بصل': '🧅', 'ثوم': '🧄',
+        'جرجير': '🥬', 'جبن': '🧀', 'طماطم': '🍅', 'خس': '🥬',
+        'خيار': '🥒', 'لحم': '🥩', 'دجاج': '🍗', 'سمك': '🐟',
+        'أرز': '🍚', 'معكرونة': '🍝', 'بيض': '🥚', 'حليب': '🥛',
+        'ماء': '💧', 'مرق': '🍲', 'زيت': '🫒', 'ليمون': '🍋',
+        'فلفل': '🌶️', 'ملح': '🧂', 'فطر': '🍄', 'بطاطا': '🥔'
+    };
+    return emojiMap[ingredientName] || '🌱';
+}
+
+/** دالة مسح النتائج من الشاشة */
+function clearResults() {
+    const resultDiv = document.getElementById('result');
+    if (resultDiv) {
+        resultDiv.innerHTML = '';
+        resultDiv.classList.remove('result-success');
+        document.getElementById('suggestBtn').style.display = 'block'; // إعادة زر الاقتراح
+        document.getElementById('alternativeBtn').style.display = 'none';
+        document.getElementById('exitBtn').style.display = 'none';
+        document.getElementById('confirmBtn').style.display = 'none';
+    }
+}
+
+/** دالة عرض رسالة "صحتين وعافية" المترجمة */
+function showHealthMessage() {
+    const currentLangCode = document.documentElement.lang;
+    const messages = {
+        'ar': '🍽️ صحتين وعافية 🍽️',
+        'en': '🍽️ Bon Appétit 🍽️',
+        'ru': '🍽️ Приятного аппетита 🍽️',
+        'fa': '🍽️ نوش جان 🍽️'
+    };
+    const message = messages[currentLangCode] || messages['ar'];
+
+    const msgElement = document.createElement('div');
+    msgElement.className = 'health-message';
+    msgElement.textContent = message;
+    document.body.appendChild(msgElement);
+    
+    setTimeout(() => {
+        if (document.body.contains(msgElement)) {
+            document.body.removeChild(msgElement);
+        }
+    }, 8000);
+}
+
+
+// ====================================================================
+// 6. دالة عرض الساعة الرقمية (Clock Functionality)
+// ====================================================================
+
+/** دالة عرض الساعة الرقمية (محدثة لدعم لغات متعددة) */
+function updateClock() {
+    const now = new Date();
+    
+    let locale = 'en-US';
+    let currentLangCode = document.documentElement.lang;
+
+    if (currentLangCode === 'ar' || currentLangCode === 'fa') {
+        locale = 'en-EG'; // استخدام الأرقام العربية
+    } else if (currentLangCode === 'ru') {
+        locale = 'ru-RU';
+    }
+    
+    const timeString = now.toLocaleTimeString(locale, {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false // صيغة 24 ساعة
+    });
+
+    document.getElementById('timeDisplay').textContent = timeString;
+}
+
+// تحديث الساعة كل ثانية (يجب أن يكون 'timeDisplay' موجودًا في HTML)
+setInterval(updateClock, 1000);
+updateClock(); 
+
+// ====================================================================
+// 7. مُستمع بدء التشغيل وربط الأحداث (Initialization & Listeners)
+// ====================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. تطبيق اللغة المحفوظة عند التحميل الأولي
+    const savedLanguage = localStorage.getItem('preferredLang') || 'ar';
+    applyUITranslation(savedLanguage);
+    highlightActiveLanguageButton(savedLanguage); 
+
+    // 2. ربط أزرار اللغة (lang-btn) بـ handleLanguageToggle
+    const langButtons = document.querySelectorAll('.lang-btn'); 
+    langButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const langCode = event.target.getAttribute('data-lang');
+            handleLanguageToggle(langCode); 
+        });
+    });
+
+    // 3. ربط أزرار الوظائف الرئيسية
+    document.getElementById('suggestBtn').addEventListener('click', suggestMeal);
+    document.getElementById('alternativeBtn').addEventListener('click', suggestAlternative);
+    document.getElementById('confirmBtn').addEventListener('click', () => {
+        const confirmationMsg = document.getElementById('confirmationMsg');
+        confirmationMsg.style.display = 'block';
+
+        setTimeout(() => {
+            confirmationMsg.style.display = 'none';
+            showHealthMessage();
+        }, 750);
+    });
+
+    document.getElementById('exitBtn').addEventListener('click', () => {
+        const resultDiv = document.getElementById('result');
+        if (!resultDiv || !resultDiv.innerHTML.trim()) {
+            return; 
+        } 
+        
+        clearResults();
+        
+        const currentLangCode = document.documentElement.lang;
+        const exitMessages = {
+            'ar': '✋ تم إنهاء الجلسة. شكراً لاستخدامك تطبيق "شو عاملي أكل؟"✋ ',
+            'en': '✋Session Ended. Thank you for using- What is for Dinner ✋?',
+            'ru': '✋Сеанс завершен. Спасибо за использование приложения-Что на обед✋?',
+            'fa': '✋جلسه به پایان رسید. از شما بابت استفاده از برنامه «غذا چی داریم؟ » متشکریم.✋'
+        };
+        const exitMessage = exitMessages[currentLangCode] || exitMessages['ar'];
+
+        const msgElement = document.createElement('div');
+        msgElement.className = 'health-message';
+        msgElement.textContent = exitMessage;
+        msgElement.style.background = 'rgba(175, 50, 50, 0.95)'; 
+        msgElement.style.borderColor = '#FF6B6B';
+        msgElement.style.color = '#FFDDDD';
+        
+        document.body.appendChild(msgElement);
+        
+        setTimeout(() => {
+            if (document.body.contains(msgElement)) {
+                document.body.removeChild(msgElement);
+            }
+            window.currentSuggestedMeal = null;
+            // يمكنك توجيه المستخدم لصفحة أخرى إذا لزم الأمر
+            window.location.href = 'index.html';
+        }, 8000);
+    });
+    
+    // 4. عرض رسالة البداية المترجمة عند التحميل
+    displayNoResults(false, true); 
+});
+</script>
+<div id="customModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <div id="modalIcon" class="modal-icon">⚠️</div>
+        <h2 id="modalTitle">انتهت المحاولات!</h2>
+        <p id="modalMessage">لقد استهلكت جميع المحاولات المجانية لهذا اليوم.</p>
+        
+        <div id="proKeySection" style="display: none;">
+            <input type="text" id="proKeyInput" placeholder= "  ادخلي مفتاح التفعيل هنا ..." class="pro-input">
+            <button onclick="handleKeyActivation()" class="btn-activate">تفعيل النسخة المدفوعة</button>
+        </div>
+
+        <div class="modal-buttons">
+    <button id="giftBtn" onclick="addGiftAttempts()" class="btn-gift">🎁 محاولتين مجاناً (مرة واحدة)</button>
+    <button id="closeModalBtn" onclick="closeModal()" class="btn-close">عودة الى التطبيق</button>
+</div>
+    </div>
+</div>
+</body>
+</html>
+

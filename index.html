@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" href="./icon-192x192.png" type="image/png">
+    <link rel="apple-touch-icon" href="./icon-192x192.png">
+     
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="AI Recipe">
+
+    <title>شو عاملي أكل؟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @font-face {
+            font-family: 'Amiri';
+            src: url('./J7aRnpd8CGxBHpUrtLMA7w.woff2') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+
+        }
+
+         @font-face {
+            font-family: 'Amiri';
+            src: url('./J7aRnpd8CGxBHpUutLM.woff2') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+
+        }
+
+        @font-face {
+            font-family: 'Extended Kufic';
+            src: url('./J7aRnpd8CGxBHpUgtLMA7w.woff2') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+
+         @font-face {
+            font-family: 'Extended Kufic';
+            src: url('./J7acnpd8CGxBHp2VkaY6zp5yGw.woff2') format('woff2'); /* 🥇 الأفضل والأسرع */
+            font-weight: bold;
+            font-style: normal;
+}
+
+         @font-face {
+            font-family: 'Sans-Serif';
+            src: url('./Sans-Serif-Regular.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+         @font-face {
+            font-family: 'Sans-Serif';
+            src: url('./Sans-Serif-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        @font-face {
+             font-family: 'Segoe UI';
+             src: url('./Segoe UI-Regular.ttf') format('truetype');
+             font-weight: normal;
+}
+        @font-face {
+             font-family: 'Segoe UI';
+             src: url('./Segoe%20UI-Bold.ttf') format('truetype');
+             font-weight: bold;
+}
+        .app-frame {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        @media (min-width: 640px) {
+            .app-frame {
+                padding: 20px;
+            }
+        }
+
+        .main-card {
+            width: 100%;
+            max-width: 480px;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #1e3a5f 0%, #0d2137 100%);
+            border-radius: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        @media (min-width: 640px) {
+            .main-card {
+                min-height: auto;
+                height: 90vh;
+                max-height: 900px;
+                border-radius: 32px;
+            }
+        }
+
+        .image-section {
+            flex: 1;
+            min-height: 200px;
+            background: url('hello.png') center center / cover no-repeat;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .image-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                rgba(0,0,0,0) 0%,
+                rgba(0,0,0,0.2) 40%,
+                rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 2;
+            padding: 30px 25px;
+            text-align: center;
+        }
+
+        .welcome-title {
+            /*margin-top: 60px;*/
+            font-size:2.4rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+            font-family: 'Amiri', serif;
+        }
+
+        @media (min-width: 640px) {
+            .welcome-title {
+             font-size: 2.4rem;
+            }
+        }
+
+        .enter-btn {
+            margin-top: 4px; /* يمكنك زيادة هذه القيمة أو تقليلها حسب الرغبة */
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            color: #000;
+            font-size: 2.25rem;
+            font-weight: bold;
+            font-family: 'Extended Kufic', 'Amiri', serif;
+            padding: 16px 65px;
+            border: 3px solid; /* تحديد سماكة الإطار ونوعه */
+            border-color: #f355b4; /* اللون الأخضر (يمكنك تغييره) */
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(74, 222, 128, 0.4);
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(74, 222, 128, 0.5);
+        }
+
+        .enter-btn:active {
+            transform: translateY(0);
+        }
+
+        .lang-section {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .lang-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .lang-btn {
+            padding: 14px 20px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: #000;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: #fff;
+        }
+
+        .lang-btn:disabled {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        /* ════════════════════════════════════════════════════════════ */
+        /* شريط الوجبات السفلي                                          */
+        /* ════════════════════════════════════════════════════════════ */
+
+        .bottom-bar {
+            background: linear-gradient(180deg, #0d2137 0%, #091828 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ticker-wrapper {
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            direction: ltr !important;
+            unicode-bidi: bidi-override;
+        }
+
+        .ticker-track {
+            display: flex;
+            align-items: center;
+            width: max-content;
+            will-change: transform;
+            direction: ltr !important;
+        }
+
+        .ticker-track.rtl-scroll {
+            animation: scroll-rtl var(--ticker-duration, 60s) linear infinite;
+        }
+
+        @keyframes scroll-rtl {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0%); }
+        }
+
+        .ticker-track.ltr-scroll {
+            animation: scroll-ltr var(--ticker-duration, 60s) linear infinite;
+        }
+
+        @keyframes scroll-ltr {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ═══════════════════════════════════════════════════════════ */
+        /* عنصر الوجبة في الشريط                                       */
+        /* ═══════════════════════════════════════════════════════════ */
+
+        .meal-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            unicode-bidi: plaintext;
+            padding: 10px 18px;
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border-radius: 16px;
+            margin: 0 5px;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            min-width: 280px;
+        }
+
+        /* 🛑 التعديلات النهائية 🛑 */
+
+        /* ---------------------------------------------------- */
+        /* 1. الصف الأول: [السعرات] [الكربوهيدرات] [الاسم] */
+        /* تم عكس الـ order: السعرات (3->1)، الاسم (1->3) */
+        /* ---------------------------------------------------- */
+        .meal-header {
+    /* يجب تفعيل Flexbox لتطبيق الإزاحة التلقائية */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: nowrap
+        }
+        .meal-name-primary{
+         color: #ff0000; /* مثال: اللون الأحمر */
+         font-weight: bold;
+         }
+        .meal-name-repeat {
+         color: #007bff; /* مثال: اللون الأزرق */
+         font-weight: bold;
+        }
+    /* تدفع هذا العنصر إلى أقصى الطرف المقابل لبداية السطر */
+        .meal-name-ticker {
+            color: #e9e4b7;
+            font-weight: bold;
+            font-size: 1rem;
+            unicode-bidi: plaintext;
+        }
+
+        .meal-calories-main {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(220, 38, 38, 0.15) 100%);
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+       }
+           .calories-icon {
+            font-size: 0.8rem;
+            line-height: 1;
+        }
+
+           .calories-value {
+            color: #f87171;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+           .calories-unit {
+            color: rgba(248, 113, 113, 0.7);
+            font-size: 0.8rem;
+        }
+
+        /* ---------------------------------------------------- */
+        /* 2. الصف الثاني: [النص التوضيحي] [الدهون] [البروتين] */
+        /* تم عكس الـ order: النص (3->1)، البروتين (1->3) */
+        /* ---------------------------------------------------- */
+        .meal-nutrition-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            direction: rtl;
+            gap: 10px;
+            padding: 0;
+        }
+
+        .meal-nutrition-row .nutrition-info-text-start {
+            order: 1; /* 🛑 أقصى اليسار */
+            white-space: nowrap;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-left: auto; /* دفع النص لليسار */
+        }
+        .meal-nutrition-row .nutrition-badge.fat {
+            order: 2; /* الوسط (الدهون) */
+            margin-left: auto
+        }
+        .meal-nutrition-row .nutrition-badge.protein {
+            order: 3; /* 🛑 أقصى اليمين (البروتين) */
+        }
+
+        /* ملاحظة: تم إزالة margin-left: auto من .nutrition-badge.fat لكي تتجمع العناصر في اليمين */
+
+
+        /* القيمة الغذائية (بشكل عام) */
+        .nutrition-badge {
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            unicode-bidi: plaintext;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .nutrition-badge.protein {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .nutrition-badge.carbs-header, .nutrition-badge.fat {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .nutrition-badge.fat {
+            background: rgba(168, 85, 247, 0.2);
+            color: #c084fc;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+         /* 🛑 التعديل هنا: إضافة تنسيق الحاوية (الخلفية والحدود) 🛑 */
+        .meal-nutrition-row .nutrition-info-text-start {
+            order: 1; /* أقصى اليسار */
+            white-space: nowrap;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8); /* زيادة وضوح النص قليلاً */
+            margin-left: auto;
+
+        /* ---------------------------------------------------- */
+        /* إضافة تنسيقات الحاوية المرئية */
+            padding: 4px 10px; /* مسافة داخلية */
+            border-radius: 8px; /* زوايا مستديرة */
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(29, 78, 216, 0.1) 100%); /* خلفية خفيفة مميزة */
+            border: 1px solid rgba(59, 130, 246, 0.3); /* حدود بلون خفيف */
+            font-weight: 400;
+            /* ---------------------------------------------------- */
+}
+
+        /* التحليل الطبي */
+        /* ---------------------------------------------------- */
+        /* 3. الصف الثالث: [الكلى] [النقرس]...[السكري] (كما هو) */
+        /* ---------------------------------------------------- */
+        .meal-medical {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: nowrap;
+            unicode-bidi: plaintext;
+            padding-top: 6px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            direction: rtl;
+        }
+
+        .meal-medical [data-order="5"] { order: 5; } /* الكلى */
+        .meal-medical [data-order="4"] { order: 4; } /* النقرس */
+        .meal-medical [data-order="3"] { order: 3; } /* الدهنيات */
+        .meal-medical [data-order="2"] { order: 2; } /* الضغط */
+        .meal-medical [data-order="1"] { order: 1; } /* السكري */
+
+
+        .medical-badge {
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            unicode-bidi: plaintext;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            flex-shrink: 0;
+        }
+
+        .medical-badge.diabetic {
+            background: rgba(236, 72, 153, 0.2);
+            color: #f472b6;
+            border: 1px solid rgba(236, 72, 153, 0.3);
+        }
+
+        .medical-badge.pressure {
+            background: rgba(249, 115, 22, 0.2);
+            color: #fb923c;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+
+        .medical-badge.lipid {
+            background: rgba(20, 184, 166, 0.2);
+            color: #2dd4bf;
+            border: 1px solid rgba(20, 184, 166, 0.3);
+        }
+
+        .medical-badge.gout {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .medical-badge.kidney {
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        /* ═══════════════════════════════════════════════════════════ */
+        /* الفاصل بين الوجبات                                          */
+        /* ═══════════════════════════════════════════════════════════ */
+
+        .meal-separator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 12px;
+            flex-shrink: 0;
+            gap: 4px;
+        }
+
+        .separator-line {
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(180deg,
+                transparent 0%,
+                rgba(74, 222, 128, 0.5) 30%,
+                rgba(74, 222, 128, 0.8) 50%,
+                rgba(74, 222, 128, 0.5) 70%,
+                transparent 100%);
+            border-radius: 2px;
+        }
+
+        .separator-icon-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .separator-dot {
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+        }
+
+        .separator-icon {
+            font-size: 1.1rem;
+            opacity: 0.7;
+        }
+
+        /* ════════════════════════════════════════════════════════════ */
+        /* شريط المعلومات الحالية                                       */
+        /* ════════════════════════════════════════════════════════════ */
+
+        .current-meal-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 20px;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.08) 0%, rgba(34, 197, 94, 0.03) 100%);
+            min-height: 55px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .meal-counter {
+            background: rgba(74, 222, 128, 0.15);
+            color: #dfceab;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-family: 'Amiri';
+            font-size: 0.95rem;
+            font-weight:400 ;
+            color: #e1d8c6;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .meal-icon {
+            font-size: 1.4rem;
+        }
+
+        /* ════════════════════════════════════════════════════════════ */
+        /* شريط التقدم                                                  */
+        /* ════════════════════════════════════════════════════════════ */
+
+        .progress-bar-container {
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4ade80, #22c55e);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+    </style>
+
+    <script src="analyse_meals_m_1-50.js"></script>
+    <script src="analyse_meals_m_51-100.js"></script>
+    <script src="analyse_meals_m_101-150.js"></script>
+    <script>
+        // بناء الميدان الموحد الذي تتوقعه دالة initTicker
+     var ANALYSED_MEALS_DATA = [
+         ...(typeof medical1 !== 'undefined' ? medical1 : []),
+         ...(typeof medical2 !== 'undefined' ? medical2 : []),
+         ...(typeof medical3 !== 'undefined' ? medical3 : [])
+     ];
+
+     console.log("📊 تم دمج بيانات التحليل الطبي بنجاح. العدد الكلي: " + ANALYSED_MEALS_DATA.length);
+    </script>
+</head>
+<body>
+
+<div class="app-frame" id="appFrame">
+    <div class="main-card">
+
+        <!-- قسم الصورة والترحيب -->
+        <div class="image-section">
+            <div class="welcome-content">
+                <h1 class="welcome-title amiri-font" id="welcomeTitle">شو عاملي أكل؟</h1>
+                <button class="enter-btn" id="enterBtn" onclick="openApp()">تفضلي!</button>
+            </div>
+        </div>
+
+        <!-- قسم اختيار اللغة -->
+        <div class="lang-section">
+            <div class="lang-grid">
+                <button class="lang-btn amiri-font active" data-lang="ar" onclick="setLanguage('ar', this)">عربي</button>
+                <button class="lang-btn" data-lang="en" onclick="setLanguage('en', this)">English</button>
+                <button class="lang-btn amiri-font" data-lang="fa" onclick="setLanguage('fa', this)">فارسی</button>
+                <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru', this)">Русский</button>
+            </div>
+        </div>
+
+        <!-- شريط الوجبات السفلي -->
+        <div class="bottom-bar">
+            <div class="ticker-wrapper">
+                <div class="ticker-track rtl-scroll" id="tickerTrack">
+
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="current-meal-bar" id="currentMealBar">
+                <span class="meal-counter meal-quote-display" id="mealCounter">... سيظهر القول المأثور هنا ...</span>
+                <span class="current-meal-country hidden" id="currentMealCountry"></span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    // ===============================================================
+   // I. التعريفات العالمية والبيانات
+   // ===============================================================
+
+   // 🚨 المتغيرات التي تتحكم في تتبع حالة المؤقت الدوري
+   let mealCycleInterval = null;
+   let currentLang = 'ar'; // القيمة الافتراضية
+   let currentIndex = 0;
+   let mealsData = [];
+   let progressInterval = null;
+
+   // ❌ تم حذف nameTimeout و hideTimeout لأنهما لم يعودا مطلوبين
+
+   // المتغيرات العالمية المطلوبة
+   const TIMING = {
+       // ❌ تم حذف NAME_APPEAR_DELAY و NAME_VISIBLE_DURATION
+       TICKER_SPEED: 20, // سرعة الشريط المتحرك (بكسل/ثانية)
+       GAP_BETWEEN_MEALS: 5 // الفاصل بين الوجبات (الذي يحدد مدة العرض الآن)
+   };
+
+// 💎 قائمة الأقوال المأثورة (يمكنك استبدالها بأقوالك المأثورة)
+const quotesData = [
+    { ar: 'العقل السليم في الجسم السليم.', en: 'A sound mind in a sound body.', fa: 'عقل سالم در بدن سالم است.', ru: 'В здоровом теле здоровый дух.' },
+    { ar: 'صحتك تبدأ من مطبخك.', en: 'Your health starts in your kitchen.', fa: 'سلامت شما از آشپزخانه‌تان شروع می‌شود.', ru: 'Ваше здоровье начинается с вашей кухни.' },
+    { ar: 'ليكن طعامك دواؤك، ودواؤك طعامك.', en: 'Let food be thy medicine and medicine be thy food.', fa: 'بگذارید غذای شما دوای شما باشد و دوای شما غذای شما.', ru: 'Пусть пища будет твоим лекарством, а лекарство — пищей.' },
+    { ar: 'نحن ما نأكل، فاجعل طعامك راقياً.', en: 'We are what we eat, so make your food exquisite.', fa: 'ما همان چیزی هستیم که می‌خوریم، پس غذای خود را نفیس سازید.', ru: 'Мы — то, что мы едим, поэтому сделайте свою пищу изысканной.' },
+    { ar: 'الوقاية خير من العلاج، وجودة الغذاء هي الوقاية الأولى.', en: 'Prevention is better than cure, and quality food is the first prevention.', fa: 'پیشگیری بهتر از درمان است و کیفیت غذا، اولین پیشگیری است.', ru: 'Профилактика лучше лечения, а качественная пища — первая профилактика.' },
+    { ar: 'كلما كان الغذاء أقرب للطبيعة، كان أفضل لصحتك.', en: 'The closer the food is to nature, the better for your health.', fa: 'هرچه غذا به طبیعت نزدیک‌تر باشد، برای سلامتی شما بهتر است.', ru: 'Чем ближе пища к природе, тем лучше для вашего здоровья.' },
+    { ar: 'استثمر في طعامك، توفر في فواتير طبيبك.', en: 'Invest in your food, save on your doctor\'s bills.', fa: 'روی غذای خود سرمایه‌گذاری کنید، در قبض‌های پزشک خود صرفه‌جویی کنید.', ru: 'Инвестируйте в свою еду, экономьте на счетах врачей.' },
+    { ar: 'جودة الغذاء مقياس لجودة الحياة.', en: 'The quality of food is a measure of the quality of life.', fa: 'کیفیت غذا معیار کیفیت زندگی است.', ru: 'Качество еды — это мера качества жизни.' },
+    { ar: 'الرشاقة تبدأ من الطبق، لا من الصالة الرياضية فقط.', en: 'Fitness begins in the dish, not just the gym.', fa: 'تناسب اندام از ظرف شروع می‌شود، نه فقط از باشگاه.', ru: 'Фитнес начинается с тарелки, а не только со спортзала.' },
+    { ar: 'صحتك هي ثروتك الحقيقية، والغذاء هو مفتاح الخزانة.', en: 'Your health is your true wealth, and food is the key to the vault.', fa: 'سلامتی شما ثروت واقعی شماست و غذا کلید آن خزانه است.', ru: 'Ваше здоровье — ваше истинное богатство, а еда — ключ к хранилищу.' },
+    { ar: 'الطعام الجيد يعطي القوة، والطعام السيئ يسرقها.', en: 'Good food gives strength, bad food steals it.', fa: 'غذای خوب قدرت می‌دهد و غذای بد آن را می‌دزدد.', ru: 'Хорошая еда дает силы, плохая еда их крадет.' },
+    { ar: 'اجعل الفواكه والخضراوات أصدقاءك المقربين.', en: 'Make fruits and vegetables your closest friends.', fa: 'میوه‌ها و سبزیجات را دوستان صمیمی خود قرار دهید.', ru: 'Сделайте фрукты и овощи своими ближайшими друзьями.' },
+    { ar: 'لا يوجد دواء يعمل ما يعمله الغذاء الصحي.', en: 'No drug works as well as healthy food does.', fa: 'هیچ دارویی به اندازه غذای سالم کار نمی‌کند.', ru: 'Ни одно лекарство не работает так хорошо, как здоровая пища.' },
+    { ar: 'كل ملعقة هي خيار إما للصحة أو ضدها.', en: 'Every spoonful is a choice, either for health or against it.', fa: 'هر قاشق یک انتخاب است، یا به نفع سلامتی یا علیه آن.', ru: 'Каждая ложка — это выбор, либо в пользу здоровья, либо против него.' },
+    { ar: 'تغذية جيدة اليوم تعني مناعة أقوى غداً.', en: 'Good nutrition today means stronger immunity tomorrow.', fa: 'تغذیه خوب امروز به معنای سیستم ایمنی قوی‌تر فردا است.', ru: 'Хорошее питание сегодня означает более сильный иммунитет завтра.' }
+];
+
+   // 💎 كائن الترجمات المدمج والمُحدَّث (تم تضمين الجزء الكامل)
+   const translations = {
+       ar: {
+           dir: 'rtl',
+           title: 'شو عاملي أكل؟',
+           btn: 'تفضلي!',
+           loading: 'جارِ التحديث...',
+           kcal: 'السعرات الحرارية',
+           protein: 'بروتين',
+           carbs: 'الكربوهيدرات',
+           fat: 'الدهون',
+           sugar: 'سكر',
+           cholesterol: 'كولسترول',
+           sodium: 'صوديوم',
+           fiber: 'ألياف',
+           gi: 'مؤشر سكري',
+           diabetes: 'السكري',
+           pressure: 'الضغط',
+           lipids: 'الدهون',
+           gout: 'النقرس',
+           kidney: 'الكلى',
+           ingredients_per_100g: 'نسبة المكونات من الدهون والبروتين في 100غرام من الوجبة',
+           suitable: 'مناسبة',
+           unsuitable: 'غير مناسبة',
+           caution: 'بحذر',
+           unknown: 'غير معروف'
+       },
+       en: {
+           dir: 'ltr',
+           title: 'What is for Dinner?',
+           btn: 'Enjoy!',
+           loading: 'Loading...',
+           kcal: 'kcal',
+           protein: 'Protein',
+           carbs: 'Carbs',
+           fat: 'Fat',
+           sugar: 'Sugar',
+           cholesterol: 'Chol',
+           sodium: 'Sodium',
+           fiber: 'Fiber',
+           gi: 'GI',
+           diabetes: 'Diabetes',
+           pressure: 'BP',
+           lipids: 'Lipids',
+           gout: 'Gout',
+           kidney: 'Kidney',
+           ingredients_per_100g: 'Ingredients per 100g of the meal',
+           suitable: 'Suitable',
+           unsuitable: 'Unsuitable',
+           caution: 'Caution',
+           unknown: 'Unknown'
+       },
+       fa: {
+           dir: 'rtl',
+           title: 'غذا چی داریم؟',
+           btn: 'بفرمایید!',
+           loading: 'در حال بارگذاری...',
+           kcal: 'کالری',
+           protein: 'پروتئین',
+           carbs: 'کربو',
+           fat: 'چربی',
+           sugar: 'قند',
+           cholesterol: 'کلسترول',
+           sodium: 'سدیم',
+           fiber: 'فیبر',
+           gi: 'شاخص قند',
+           diabetes: 'دیابت',
+           pressure: 'فشار خون',
+           lipids: 'چربی خون',
+           gout: 'نقرس',
+           kidney: 'کلیه',
+           ingredients_per_100g: 'نسبت مواد تشکیل دهنده در 100 گرم از وعده',
+           suitable: 'مناسب',
+           unsuitable: 'نامناسب',
+           caution: 'با احتیاط',
+           unknown: 'ناشناخته'
+       },
+       ru: {
+           dir: 'ltr',
+           title: 'Что на обед?',
+           btn: 'Заходите!',
+           loading: 'Загрузка...',
+           kcal: 'ккал',
+           protein: 'Белок',
+           carbs: 'Углев',
+           fat: 'Жиры',
+           sugar: 'Сахар',
+           cholesterol: 'Холест',
+           sodium: 'Натрий',
+           fiber: 'Клетч',
+           gi: 'ГИ',
+           diabetes: 'Диабет',
+           pressure: 'Давление',
+           lipids: 'Липиды',
+           gout: 'Подагра',
+           kidney: 'Почки',
+           ingredients_per_100g: 'Состав на 100 грамм блюда',
+           suitable: 'Подходит',
+           unsuitable: 'Не подходит',
+           caution: 'Осторожно',
+           unknown: 'Неизвестно'
+       }
+   };
+
+   // أيقونات الفواصل المتنوعة
+   const separatorIcons = ['🍴', '✦', '◆', '🥄', '🍳', '⭐', '🌟'];
+
+   // ===============================================================
+   // II. الدوال العالمية المساعدة والتحكم في اللغة
+   // ===============================================================
+
+   function setLanguage(lang, btnElement) {
+       const t = translations[lang];
+       if (!t) return;
+
+       document.querySelectorAll('.lang-btn').forEach(b => b.disabled = true);
+
+       btnElement.innerHTML = `<span class="flex items-center justify-center gap-2">
+           <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24">
+               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+           </svg>
+           ${t.loading}
+       </span>`;
+
+       setTimeout(() => {
+           currentLang = lang;
+
+           document.documentElement.lang = lang;
+           document.documentElement.dir = t.dir;
+
+           const welcomeTitle = document.getElementById('welcomeTitle');
+           const enterBtn = document.getElementById('enterBtn');
+
+           if (welcomeTitle) welcomeTitle.textContent = t.title;
+           if (enterBtn) enterBtn.textContent = t.btn;
+
+           document.querySelectorAll('.lang-btn').forEach(b => {
+               b.disabled = false;
+               b.classList.remove('active');
+               const originalText = { ar: 'عربي', en: 'English', fa: 'فارسی', ru: 'Русский' };
+               b.innerHTML = originalText[b.dataset.lang];
+           });
+           btnElement.classList.add('active');
+
+           rebuildTicker();
+           restartMealCycle();
+
+           localStorage.setItem('preferredLang', lang);
+       }, 2000);
+   }
+
+   function loadSavedLanguage() {
+       const saved = localStorage.getItem('preferredLang') || 'ar';
+       const t = translations[saved] || translations.ar;
+
+       currentLang = saved;
+       document.documentElement.lang = saved;
+       document.documentElement.dir = t.dir;
+
+       const welcomeTitle = document.getElementById('welcomeTitle');
+       const enterBtn = document.getElementById('enterBtn');
+
+       if (welcomeTitle) welcomeTitle.textContent = t.title;
+       if (enterBtn) enterBtn.textContent = t.btn;
+
+       document.querySelectorAll('.lang-btn').forEach(b => {
+           b.classList.toggle('active', b.dataset.lang === saved);
+       });
+   }
+
+   // ════════════════════════════════════════════════════════════
+   // III. دوال البيانات والتحليل
+   // ════════════════════════════════════════════════════════════
+
+   function getMeals(data) {
+       return data.filter(item => item.hasOwnProperty('الرقم'));
+   }
+
+   function getMealName(meal, lang) {
+       if (!meal) return '';
+       if (meal.الاسم && meal.الاسم[lang]) {
+           return String(meal.الاسم[lang]).trim();
+       }
+       if (meal.اسم_الوجبة) {
+           return String(meal.اسم_الوجبة).trim();
+       }
+       return 'وجبة غير معنونة';
+   }
+
+   function createSeparator(index) {
+       const icon = separatorIcons[index % separatorIcons.length];
+       return `<div class="meal-separator"><div class="separator-line"></div><div class="separator-icon-wrapper"><div class="separator-dot"></div><span class="separator-icon">${icon}</span><div class="separator-dot"></div></div><div class="separator-line"></div></div>`;
+   }
+
+   const cleanDiseaseKey = (rawKey) => {
+       if (typeof rawKey !== 'string') return '';
+       return rawKey.replace(/^مرضى\s+/, '').trim();
+   };
+
+ /**
+ * تنسيق ترتيب عرض القيمة والوحدة/المكون والأيقونة بناءً على اللغة.
+ * @param {string} icon - رمز الأيقونة (مثل '🌾').
+ * @param {string} value - القيمة الرقمية.
+ * @param {string} unitOrIngredient - الوحدة أو اسم المكون المترجم.
+ * @param {string} lang - اللغة الحالية.
+ * @returns {string} - المحتوى بالترتيب الصحيح.
+ */
+function formatNutrientOrder(icon, value, unitOrIngredient, lang) {
+    // المحتوى الذي يتبدل هو: الأيقونة + المكون + القيمة
+
+    // اللغات ذات الاتجاه LTR: الإنجليزية والروسية
+    if (lang === 'en' || lang === 'ru') {
+        // LTR: الأيقونة المكون القيمة (Icon Ingredient Value)
+        return `${icon} ${unitOrIngredient} ${value}`;
+    } else {
+        // RTL: القيمة المكون الأيقونة (Value Ingredient Icon)
+        return `${value} ${unitOrIngredient} ${icon}`;
+    }
+}
+
+/**
+ * دالة مساعدة لتطبيق فاصل سطر إذا تجاوز الاسم 3 كلمات.
+ */
+function formatMealName(name) {
+    if (!name || typeof name !== 'string') return '';
+
+    const words = name.trim().split(/\s+/);
+
+    if (words.length > 3) {
+        const firstPart = words.slice(0, 3).join(' ');
+        const secondPart = words.slice(3).join(' ');
+        return `${firstPart}<br>${secondPart}`;
+    }
+
+    return name;
+}
+
+/**
+ * دالة مساعدة لتحليل نص الملاءمة (تحتوي على المفتاح للترجمة).
+ */
+const getSuitabilityInfo = (suitabilityText) => {
+    const text = String(suitabilityText).trim();
+    if (text.includes('غير مناسبة')) return { icon: '❌', key: 'unsuitable', css: 'unsuitable' };
+    if (text.includes('بحذر')) return { icon: '⚠️', key: 'caution', css: 'caution' };
+    if (text.includes('مناسبة')) return { icon: '✅', key: 'suitable', css: 'suitable' };
+    return { icon: '❓', key: 'unknown', css: 'unknown' };
+};
+
+
+// ════════════════════════════════════════════════════════════
+// IV. بناء عنصر الوجبة (buildMealItem)
+// ════════════════════════════════════════════════════════════
+
+function buildMealItem(meal, lang) {
+
+    const t = translations[lang] || translations.ar;
+
+    const rawName = getMealName(meal, lang);
+    const formattedName = formatMealName(rawName);
+
+    const nutritionData = meal.القيمة_الغذائية || {};
+    const medicalData = meal.التحليل_الطبي || [];
+
+    const rawCaloriesValue = parseFloat(String(nutritionData.السعرات || '0').replace(/g/i, '').trim());
+    const formattedCalories = isNaN(rawCaloriesValue) ? '؟' : Math.round(rawCaloriesValue);
+    const rawCarbs = nutritionData.الكربوهيدرات || '؟';
+
+    const medicalMap = {};
+    medicalData.forEach(analysis => {
+        const keyToStore = cleanDiseaseKey(analysis.الحالة_المرضية.ar);
+        medicalMap[keyToStore] = analysis;
+    });
+
+    const requiredDiseases = [
+        { key: 'السكري', localized: t.diabetes, css_class: 'diabetic' },
+        { key: 'الضغط', localized: t.pressure, css_class: 'pressure' },
+        { key: 'الدهنيات', localized: t.lipids, css_class: 'lipid' },
+        { key: 'النقرس', localized: t.gout, css_class: 'gout' },
+        { key: 'الكلى', localized: t.kidney, css_class: 'kidney' }
+    ];
+
+    const getDiseaseBadge = (disease) => {
+         const keyToSearch = cleanDiseaseKey(disease.key);
+         const status = medicalMap[keyToSearch];
+
+         const suitabilityTextAR = String(status ? status.الملاءمة.ar : 'غير معروف').trim();
+         const { icon, key, css } = getSuitabilityInfo(suitabilityTextAR);
+
+         const localizedText = t[key] || key;
+
+        return `<span class="medical-badge ${disease.css_class} ${css}">
+            <span class="badge-icon">${icon}</span>
+            <span class="badge-text">${disease.localized}: ${localizedText}</span>
+        </span>`;
+    };
+
+    // تجهيز محتوى المؤشرات الغذائية بالترتيب الشرطي (باستخدام الأيقونة كمعامل أول) 🎯
+    const carbsContent = formatNutrientOrder('🌾', rawCarbs, t.carbs || '', lang);
+    const fatContent = formatNutrientOrder('🧈', nutritionData.الدهون || '؟', t.fat || '', lang);
+    const proteinContent = formatNutrientOrder('💪', nutritionData.البروتين || '؟', t.protein || '', lang);
+
+    // تحديد ما إذا كانت اللغة الحالية هي RTL (لأجل السعرات الحرارية والتبديل)
+    const isRTL = (lang === 'ar' || lang === 'fa');
+
+    return `
+        <div class="meal-item">
+
+            <div class="meal-header">
+
+                <div class="meal-name-primary" data-order="1">
+                    ${formattedName}
+                </div>
+
+                <div class="meal-calories-main" data-order="2">
+                    ${isRTL ?
+                        // RTL (AR/FA): القيمة، ثم الأيقونة، ثم الوحدة
+                        `<span class="calories-value">${formattedCalories}</span><span class="calories-icon"></span><span class="calories-unit">${t.kcal}🔥</span>` :
+                        // LTR (EN/RU): الوحدة، ثم الأيقونة، ثم القيمة
+                        `<span class="calories-unit">${t.kcal}🔥</span><span class="calories-icon"></span><span class="calories-value">${formattedCalories}</span>`
+                    }
+                </div>
+
+                <span class="nutrition-badge carbs-header" data-order="3">
+                     ${carbsContent}
+                </span>
+
+                <div class="meal-name-primary" data-order="4">
+                    ${formattedName}
+                </div>
+
+            </div>
+
+            <div class="meal-nutrition-row">
+                <div class="nutrition-info-text-start" data-order="3">${t.ingredients_per_100g}</div>
+
+                <span class="nutrition-badge fat" data-order="2">
+                     ${fatContent}
+                </span>
+
+                <span class="nutrition-badge protein" data-order="1">
+                     ${proteinContent}
+                </span>
+            </div>
+
+            <div class="meal-medical">
+                ${getDiseaseBadge(requiredDiseases[4])} ${getDiseaseBadge(requiredDiseases[3])} ${getDiseaseBadge(requiredDiseases[2])} ${getDiseaseBadge(requiredDiseases[1])} ${getDiseaseBadge(requiredDiseases[0])}
+            </div>
+        </div>
+    `;
+}
+
+   // ════════════════════════════════════════════════════════════
+   // V. دوال دورة التطبيق والتحكم في المؤقتات
+   // ════════════════════════════════════════════════════════════
+
+   function initTicker() {
+       if (typeof ANALYSED_MEALS_DATA === 'undefined') {
+           console.error('❌ ملف البيانات ANALYSED_MEALS_DATA غير موجود. لن يتم بناء الشريط.');
+           return;
+       }
+
+       mealsData = getMeals(ANALYSED_MEALS_DATA);
+       if (mealsData.length === 0) {
+           console.warn('⚠️ تم تحميل ملف البيانات لكنه لا يحتوي على وجبات صالحة.');
+           return;
+       }
+       console.log(`✅ تم تحميل ${mealsData.length} وجبة`);
+
+       rebuildTicker();
+       startMealCycle();
+   }
+
+   function rebuildTicker() {
+       const track = document.getElementById('tickerTrack');
+       if (!track || !mealsData.length) return;
+
+       track.style.animation = 'none';
+
+       let html = '';
+       mealsData.forEach((meal, index) => {
+           if (index > 0) { html += createSeparator(index); }
+           html += buildMealItem(meal, currentLang);
+       });
+
+       const bridgeSeparator = createSeparator(mealsData.length);
+       track.innerHTML = html + bridgeSeparator + html;
+
+       track.classList.remove('ltr-scroll', 'rtl-scroll');
+
+       const trackWidth = track.scrollWidth / 4;
+       const tickerDuration = trackWidth / TIMING.TICKER_SPEED;
+       track.style.setProperty('--ticker-duration', `${tickerDuration}s`);
+
+       track.offsetHeight;
+
+       if (currentLang === 'ar' || currentLang === 'fa') {
+           track.classList.add('ltr-scroll');
+       } else {
+           track.classList.add('rtl-scroll');
+       }
+
+       track.style.animation = '';
+   }
+
+   function startMealCycle() {
+       if (!mealsData.length) return;
+
+       currentIndex = 0;
+       showCurrentMeal();
+
+       // نستخدم الآن GAP_BETWEEN_MEALS فقط لتحديد المدة الزمنية للعرض
+       const totalMealTime = TIMING.GAP_BETWEEN_MEALS * 5000;
+
+       mealCycleInterval = setInterval(() => {
+           currentIndex = (currentIndex + 1) % mealsData.length;
+           showCurrentMeal();
+       }, totalMealTime);
+
+       startProgressBar(totalMealTime);
+   }
+
+   function restartMealCycle() {
+       if (mealCycleInterval) clearInterval(mealCycleInterval);
+       // ❌ تم حذف nameTimeout و hideTimeout
+       if (progressInterval) cancelAnimationFrame(progressInterval);
+
+       currentIndex = 0;
+       startMealCycle();
+   }
+
+   function showCurrentMeal() {
+
+    const counterEl = document.getElementById('mealCounter');
+    if (!counterEl) return;
+
+    // 1. تحديد القول المأثور بناءً على فهرس الوجبة الحالي
+    // نستخدم الـ 'Modulus %' للتأكد من أننا نعود إلى بداية قائمة الأقوال إذا كانت أقصر من عدد الوجبات
+    const quoteIndex = currentIndex % quotesData.length;
+    const quoteText = quotesData[quoteIndex][currentLang] || quotesData[quoteIndex].ar;
+
+    // 2. تحديث محتوى العنصر mealCounter بالقول المأثور
+    counterEl.textContent = quoteText;
+}
+
+
+   function startProgressBar(totalTime) {
+       const progressBar = document.getElementById('progressBar');
+       let startTime = Date.now();
+
+       if (progressInterval) cancelAnimationFrame(progressInterval);
+
+       function updateProgress() {
+           const elapsed = Date.now() - startTime;
+           const cycleElapsed = elapsed % totalTime;
+           const progress = (cycleElapsed / totalTime) * 100;
+
+           if (progressBar) progressBar.style.width = `${progress}%`;
+
+           if (elapsed > 0 && cycleElapsed < 50) {
+               startTime = Date.now();
+           }
+
+           progressInterval = requestAnimationFrame(updateProgress);
+       }
+
+       updateProgress();
+   }
+
+   function openApp() {
+       const frame = document.getElementById('appFrame');
+       if (frame) {
+           frame.style.opacity = '0';
+           frame.style.transition = 'opacity 1s ease';
+       }
+
+       setTimeout(() => {
+           window.location.href = `index_prompt1.html?lang=${currentLang}`;
+       }, 1000);
+   }
+
+   // ════════════════════════════════════════════════════════════
+   // VI. التشغيل
+   // ════════════════════════════════════════════════════════════
+
+   window.onload = function() {
+       loadSavedLanguage();
+
+       setTimeout(() => {
+           initTicker();
+       }, 500);
+
+       console.log('⚙️ إعدادات التوقيت:');
+       console.log(`   🚀 سرعة الشريط: ${TIMING.TICKER_SPEED} بكسل/ثانية`);
+       console.log(`   ⏸️ الفاصل بين الوجبات: ${TIMING.GAP_BETWEEN_MEALS} ثانية`);
+   };
+</script>
+</body>
+</html>
