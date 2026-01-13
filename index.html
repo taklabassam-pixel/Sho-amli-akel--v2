@@ -882,7 +882,7 @@ const quotesData = [
     const lang = content[savedLang] || content.ar;
 
     // إظهار النافذة (نستخدم true حالياً للمعاينة)
-        if (true){
+        if (!localStorage.getItem("disclaimer_accepted")){
         const modal = document.getElementById("disclaimer-modal");
         if (modal) {
             document.getElementById("disc-title").innerText = lang.title;
