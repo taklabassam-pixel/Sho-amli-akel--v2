@@ -2194,11 +2194,11 @@
   },
   {
     "id": 20,
-    "name_ar": "فول مدمس",
+    "name_ar": "فول مدمّس",
     "name_en": "Ful Medames",
     "name_ru": "Фуль Медамес",
     "name_fa": "فول مدمس",
-    "image": "images/ful-medames.jpg",
+    "image": "images/foul-medames.jpg",
     "ingredients": [
       {
         "item_ar": "فول",
@@ -4454,7 +4454,7 @@
     "name_en": "Hummus with Tahini",
     "name_ru": "Хумус с тахини",
     "name_fa": "حمص با ارده",
-    "image": "images/hummus-tahini.jpg",
+    "image": "images/hummus-with-tahini.jpg",
     "ingredients": [
       {
         "item_ar": "حمص",
@@ -4837,7 +4837,7 @@
     "name_en": "Chickpea and Vegetable Stew",
     "name_ru": "Рагу из нута и овощей",
     "name_fa": "خوراک نخود و سبزیجات",
-    "image": "images/chickpea-vegetable-stew.jpg",
+    "image": "images/chickpea-and-vegetable-stew.jpg",
     "ingredients": [
       {
         "item_ar": "حمص مسلوق (معلب ومغسول)",
@@ -5275,7 +5275,7 @@
     "name_en": "Mediterranean Baked Cod with Herbs and Lemon",
     "name_ru": "средиземноморская запеченная треска с травами и лимоном",
     "name_fa": "ماهی کاد مدیترانه‌ای پخته شده با سبزیجات و لیمو",
-    "image": "images/mediterranean-baked-cod-herbs-lemon.jpg",
+    "image": "images/mediterranean-baked-cod-herbs-and-lemon.jpg",
     "ingredients": [
       {
         "item_ar": "فيليه سمك القد",
@@ -5383,7 +5383,7 @@
     "name_en": "Cold Quinoa Salad with Roasted Vegetables and Feta",
     "name_ru": "Холодный салат с киноа, жареными овощами и фетой",
     "name_fa": "سالاد سرد کینوا با سبزیجات کبابی و پنیر فتا",
-    "image": "images/cold-quinoa-salad-roasted-vegetables-feta.jpg",
+    "image": "images/cold-quinoa-salad-with-roasted.jpg",
     "ingredients": [
       {
         "item_ar": "كينوا مطبوخة",

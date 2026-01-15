@@ -194,7 +194,7 @@ const meals4 = [
   "name_en": "Poached Eggs with Grilled Asparagus",
   "name_ru": "Яйца пашот с жареной спаржей",
   "name_fa": "تخم‌مرغ پوچ شده با مارچوبه گریل",
-  "image": "images/poached-eggs-asparagus.jpg",
+  "image": "images/poached-eggs-with-grilled-asparagus.jpg",
   "ingredients": [
     { "item_ar": "بيض طازج", "item_en": "Fresh Eggs", "item_ru": "Свежие яйца", "item_fa": "تخم‌مرغ تازه", "quantity": 2, "unit_ar": "حبة", "unit_en": "pieces", "unit_ru": "штуки", "unit_fa": "عدد" },
     { "item_ar": "هليون", "item_en": "Asparagus", "item_ru": "Спаржа", "item_fa": "مارچوبه", "quantity": 6, "unit_ar": "أعواد", "unit_en": "stalks", "unit_ru": "стеблей", "unit_fa": "شاخه" },
@@ -531,7 +531,7 @@ const meals4 = [
   "name_en": "Royal Smoked Salmon & Avocado Toast",
   "name_ru": "Королевский тост с копченым лососем и авокадо",
   "name_fa": "تست سلطنتی سلمون دودی و آووکادو",
-  "image": "images/royal-salmon-avocado.jpg",
+  "image": "images/royal-salmon-with-avocado.jpg",
   "ingredients": [
     {
       "item_ar": "خبز العجين المخمر (Sourdough)",
@@ -880,7 +880,7 @@ const meals4 = [
   "name_en": "Breakfast Quinoa with Green Almonds",
   "name_ru": "Киноа на завтрак с зеленым миндалем",
   "name_fa": "صبحانه کینوا با بادام سبز",
-  "image": "images/quinoa-almonds.jpg",
+  "image": "images/quinoa-with-green-almonds.jpg",
   "ingredients": [
     {
       "item_ar": "كينوا ملكية بيضاء",
@@ -1063,7 +1063,7 @@ const meals4 = [
   "name_en": "Greek Yogurt Parfait with Maca Powder",
   "name_ru": "Парфе из греческого йогурта с макой",
   "name_fa": "پارفه ماست یونانی با پودر ماکا",
-  "image": "images/maca-yogurt-parfait.jpg",
+  "image": "images/greek-yogurt-with-berries-and-oats.jpg",
   "ingredients": [
     {
       "item_ar": "زبادي يوناني أصلي",
@@ -1124,7 +1124,7 @@ const meals4 = [
   "name_en": "Royal Eggs Benedict with Asparagus",
   "name_ru": "Яйца Бенедикт с королевской спаржей",
   "name_fa": "تخم‌مرغ بندیکت سلطنتی با مارچوبه",
-  "image": "images/royal-eggs-benedict.jpg",
+  "image": "images/royal-eggs-benedict-with-asparagus.jpg",
   "ingredients": [
     {
       "item_ar": "بيض عضوي",
@@ -1201,4 +1201,4 @@ const meals4 = [
   "weather": ["cold", "moderate"],
   "mealType": ["regular meal"]
 }
-]
+];
