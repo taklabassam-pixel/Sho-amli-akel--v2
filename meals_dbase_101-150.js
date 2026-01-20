@@ -3522,6 +3522,7 @@
     "name_en": "Arugula, Beetroot and Walnut Salad",
     "name_ru": "Салат из рукколы, свеклы и орехов",
     "name_fa": "سالاد جرجیر، چغندر و گردو",
+    "image": "images/arugula-beetroot-and-walnut-salad.jpg",
     "ingredients": [
       {
         "item_ar": "شمندر مسلوق",
