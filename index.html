@@ -247,17 +247,19 @@
     background-color: #FF9800; /* برتقالي */
     color: #004D40; /* أخضر غامق */
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 
-    /* ضبط العرض ليكون مناسباً للهاتف */
-    width: 90%; /* يترك مسافة بسيطة من الجوانب */
-    max-width: 450px; /* لا يتوسع بشكل قبيح على الأجهزة الكبيرة */
+    /* التعديل هنا لنقله للأسفل */
+    bottom: 20px; /* المسافة من الحافة السفلية */
+    left: 50%;
+    transform: translateX(-50%); /* تحريك لليسار بنسبة 50% من عرضه فقط ليتوسط أفقياً */
+
+    /* ضبط العرض */
+    width: 90%;
+    max-width: 450px;
 
     padding: 25px;
-    box-sizing: border-box; /* يضمن أن الـ Padding لا يزيد من عرض العنصر */
-    border-radius: 15px; /* حواف دائرية لجمالية التصميم */
+    box-sizing: border-box;
+    border-radius: 15px;
     text-align: center;
     direction: rtl;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -882,7 +884,7 @@ const quotesData = [
     const lang = content[savedLang] || content.ar;
 
     // إظهار النافذة (نستخدم true حالياً للمعاينة)
-        if (true){
+        if (!localStorage.getItem("disclaimer_accepted")){
         const modal = document.getElementById("disclaimer-modal");
         if (modal) {
             document.getElementById("disc-title").innerText = lang.title;
