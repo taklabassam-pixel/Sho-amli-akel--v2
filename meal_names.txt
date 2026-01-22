@@ -1,0 +1,188 @@
+قائمة بأسماء الوجبات المستخرجة:
+========================================
+
+1. Cheese Manakish
+2. Shakshouka
+3. Moutabal (Eggplant Dip)
+4. Kibbeh with Yogurt Sauce
+5. Mjadra
+6. Stuffed Grape Leaves
+7. Maqluba
+8. Mansaf (Yogurt Lamb)
+9. Mixed Grills
+10. Koshari
+11. Molokhia with Chicken
+12. Musakhan (Chicken with Sumac)
+13. Harra Osbao (Lentil Pasta)
+14. Raw Kibbeh
+15. Okra with Oil (Bamia bil Zait)
+16. Batata Harra (Spicy Potatoes)
+17. Lentil Soup
+18. Vegetable Oat Omelet
+19. Kousa Bil Laban (Stuffed Zucchini in Yogurt Sauce)
+20. Ful Medames
+21. Spinach Fatayer (Pies)
+22. Stuffed Zucchini
+23. Maqluba (Cauliflower)
+24. Arugula Salad
+25. Zaatar Manakish
+26. Fried Kibbeh
+27. Fruit Salad
+28. Fried Fish
+29. Rice with Vermicelli
+30. Stuffed Eggplant
+31. Meat Pie
+32. Barley Soup
+33. Caesar Salad
+34. Muhalabia
+35. Om Ali
+36. Cheese Baklava
+37. Maamoul with Pine Nuts
+38. Vegetable Salad
+39. Hummus with Tahini
+40. Lemon Herb Grilled Chicken Breast
+41. Quick Red Lentil Soup
+42. Chickpea and Vegetable Stew
+43. Brown Rice with Sautéed Vegetables
+44. Light Chicken Curry with Coconut Milk
+45. Moroccan Chicken Tagine with Apricots
+46. Mediterranean Baked Cod with Herbs and Lemon
+47. Cold Quinoa Salad with Roasted Vegetables and Feta
+48. Ghormeh Sabzi (Persian Herb Stew)
+49. Tabriz Meatballs (Koofteh Tabrizi)
+50. Nimroo (Cooked Eggs with Onion and Tomato)
+51. Nan O Panir O Sabzi (Bread, Cottage Cheese, and Herbs)
+52. Kookoo Sabzi (Light Herb Frittata)
+53. Loobia Polo (Rice with Green Beans and Lean Meat)
+54. Ab Doogh Khiar (Cold Yogurt Soup)
+55. Ash-e Jo (Persian Barley Soup)
+56. Borani Esfenaj (Spinach and Yogurt Salad)
+57. Khoresht Bademjan (Eggplant Stew with Lentils)
+58. Gheymeh Berenj (Ground Meat Stew with Split Peas and Rice)
+59. Borani Laboo (Beetroot and Yogurt Salad)
+60. Kalleh Joosh (Yogurt and Mint Soup)
+61. Dal Adas (Persian-Indian Red Lentil Stew)
+62. Abgoosht-e Light (Light Chickpea and Vegetable Stew)
+63. Dami Lakhma (Whole Wheat Bread with Lentils and Turmeric)
+64. Grechnevaya Kasha (Buckwheat Porridge)
+65. Healthy Tvorog Zapékanka (Cottage Cheese Casserole)
+66. Whole Wheat Syrniki (Lightly Fried Cottage Cheese Pancakes)
+67. Lean Borscht (Low-Fat Beetroot Soup)
+68. Baked Kotlety (Lean Chicken/Turkey Patties)
+69. Vinegret (Healthy Russian Vegetable Salad)
+70. Golubtsy (Stuffed Cabbage Rolls with Brown Rice)
+71. Vareniki with Potato and Mushroom (Stuffed Dumplings)
+72. Yalanji (Vegetarian Stuffed Grape Leaves)
+73. Pumpkin Kibbeh
+74. Fatteh Makdous with Meat
+75. Authentic Lamb Mandi
+76. Fatteh Hummus with Olive Oil
+77. Maqluba (Upside-Down Rice with Lamb and Cauliflower)
+78. Freekeh with Chicken and Nuts
+79. Shakriyeh (Lamb in Yogurt Sauce)
+80. Manakish (Flatbread) with Zaatar and Cheese
+81. Moussaka (Eggplant and Meat Casserole)
+82. Harees (Pounded Wheat and Meat)
+83. Beef Stroganoff
+84. Sayadieh (Fish and Rice)
+85. Fried Kibbeh
+86. Mafrookeh (Pistachio Dessert)
+87. Shish Barak (Meat Dumplings in Yogurt Sauce)
+88. Okra with Lamb and Rice
+89. Coleslaw Salad with Mayonnaise
+90. Stuffed Cabbage Rolls
+91. Kousa Mahshi with Yogurt Sauce (Stuffed Zucchini)
+92. Koshari (Egyptian Pasta, Rice, and Lentils)
+93. Muhammara (Roasted Pepper Dip)
+94. Arayes (Meat Stuffed Pita Bread)
+95. Crispy Fried Prawns
+96. Oats and Peanut Butter Energy Balls
+97. Quinoa Salad with Smoked Salmon
+98. Vegetable Omelet with Flaxseeds
+99. Tuna and Herb Lentil Salad
+100. Brown Rice with Chicken and Spinach
+101. High-Protein Vegetable Omelette
+102. Russian Fish Soup (Ukha)
+103. Whole Wheat Hummus and Vegetable Wrap
+104. Green Bean and Lean Ground Meat Stew
+105. Greek Yogurt with Berries and Oats
+106. Oatmeal Porridge with Seeds and Cinnamon
+107. Cooked Prawns (Boiled)
+108. Healthy Turkey and Cheese Sandwich
+109. Loaded Steak and Avocado Toast
+110. Boiled Eggs and Low-Fat Cheese 
+111. Fattoush
+112. Musabaha (Chickpeas with Tahini)
+113. Tabbouleh
+114. Eggplant Maqluba with Meat
+115. Turkish Izmir Kofte
+116. Turkish Spinach and Cheese Borek
+117. Turkish Mixed Vegetable Stew
+118. Turkish Asparagus Soup (Kuşkonmaz)
+119. Tepsi Kebabi (Tray Kebab)
+120. Turkish White Bean Salad (Piyaz)
+121. Menemen (Turkish Scrambled Eggs with Veggies)
+122. Izmir Kofte (Meatball and Veggie Stew)
+123. Tarhana Soup
+124. Arnavut Cigeri (Turkish Style Liver)
+125. Gavurdagi Salad (Turkish Walnut Salad)
+126. Greek Chickpea  Salad
+127. Labneh with Walnuts and Mint
+128. Spinach and Mushroom Shakshuka
+129. Cottage Cheese with Tomato and Thyme
+130. Yellow Lentil Mash
+131. Brown Toast with Avocado and Egg
+132. Quick Tuna and Corn Salad
+133. Grilled Mushrooms with Herbs and Garlic
+134. Healthy Banana Oat Pancakes
+135. Grilled Lean Beef Steak
+136. Okra with Oil and Garlic (Cold)
+137. Pumpkin Ginger Soup
+138. Grilled Turkey Breast with Asparagus
+139. Arugula, Beetroot and Walnut Salad
+140. Baked Apple with Cinnamon and Almonds
+141. Grilled Tofu with Light Soy Sauce
+142. Broccoli and Spinach Soup
+143. Black Chickpea Salad (Kala Chana)
+144. Homemade Beef Meatballs
+145. Chia Seed Pudding with Almond Milk
+146. Tuna Salad with Lemon and Arugula
+147. Yogurt with Nuts and Seeds
+148. Grilled Chicken Bran Sandwich
+149. Grilled Herb Halibut
+150. Air Fryer Salmon
+151. Lentil and Pomegranate Salad
+152. Healthy Chia Seed Pudding
+153. Herb Grilled Tuna Steak
+154. Squash Ginger Soup
+155. Sea Salt Edamame
+156. Poached Eggs with Grilled Asparagus
+157. Ash-e Torsh (Zanjan Sour Soup)
+158. Jaghor Baghor (Lamb Liver Mix)
+159. Tabahag (Balochi Dried Meat)
+160. Turkish Chicken Yogurt Soup
+161. Royal Smoked Salmon & Avocado Toast
+162. Poached Eggs with Royal Truffle
+163. Royal Acai Bowl with Rare Nuts
+164. Aged Goat Cheese with Figs and Walnuts
+165. Egg White Omelet with Asparagus and Saffron
+166. Breakfast Quinoa with Green Almonds
+167. Bluefin Tuna Leafy Wraps
+168. Buckwheat Crepe with Salmon Caviar
+169. Greek Yogurt Parfait with Maca Powder
+170. Royal Eggs Benedict with Asparagus
+171. Grilled Lamb Chops with Freekeh
+172. Samke Harra (Spicy Walnut Fish)
+173. Khoresht Fesenjan (Duck & Walnut Stew)
+174. Circassian Chicken (Sharkaseya)
+175. Jumbo Prawns with Saffron Rice
+176. Grilled Lobster Tails with Herbs
+177. Chilean Sea Bass with Miso Glaze
+178. Seared Scallops with Cauliflower Puree
+179. Roasted Venison with Berries
+180. Quail Stuffed with Freekeh
+181. Seared Scallops with Caviar
+182. Ostrich Steak with Rosemary
+183. Sautéed Morel Mushrooms with Quail Eggs
+184. Pan-Seared Black Cod with Ginger
+185. Grilled Langoustines with Lemon

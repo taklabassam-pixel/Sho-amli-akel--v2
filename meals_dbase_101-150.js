@@ -2880,6 +2880,7 @@
     "name_en": "Yellow Lentil Mash",
     "name_ru": "Пюре из желтой чечевицы",
     "name_fa": "عدسی زرد",
+    "image": "images/yellow-lentil-mash.jpg",
     "ingredients": [
       {
         "item_ar": "عدس أصفر مسلوق",
@@ -3380,11 +3381,11 @@
   },
   {
     "id": 137,
-    "name_ar": "شوربة اليقطين بالزنجبيل",
+    "name_ar": "   شوربة اليقطين بالزنجبيل التركية",
     "name_en": "Pumpkin Ginger Soup",
     "name_ru": "Тыквенный суп с имбирем",
     "name_fa": "سوپ کدو حلوایی با زنجبیل",
-    "image": "images/pumpkin-ginger-soup.jpg",
+    "image": "images/turkish-pumpkin-ginger-soup.jpg",
     "ingredients": [
       {
         "item_ar": "يقطين (قرع)",

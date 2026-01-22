@@ -5021,7 +5021,7 @@
   "name_en": "Crispy Fried Prawns",
   "name_ru": "Жареные креветки в панировке",
   "name_fa": "میگو سوخاری ترد",
-  "image": "images/fried-prawns.jpg",
+  "image": "images/crispy-fried-prawns.jpg",
   "ingredients": [
     {
       "item_ar": "قريدس جامبو منظف",

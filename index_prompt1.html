@@ -3166,52 +3166,30 @@ function suggestMeal() {
     }
 
     // 6. منطق تصفية الوجبات (Filtering Logic)
-   // 6. منطق تصفية الوجبات (Filtering Logic)
-const normalizedUserMealType = mealType.trim().toLowerCase();
-const normalizedCost = cost.trim().toLowerCase();
-const normalizedHealth = healthStatus.trim().toLowerCase();
-const normalizedWeather = weather.trim().toLowerCase();
-const normalizedMealTime = mealTime.trim().toLowerCase();
+    const normalizedUserMealType = mealType.trim().toLowerCase();
+    const normalizedCost = cost.trim().toLowerCase();
+    const normalizedHealth = healthStatus.trim().toLowerCase();
+    const normalizedWeather = weather.trim().toLowerCase();
+    const successfulMeals = meals.filter(meal => {
+        if (!meal || !meal.health || !meal.cost || !meal.mealTime || !meal.weather || !meal.mealType) {
+            return false;
+        }
 
-// للتحقق فقط (يمكن حذفه لاحقاً)
-console.log("🔍 قيم الفلاتر المُطبّعة:", {
-    cost: normalizedCost,
-    health: normalizedHealth,
-    mealTime: normalizedMealTime,
-    weather: normalizedWeather,
-    mealType: normalizedUserMealType
-});
+        const healthCheck = meal.health.includes(healthStatus);
+        const costCheck = meal.cost.includes(cost);
+        const mealTimeCheck = meal.mealTime.includes(mealTime);
+        const weatherCheck = meal.weather.includes(weather);
 
-const successfulMeals = meals.filter(meal => {
-    if (!meal || !meal.health || !meal.cost || !meal.mealTime || !meal.weather || !meal.mealType) {
-        return false;
-    }
+        const mealTypeData = Array.isArray(meal.mealType) ? meal.mealType : [meal.mealType];
+        const mealTypeCheck = mealTypeData
+            .map(type => String(type).trim().toLowerCase())
+            .includes(normalizedUserMealType);
 
-    const healthCheck = meal.health
-        .map(h => String(h).trim().toLowerCase())
-        .includes(normalizedHealth);
+        return healthCheck && costCheck && mealTimeCheck && weatherCheck && mealTypeCheck;
+    });
 
-    const costCheck = meal.cost
-        .map(c => String(c).trim().toLowerCase())
-        .includes(normalizedCost);
+    window.lastFilteredMeals = successfulMeals;
 
-    const mealTimeCheck = meal.mealTime
-        .map(mt => String(mt).trim().toLowerCase())
-        .includes(normalizedMealTime);
-
-    const weatherCheck = meal.weather
-        .map(w => String(w).trim().toLowerCase())
-        .includes(normalizedWeather);
-
-    const mealTypeData = Array.isArray(meal.mealType) ? meal.mealType : [meal.mealType];
-    const mealTypeCheck = mealTypeData
-        .map(type => String(type).trim().toLowerCase())
-        .includes(normalizedUserMealType);
-
-    return healthCheck && costCheck && mealTimeCheck && weatherCheck && mealTypeCheck;
-});
-
-console.log(`✅ تم إيجاد ${successfulMeals.length} وجبة مطابقة`);
     // 7. التعامل مع حالة عدم وجود نتائج
     if (successfulMeals.length === 0) {
         displayNoResults(false, true); 
